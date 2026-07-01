@@ -104,6 +104,9 @@
             <Color x:Key="SystemFillColorNeutralBackground">#06000000</Color>
             <Color x:Key="SystemFillColorSolidAttentionBackground">#F7F7F7</Color>
             <Color x:Key="SystemFillColorSolidNeutralBackground">#F3F3F3</Color>
+
+            <Color x:Key="CustomProgressBarBackground">#A6DDDDDD</Color>
+            <Color x:Key="CustomProgressBarBorderBrush">#D9DDDDDD</Color>
         </ResourceDictionary>
         <ResourceDictionary x:Key="Dark">
             <Color x:Key="TextFillColorPrimary">#FFFFFF</Color>
@@ -206,6 +209,9 @@
             <Color x:Key="SystemFillColorNeutralBackground">#08FFFFFF</Color>
             <Color x:Key="SystemFillColorSolidAttentionBackground">#2E2E2E</Color>
             <Color x:Key="SystemFillColorSolidNeutralBackground">#2E2E2E</Color>
+
+            <Color x:Key="CustomProgressBarBackground">#802D2D2D</Color>
+            <Color x:Key="CustomProgressBarBorderBrush">#D9353535</Color>
         </ResourceDictionary>
         <ResourceDictionary x:Key="{x:Static sty:FluentAvaloniaTheme.HighContrastTheme}">
             <!-- These defaults are taken from Windows 10 High Contrast theme -->
@@ -218,11 +224,11 @@
             <Color x:Key="SystemColorHighlightTextColor">#FF000000</Color>
             <!-- This didn't return on Windows 10, so pulled from #4584 on WinUI repo -->
             <Color x:Key="SystemColorHotlightColor">#FFFE55</Color>
-            
-            
+
+
 
             <!-- Colors copied from Default theme to match list of keys. Should not
-                 be using these keys. These are set to Red to notify that.-->
+            be using these keys. These are set to Red to notify that.-->
             <Color x:Key="TextFillColorPrimary">#FF0000</Color>
             <Color x:Key="TextFillColorSecondary">#FF0000</Color>
             <Color x:Key="TextFillColorTertiary">#FF0000</Color>
