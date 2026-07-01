@@ -72,6 +72,10 @@ public partial class FANavigationViewItem : FANavigationViewItemBase
         base.OnApplyTemplate(e);
 
         _presenter = e.NameScope.Find<FANavigationViewItemPresenter>(s_tpNVIPresenter);
+        if (_presenter != null)
+        {
+            _presenter.Icon = Icon;
+        }
 
         _rootGrid = e.NameScope.Find<Grid>(s_tpNVIRootGrid);
         if (_rootGrid != null)
@@ -138,7 +142,11 @@ public partial class FANavigationViewItem : FANavigationViewItemBase
     protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
     {
         base.OnPropertyChanged(change);
-        if (change.Property == IconSourceProperty)
+        if (change.Property == IconProperty)
+        {
+            UpdatePresenterIcon();
+        }
+        else if (change.Property == IconSourceProperty)
         {
             OnIconPropertyChanged(change);
         }
@@ -285,6 +293,14 @@ public partial class FANavigationViewItem : FANavigationViewItemBase
     protected virtual void OnIconPropertyChanged(AvaloniaPropertyChangedEventArgs args)
     {
         UpdateVisualState();
+    }
+
+    private void UpdatePresenterIcon()
+    {
+        if (_presenter != null)
+        {
+            _presenter.Icon = Icon;
+        }
     }
 
     protected virtual void OnContentChanged(AvaloniaPropertyChangedEventArgs args)

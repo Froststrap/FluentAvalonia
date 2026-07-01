@@ -38,6 +38,10 @@ public partial class FANavigationViewItem
     public static readonly StyledProperty<FAIconSource> IconSourceProperty =
         FASettingsExpander.IconSourceProperty.AddOwner<FANavigationViewItem>();
 
+    public static readonly DirectProperty<FANavigationViewItem, object> IconProperty =
+    AvaloniaProperty.RegisterDirect<FANavigationViewItem, object>(nameof(Icon),
+        o => o.Icon, (o, v) => o.Icon = v);
+
     /// <summary>
     /// Defines the <see cref="IsChildSelected"/> property
     /// </summary>
@@ -108,6 +112,13 @@ public partial class FANavigationViewItem
     {
         get => GetValue(IconSourceProperty);
         set => SetValue(IconSourceProperty, value);
+    }
+
+    private object _icon;
+    public object Icon
+    {
+        get => _icon;
+        set => SetAndRaise(IconProperty, ref _icon, value);
     }
 
     /// <summary>
@@ -183,7 +194,7 @@ public partial class FANavigationViewItem
         _repeater.ItemsSourceView.Count > 0) ||
         HasUnrealizedChildren;
 
-    private bool ShouldShowIcon => IconSource != null;
+    private bool ShouldShowIcon => IconSource != null || Icon != null;
 
     private bool ShouldEnableToolTip => IsOnLeftNav && _isClosedCompact;
 
