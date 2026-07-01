@@ -12,6 +12,9 @@ namespace FluentAvalonia.UI.Controls.Primitives;
 /// </summary>
 public partial class FANavigationViewItemPresenter : ContentControl
 {
+    private Viewbox _iconBox;
+    private Viewbox _customIconBox;
+
     public FANavigationViewItemPresenter()
     {
         TemplateSettings = new FANavigationViewItemPresenterTemplateSettings();
@@ -32,37 +35,33 @@ public partial class FANavigationViewItemPresenter : ContentControl
         base.OnApplyTemplate(e);
 
         _selectionIndicator = e.NameScope.Find<Border>(s_tpSelectionIndicator);
-
-        //This doesn't exist in the TopPane template, so use Find and allow it to be null
         _contentGrid = e.NameScope.Find<Panel>(s_tpPresenterContentRootGrid);
-
         _infoBadgePresenter = e.NameScope.Find<ContentPresenter>(s_tpInfoBadgePresenter);
+
+        _iconBox = e.NameScope.Find<Viewbox>("IconBox");
+        _customIconBox = e.NameScope.Find<Viewbox>("CustomIconBox");   // ← find the Viewbox
+
+        UpdateCustomIconVisibility();
 
         var nvi = GetNVI;
         if (nvi != null)
         {
             _expandCollapseChevron = e.NameScope.Find<Panel>(s_tpExpandCollapseChevron);
-
             if (_expandCollapseChevron != null)
             {
                 _expandCollapseChevron.Tapped += nvi.OnExpandCollapseChevronTapped;
             }
             nvi.UpdateVisualState();
 
-            // We probably switched displaymode, so restore width now, otherwise the next time we will restore is when the CompactPaneLength changes
             var navView = nvi.GetNavigationView;
-            if (navView != null)
+            if (navView != null && navView.PaneDisplayMode != FANavigationViewPaneDisplayMode.Top)
             {
-                if (navView.PaneDisplayMode != FANavigationViewPaneDisplayMode.Top)
-                {
-                    UpdateCompactPaneLength(_compactPaneLengthValue, true);
-                }
+                UpdateCompactPaneLength(_compactPaneLengthValue, true);
             }
         }
 
         UpdateMargin();
 
-        // HACK
         if (icoSrc != null)
         {
             ts.Icon = FAIconHelpers.CreateFromUnknown(icoSrc);
@@ -77,6 +76,19 @@ public partial class FANavigationViewItemPresenter : ContentControl
         {
             TemplateSettings.Icon = FAIconHelpers.CreateFromUnknown(change.GetNewValue<FAIconSource>());
         }
+        else if (change.Property == IconProperty)
+        {
+            UpdateCustomIconVisibility();
+        }
+    }
+
+    private void UpdateCustomIconVisibility()
+    {
+        bool hasCustomIcon = Icon != null;
+        if (_iconBox != null)
+            _iconBox.IsVisible = !hasCustomIcon;
+        if (_customIconBox != null)
+            _customIconBox.IsVisible = hasCustomIcon;
     }
 
     protected override void OnPointerPressed(PointerPressedEventArgs e)

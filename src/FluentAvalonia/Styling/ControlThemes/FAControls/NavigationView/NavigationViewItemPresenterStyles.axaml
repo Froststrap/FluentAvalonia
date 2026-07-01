@@ -51,20 +51,30 @@
 
                             <!--
                             BUG: If NVI is loaded into Flyout, when it returns to Left mode the foreground
-                                 changes to Black for some reason (dark mode). So For the two ContentPresenters
-                                 below, I'm setting the resource directly instead of using the TemplateBinding
-                                 for Foreground
-                                 Thinking this is something with the new styling system but not entirely sure yet
+                            changes to Black for some reason (dark mode). So For the two ContentPresenters
+                            below, I'm setting the resource directly instead of using the TemplateBinding
+                            for Foreground
+                            Thinking this is something with the new styling system but not entirely sure yet
                             -->
                             <Border Name="IconColumn">
-                                <Viewbox Name="IconBox"
-                                         Height="{DynamicResource NavigationViewItemOnLeftIconBoxHeight}"
-                                         HorizontalAlignment="Center"
-                                         Margin="{DynamicResource NavigationViewItemOnLeftIconBoxMargin}">
-                                    <ContentPresenter Name="Icon"
-                                                      Content="{Binding TemplateSettings.Icon, RelativeSource={RelativeSource TemplatedParent}}"
-                                                      Foreground="{DynamicResource NavigationViewItemForeground}"/>
-                                </Viewbox>
+                                <Grid>
+                                    <Viewbox Name="IconBox"
+                                             Height="{DynamicResource NavigationViewItemOnLeftIconBoxHeight}"
+                                             HorizontalAlignment="Center"
+                                             Margin="{DynamicResource NavigationViewItemOnLeftIconBoxMargin}">
+                                        <ContentPresenter Name="Icon"
+                                                          Content="{Binding TemplateSettings.Icon, RelativeSource={RelativeSource TemplatedParent}}"
+                                                          Foreground="{DynamicResource NavigationViewItemForeground}"/>
+                                    </Viewbox>
+
+                                    <Viewbox Name="CustomIconBox"
+                                             Height="{DynamicResource NavigationViewItemOnLeftIconBoxHeight}"
+                                             HorizontalAlignment="Center"
+                                             Margin="{DynamicResource NavigationViewItemOnLeftIconBoxMargin}">
+                                        <ContentPresenter Name="CustomIcon"
+                                                          Content="{TemplateBinding Icon}" />
+                                    </Viewbox>
+                                </Grid>
                             </Border>
 
                             <ContentPresenter Name="ContentPresenter"
@@ -89,7 +99,7 @@
                                         <TransformOperationsTransition Property="RenderTransform" Duration="00:00:00.1" />
                                     </Transitions>
                                 </Panel.Transitions>
-                                
+
                                 <TextBlock Foreground="{DynamicResource NavigationViewItemForeground}"
                                            FontSize="{DynamicResource NavigationViewItemExpandedGlyphFontSize}"
                                            Text="{StaticResource NavigationViewItemExpandedGlyph}"
@@ -105,7 +115,6 @@
                                               VerticalAlignment="Center" />
 
                         </Grid>
-
 
                     </Panel>
 
@@ -241,20 +250,30 @@
 
                             <!--
                             BUG: If NVI is loaded into Flyout, when it returns to Left mode the foreground
-                                 changes to Black for some reason (dark mode). So For the two ContentPresenters
-                                 below, I'm setting the resource directly instead of using the TemplateBinding
-                                 for Foreground
-                                 Thinking this is something with the new styling system but not entirely sure yet
+                            changes to Black for some reason (dark mode). So For the two ContentPresenters
+                            below, I'm setting the resource directly instead of using the TemplateBinding
+                            for Foreground
+                            Thinking this is something with the new styling system but not entirely sure yet
                             -->
-                            <Viewbox Name="IconBox"
-                                     Height="18"
-                                     Margin="16 0 0 0"
-                                     VerticalAlignment="Center"
-                                     HorizontalAlignment="Center">
-                                <ContentPresenter Name="Icon"
-                                                  Content="{Binding TemplateSettings.Icon, RelativeSource={RelativeSource TemplatedParent}}"
-                                                  Foreground="{DynamicResource TopNavigationViewItemForeground}"/>
-                            </Viewbox>
+                            <Grid>
+                                <Viewbox Name="IconBox"
+                                         Height="18"
+                                         Margin="16 0 0 0"
+                                         VerticalAlignment="Center"
+                                         HorizontalAlignment="Center">
+                                    <ContentPresenter Name="Icon"
+                                                      Content="{Binding TemplateSettings.Icon, RelativeSource={RelativeSource TemplatedParent}}"
+                                                      Foreground="{DynamicResource TopNavigationViewItemForeground}"/>
+                                </Viewbox>
+                                <Viewbox Name="CustomIconBox"
+                                         Height="18"
+                                         Margin="16 0 0 0"
+                                         VerticalAlignment="Center"
+                                         HorizontalAlignment="Center">
+                                    <ContentPresenter Name="CustomIcon"
+                                                      Content="{TemplateBinding Icon}" />
+                                </Viewbox>
+                            </Grid>
 
                             <ContentPresenter Name="ContentPresenter"
                                               Grid.Column="1"
@@ -288,7 +307,6 @@
                                               Margin="-16 0 2 13"/>
 
                         </Grid>
-
 
                         <Panel Name="SelectionIndicatorGrid"
                                HorizontalAlignment="Center"
@@ -338,7 +356,7 @@
                 <Setter Property="Foreground" Value="{DynamicResource TopNavigationViewItemForegroundPressed}" />
             </Style>
         </Style>
-        
+
         <Style Selector="^:selected">
             <Style Selector="^ /template/ Rectangle#PointerRectangle">
                 <Setter Property="Fill" Value="{DynamicResource NavigationViewItemBackgroundSelected}" />
@@ -367,7 +385,7 @@
                     <Setter Property="Foreground" Value="{DynamicResource TopNavigationViewItemForegroundSelectedPointerOver}" />
                 </Style>
             </Style>
-            
+
             <Style Selector="^:pressed">
                 <Style Selector="^ /template/ Rectangle#PointerRectangle">
                     <Setter Property="Fill" Value="{DynamicResource NavigationViewItemBackgroundSelectedPressed}" />
@@ -383,7 +401,7 @@
                 </Style>
             </Style>
         </Style>
-        
+
         <Style Selector="^:disabled">
             <Style Selector="^ /template/ ContentPresenter#Icon">
                 <Setter Property="Foreground" Value="{DynamicResource TopNavigationViewItemForegroundDisabled}" />
@@ -394,7 +412,7 @@
         </Style>
 
         <!-- :icononleft -->
-        
+
         <Style Selector="^:icononly">
             <Style Selector="^ /template/ Border#LayoutRoot">
                 <Setter Property="MinWidth" Value="48" />
@@ -424,7 +442,6 @@
                 <Setter Property="Margin" Value="{DynamicResource TopNavigationViewItemContentOnlyExpandChevronMargin}" />
             </Style>
         </Style>
-
 
         <!-- Expand/collapse chevron states should propagate -->
 
@@ -460,21 +477,30 @@
                               Margin="0 0 14 0">
                             <!--
                             BUG: If NVI is loaded into Flyout, when it returns to Left mode the foreground
-                                 changes to Black for some reason (dark mode). So For the two ContentPresenters
-                                 below, I'm setting the resource directly instead of using the TemplateBinding
-                                 for Foreground
-                                 Thinking this is something with the new styling system but not entirely sure yet
+                            changes to Black for some reason (dark mode). So For the two ContentPresenters
+                            below, I'm setting the resource directly instead of using the TemplateBinding
+                            for Foreground
+                            Thinking this is something with the new styling system but not entirely sure yet
                             -->
-                            <Viewbox Name="IconBox"
-                                     Height="16"
-                                     Width="16"
-                                     Margin="16,0,0,0"
-                                     VerticalAlignment="Center"
-                                     HorizontalAlignment="Center">
-                                <ContentPresenter Name="Icon"
-                                                  Content="{Binding TemplateSettings.Icon, RelativeSource={RelativeSource TemplatedParent}}"
-                                                  Foreground="{DynamicResource TopNavigationViewItemForeground}" />
-                            </Viewbox>
+                            <Grid>
+                                <Viewbox Name="IconBox"
+                                         Height="18"
+                                         Margin="16 0 0 0"
+                                         VerticalAlignment="Center"
+                                         HorizontalAlignment="Center">
+                                    <ContentPresenter Name="Icon"
+                                                      Content="{Binding TemplateSettings.Icon, RelativeSource={RelativeSource TemplatedParent}}"
+                                                      Foreground="{DynamicResource TopNavigationViewItemForeground}"/>
+                                </Viewbox>
+                                <Viewbox Name="CustomIconBox"
+                                         Height="18"
+                                         Margin="16 0 0 0"
+                                         VerticalAlignment="Center"
+                                         HorizontalAlignment="Center">
+                                    <ContentPresenter Name="CustomIcon"
+                                                      Content="{TemplateBinding Icon}" />
+                                </Viewbox>
+                            </Grid>
 
                             <ContentPresenter Name="ContentPresenter"
                                               Grid.Column="1"
@@ -548,7 +574,7 @@
             <Style Selector="^ /template/ ContentPresenter#ContentPresenter">
                 <Setter Property="Foreground" Value="{DynamicResource NavigationViewItemForegroundSelected}" />
             </Style>
-            
+
             <Style Selector="^:pointerover">
                 <Style Selector="^ /template/ Border#LayoutRoot">
                     <Setter Property="Background" Value="{DynamicResource NavigationViewItemBackgroundSelectedPointerOver}" />
@@ -593,7 +619,7 @@
                 <Setter Property="Margin" Value="{DynamicResource TopNavigationViewItemOnOverflowNoIconContentPresenterMargin}" />
             </Style>
         </Style>
-        
+
         <!-- Expand/collapse chevron states should propagate -->
 
     </ControlTheme>

@@ -20,6 +20,10 @@ public partial class FANavigationViewItemPresenter
     public static readonly StyledProperty<FAIconSource> IconSourceProperty =
         FASettingsExpander.IconSourceProperty.AddOwner<FANavigationViewItemPresenter>();
 
+    public static readonly DirectProperty<FANavigationViewItemPresenter, object> IconProperty =
+        AvaloniaProperty.RegisterDirect<FANavigationViewItemPresenter, object>(nameof(Icon),
+            o => o.Icon, (o, v) => o.Icon = v);
+
     /// <summary>
     /// Defines the <see cref="TemplateSettings"/> property
     /// </summary>
@@ -39,6 +43,13 @@ public partial class FANavigationViewItemPresenter
     {
         get => GetValue(IconSourceProperty);
         set => SetValue(IconSourceProperty, value);
+    }
+
+    private object _icon;
+    public object Icon
+    {
+        get => _icon;
+        set => SetAndRaise(IconProperty, ref _icon, value);
     }
 
     /// <summary>
