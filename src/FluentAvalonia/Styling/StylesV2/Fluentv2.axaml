@@ -5,7 +5,7 @@
                     xmlns:conv="using:FluentAvalonia.Converters">
     <ResourceDictionary.ThemeDictionaries>
         <!-- NOTE: Default in FA is Light theme, in WinUI its dark-->
-        <ResourceDictionary x:Key="Default">           
+        <ResourceDictionary x:Key="Default">
             <!-- Brushes -->
 
             <SolidColorBrush x:Key="TextFillColorPrimaryBrush" Color="{StaticResource TextFillColorPrimary}" />
@@ -542,7 +542,7 @@
 
             <!-- NOTE: In order to NOT port the MonochromaticOverlayPresenter, LoopingSelectorItemForegroundSelected
             has been modified to use TextOnAccentFillColorPrimaryBrush, see note in DatePicker.xaml for more...
-        -->
+            -->
             <StaticResource x:Key="LoopingSelectorItemForeground" ResourceKey="TextFillColorPrimaryBrush" />
             <StaticResource x:Key="LoopingSelectorItemForegroundSelected" ResourceKey="TextOnAccentFillColorPrimaryBrush" />
             <StaticResource x:Key="LoopingSelectorItemForegroundPointerOver" ResourceKey="TextFillColorPrimaryBrush" />
@@ -1546,9 +1546,9 @@
             <StaticResource x:Key="CalendarViewNavigationButtonBorderBrush" ResourceKey="SubtleFillColorTransparentBrush" />
 
             <!--
-        StaticResources won't evaluate outside of the current Dictionary...SIGH...
-        <StaticResource x:Key="CalendarViewDayItemFontSize" ResourceKey="ControlContentThemeFontSize" />
-        <StaticResource x:Key="CalendarViewMonthYearItemFontSize" ResourceKey="ControlContentThemeFontSize" />-->
+            StaticResources won't evaluate outside of the current Dictionary...SIGH...
+            <StaticResource x:Key="CalendarViewDayItemFontSize" ResourceKey="ControlContentThemeFontSize" />
+            <StaticResource x:Key="CalendarViewMonthYearItemFontSize" ResourceKey="ControlContentThemeFontSize" />-->
 
             <x:Boolean x:Key="CalendarViewBaseItemRoundedChromeEnabled">True</x:Boolean>
             <x:Double x:Key="CalendarViewFirstOfMonthLabelFontSize">8</x:Double>
@@ -1583,11 +1583,11 @@
 
 
             <!-- PROGRESS BAR -->
-            <Thickness x:Key="ProgressBarBorderThemeThickness">0</Thickness>
+            <Thickness x:Key="ProgressBarBorderThemeThickness">1</Thickness>
 
             <StaticResource x:Key="ProgressBarForeground" ResourceKey="AccentFillColorDefaultBrush" />
-            <StaticResource x:Key="ProgressBarBackground" ResourceKey="ControlStrongStrokeColorDefault" />
-            <StaticResource x:Key="ProgressBarBorderBrush" ResourceKey="ControlStrokeColorDefaultBrush" />
+            <StaticResource x:Key="ProgressBarBackground" ResourceKey="CustomProgressBarBackground" />
+            <StaticResource x:Key="ProgressBarBorderBrush" ResourceKey="CustomProgressBarBorderBrush" />
             <StaticResource x:Key="ProgressBarPausedForegroundColor" ResourceKey="SystemFillColorCaution" />
             <StaticResource x:Key="ProgressBarErrorForegroundColor" ResourceKey="SystemFillColorCritical" />
 
@@ -1762,7 +1762,7 @@
             <StaticResource x:Key="TabViewItemBorderBrush" ResourceKey="SubtleFillColorTransparentBrush" />
             <Thickness x:Key="TabViewButtonBorderThickness">0</Thickness>
             <Thickness x:Key="TabViewItemHeaderCloseButtonBorderThickness">0</Thickness>
-            <LinearGradientBrush x:Key="TabViewSelectedItemBorderBrush" StartPoint="0,0" EndPoint="0,4" 
+            <LinearGradientBrush x:Key="TabViewSelectedItemBorderBrush" StartPoint="0,0" EndPoint="0,4"
                                  TransformOrigin="50%,50%">
                 <LinearGradientBrush.Transform>
                     <ScaleTransform ScaleY="-1" />
@@ -1775,7 +1775,7 @@
 
             <LinearGradientBrush x:Key="TabViewSelectedItemBorderBrushBottom" StartPoint="0,0" EndPoint="0,4"
                                  TransformOrigin="50%,50%">
-                
+
                 <LinearGradientBrush.GradientStops>
                     <GradientStop Offset="1.0" Color="Transparent" />
                     <GradientStop Offset="1.0" Color="{DynamicResource CardStrokeColorDefault}" />
@@ -1978,13 +1978,13 @@
             <SolidColorBrush x:Key="CaptionButtonBackgroundPressed" Color="Black" Opacity="0.20" />
 
             <SolidColorBrush x:Key="CaptionButtonForeground" Color="Black" />
-            
-            
-            
-            
+
+
+
+
         </ResourceDictionary>
-        
-        
+
+
         <ResourceDictionary x:Key="Dark">
             <!-- Brushes -->
 
@@ -2518,7 +2518,7 @@
             <StaticResource x:Key="LoopingSelectorUpDownButtonBackgroundPressed" ResourceKey="SubtleFillColorTransparentBrush" />
 
             <!-- NOTE: In order to NOT port the MonochromaticOverlayPresenter, LoopingSelectorItemForegroundSelected
-             has been modified to use TextOnAccentFillColorPrimaryBrush, see note in DatePicker.xaml for more...
+            has been modified to use TextOnAccentFillColorPrimaryBrush, see note in DatePicker.xaml for more...
             -->
             <StaticResource x:Key="LoopingSelectorItemForeground" ResourceKey="TextFillColorPrimaryBrush" />
             <StaticResource x:Key="LoopingSelectorItemForegroundSelected" ResourceKey="TextOnAccentFillColorPrimaryBrush" />
@@ -2792,7 +2792,7 @@
 
             <LinearGradientBrush x:Key="TextControlElevationBorderFocusedBrush"
                                  StartPoint="0,0" EndPoint="0,2"
-                                  TransformOrigin="50%,50%">
+                                 TransformOrigin="50%,50%">
                 <LinearGradientBrush.Transform>
                     <ScaleTransform ScaleY="-1" />
                 </LinearGradientBrush.Transform>
@@ -3569,11 +3569,11 @@
 
 
             <!-- PROGRESS BAR -->
-            <Thickness x:Key="ProgressBarBorderThemeThickness">0</Thickness>
+            <Thickness x:Key="ProgressBarBorderThemeThickness">1</Thickness>
 
             <StaticResource x:Key="ProgressBarForeground" ResourceKey="AccentFillColorDefaultBrush" />
-            <StaticResource x:Key="ProgressBarBackground" ResourceKey="ControlStrongStrokeColorDefault" />
-            <StaticResource x:Key="ProgressBarBorderBrush" ResourceKey="ControlStrokeColorDefaultBrush" />
+            <StaticResource x:Key="ProgressBarBackground" ResourceKey="CustomProgressBarBackground" />
+            <StaticResource x:Key="ProgressBarBorderBrush" ResourceKey="CustomProgressBarBorderBrush" />
             <StaticResource x:Key="ProgressBarPausedForegroundColor" ResourceKey="SystemFillColorCaution" />
             <StaticResource x:Key="ProgressBarErrorForegroundColor" ResourceKey="SystemFillColorCritical" />
 
@@ -3764,7 +3764,7 @@
             </LinearGradientBrush>
 
             <LinearGradientBrush x:Key="TabViewSelectedItemBorderBrushBottom" StartPoint="0,0" EndPoint="0,4"
-                                             TransformOrigin="50%,50%">
+                                 TransformOrigin="50%,50%">
 
                 <LinearGradientBrush.GradientStops>
                     <GradientStop Offset="1.0" Color="Transparent" />
@@ -3848,7 +3848,7 @@
             <!-- Refresh Visualizer -->
             <StaticResource x:Key="RefreshVisualizerForeground" ResourceKey="TextFillColorPrimaryBrush" />
             <StaticResource x:Key="RefreshVisualizerBackground" ResourceKey="SubtleFillColorTransparentBrush" />
-            
+
             <!-- TabControl / TabStrip -->
             <StaticResource x:Key="PivotHeaderItemSelectedPipeFill" ResourceKey="AccentFillColorDefaultBrush" />
 
@@ -3962,7 +3962,7 @@
             <SolidColorBrush x:Key="CaptionButtonBackgroundPointerOver" Color="White" Opacity="0.09" />
             <SolidColorBrush x:Key="CaptionButtonBackgroundPressed" Color="White" Opacity="0.20" />
             <StaticResource x:Key="CaptionButtonBackgroundInactive" ResourceKey="SubtleFillColorTransparentBrush" />
-            
+
             <StaticResource x:Key="CaptionButtonForeground" ResourceKey="TextFillColorPrimaryBrush" />
             <StaticResource x:Key="CaptionButtonForegroundPointerOver" ResourceKey="TextFillColorPrimaryBrush" />
             <StaticResource x:Key="CaptionButtonForegroundPressed" ResourceKey="TextFillColorSecondaryBrush" />
@@ -3973,10 +3973,10 @@
             <StaticResource x:Key="TitleBarForeground" ResourceKey="TextFillColorPrimaryBrush" />
             <StaticResource x:Key="TitleBarBackgroundInactive" ResourceKey="SubtleFillColorTransparentBrush" />
             <StaticResource x:Key="TitleBarForegroundInactive" ResourceKey="TextFillColorDisabledBrush" />
-            
+
         </ResourceDictionary>
-        
-        
+
+
         <ResourceDictionary x:Key="{x:Static sty:FluentAvaloniaTheme.HighContrastTheme}">
             <SolidColorBrush x:Key="TextFillColorPrimaryBrush" Color="{DynamicResource SystemColorWindowTextColor}" />
             <SolidColorBrush x:Key="TextFillColorSecondaryBrush" Color="{DynamicResource SystemColorWindowTextColor}" />
@@ -4103,7 +4103,7 @@
             <SolidColorBrush x:Key="SystemColorHotlightColorBrush" Color="{DynamicResource SystemColorHotlightColor}" />
             <SolidColorBrush x:Key="SystemColorGrayTextColorBrush" Color="{DynamicResource SystemColorGrayTextColor}" />
 
-            
+
 
             <SolidColorBrush x:Key="SystemControlTransparentBrush" Color="Transparent" />
             <SolidColorBrush x:Key="SystemControlHighlightListAccentVeryHighBrush" Color="{DynamicResource SystemColorHighlightColor}" />
@@ -4130,8 +4130,8 @@
 
 
             <!-- Things get even more fun here. Apparently the HighContrast theme still mostly uses the old v1 Styles naming
-             because Microsoft...
-        -->
+            because Microsoft...
+            -->
             <SolidColorBrush x:Key="SystemControlHighlightAccentBrush" Color="{DynamicResource SystemColorHighlightColor}" />
             <SolidColorBrush x:Key="SystemControlForegroundAccentBrush" Color="{DynamicResource SystemColorButtonTextColor}" />
             <SolidColorBrush x:Key="SystemControlBackgroundBaseMediumLowBrush" Color="{DynamicResource SystemColorButtonFaceColor}" />
@@ -5528,9 +5528,9 @@
             <StaticResource x:Key="CalendarViewNavigationButtonBorderBrush" ResourceKey="SystemControlTransparentBrush" />
 
             <!--
-        StaticResources won't evaluate outside of the current Dictionary...SIGH...
-        <StaticResource x:Key="CalendarViewDayItemFontSize" ResourceKey="ControlContentThemeFontSize" />
-        <StaticResource x:Key="CalendarViewMonthYearItemFontSize" ResourceKey="ControlContentThemeFontSize" />-->
+            StaticResources won't evaluate outside of the current Dictionary...SIGH...
+            <StaticResource x:Key="CalendarViewDayItemFontSize" ResourceKey="ControlContentThemeFontSize" />
+            <StaticResource x:Key="CalendarViewMonthYearItemFontSize" ResourceKey="ControlContentThemeFontSize" />-->
 
             <x:Boolean x:Key="CalendarViewBaseItemRoundedChromeEnabled">True</x:Boolean>
             <x:Double x:Key="CalendarViewFirstOfMonthLabelFontSize">8</x:Double>
@@ -5756,7 +5756,7 @@
                 </LinearGradientBrush.GradientStops>
             </LinearGradientBrush>
             <LinearGradientBrush x:Key="TabViewSelectedItemBorderBrushBottom" StartPoint="0,0" EndPoint="0,4"
-                                             TransformOrigin="50%,50%">
+                                 TransformOrigin="50%,50%">
 
                 <LinearGradientBrush.GradientStops>
                     <GradientStop Offset="1.0" Color="Transparent" />
@@ -5955,15 +5955,15 @@
             <SolidColorBrush x:Key="CaptionButtonBackgroundPressed" Color="Black" Opacity="0.20" />
 
             <SolidColorBrush x:Key="CaptionButtonForeground" Color="Black" />
-            
+
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 
 
     <!-- New FluentUI Icons from Microsoft, embedded in assembly - see v1.1.5 PR for details
-         NOTE: Changing this font, will break design of most FluentAvalonia controls
-         This font has been adapted, thanks to robloo to use the FluentSystemIcons font, but
-         match the same unicode code points from WinUI Segoe Fluent
+    NOTE: Changing this font, will break design of most FluentAvalonia controls
+    This font has been adapted, thanks to robloo to use the FluentSystemIcons font, but
+    match the same unicode code points from WinUI Segoe Fluent
     -->
     <!--<FontFamily x:Key="SymbolThemeFontFamily">avares://FluentAvalonia/Fonts#Symbols</FontFamily>
     <FontFamily x:Key="ContentControlThemeFontFamily">Default</FontFamily>-->
@@ -6032,11 +6032,11 @@
     <x:Double x:Key="IconElementThemeWidth">20</x:Double>
 
     <!--
-        Preserving for reference:
-        <x:String x:Key="ControlFastOutSlowInKeySpline">0,0,0,1</x:String>
-        <x:String x:Key="ControlNormalAnimationDuration">00:00:00.250</x:String>
-        <x:String x:Key="ControlFastAnimationDuration">00:00:00.167</x:String>
-        <x:String x:Key="ControlFastAnimationAfterDuration">00:00:00.168</x:String>
-        <x:String x:Key="ControlFasterAnimationDuration">00:00:00.083</x:String>-->
+    Preserving for reference:
+    <x:String x:Key="ControlFastOutSlowInKeySpline">0,0,0,1</x:String>
+    <x:String x:Key="ControlNormalAnimationDuration">00:00:00.250</x:String>
+    <x:String x:Key="ControlFastAnimationDuration">00:00:00.167</x:String>
+    <x:String x:Key="ControlFastAnimationAfterDuration">00:00:00.168</x:String>
+    <x:String x:Key="ControlFasterAnimationDuration">00:00:00.083</x:String>-->
 
 </ResourceDictionary>
