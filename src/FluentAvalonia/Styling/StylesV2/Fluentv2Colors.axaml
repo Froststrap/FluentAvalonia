@@ -104,9 +104,6 @@
             <Color x:Key="SystemFillColorNeutralBackground">#06000000</Color>
             <Color x:Key="SystemFillColorSolidAttentionBackground">#F7F7F7</Color>
             <Color x:Key="SystemFillColorSolidNeutralBackground">#F3F3F3</Color>
-
-            <Color x:Key="CustomProgressBarBackground">#A6DDDDDD</Color>
-            <Color x:Key="CustomProgressBarBorderBrush">#D9DDDDDD</Color>
         </ResourceDictionary>
         <ResourceDictionary x:Key="Dark">
             <Color x:Key="TextFillColorPrimary">#FFFFFF</Color>
@@ -209,9 +206,6 @@
             <Color x:Key="SystemFillColorNeutralBackground">#08FFFFFF</Color>
             <Color x:Key="SystemFillColorSolidAttentionBackground">#2E2E2E</Color>
             <Color x:Key="SystemFillColorSolidNeutralBackground">#2E2E2E</Color>
-
-            <Color x:Key="CustomProgressBarBackground">#802D2D2D</Color>
-            <Color x:Key="CustomProgressBarBorderBrush">#D9353535</Color>
         </ResourceDictionary>
         <ResourceDictionary x:Key="{x:Static sty:FluentAvaloniaTheme.HighContrastTheme}">
             <!-- These defaults are taken from Windows 10 High Contrast theme -->

@@ -1586,8 +1586,8 @@
             <Thickness x:Key="ProgressBarBorderThemeThickness">1</Thickness>
 
             <StaticResource x:Key="ProgressBarForeground" ResourceKey="AccentFillColorDefaultBrush" />
-            <StaticResource x:Key="ProgressBarBackground" ResourceKey="CustomProgressBarBackground" />
-            <StaticResource x:Key="ProgressBarBorderBrush" ResourceKey="CustomProgressBarBorderBrush" />
+            <StaticResource x:Key="ProgressBarBackground" ResourceKey="ControlFillColorDefault" />
+            <StaticResource x:Key="ProgressBarBorderBrush" ResourceKey="ControlElevationBorderBrush" />
             <StaticResource x:Key="ProgressBarPausedForegroundColor" ResourceKey="SystemFillColorCaution" />
             <StaticResource x:Key="ProgressBarErrorForegroundColor" ResourceKey="SystemFillColorCritical" />
 
@@ -3572,8 +3572,8 @@
             <Thickness x:Key="ProgressBarBorderThemeThickness">1</Thickness>
 
             <StaticResource x:Key="ProgressBarForeground" ResourceKey="AccentFillColorDefaultBrush" />
-            <StaticResource x:Key="ProgressBarBackground" ResourceKey="CustomProgressBarBackground" />
-            <StaticResource x:Key="ProgressBarBorderBrush" ResourceKey="CustomProgressBarBorderBrush" />
+            <StaticResource x:Key="ProgressBarBackground" ResourceKey="ControlFillColorDefault" />
+            <StaticResource x:Key="ProgressBarBorderBrush" ResourceKey="ControlElevationBorderBrush" />
             <StaticResource x:Key="ProgressBarPausedForegroundColor" ResourceKey="SystemFillColorCaution" />
             <StaticResource x:Key="ProgressBarErrorForegroundColor" ResourceKey="SystemFillColorCritical" />
 
