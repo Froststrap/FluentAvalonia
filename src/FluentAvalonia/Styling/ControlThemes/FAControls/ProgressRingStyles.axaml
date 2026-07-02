@@ -2,11 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:ui="using:FluentAvalonia.UI.Controls"
                     xmlns:uip="using:FluentAvalonia.UI.Controls.Primitives">
-    
+
     <ControlTheme TargetType="ui:FAProgressRing"
                   x:Key="{x:Type ui:FAProgressRing}">
         <Setter Property="Foreground" Value="{DynamicResource AccentFillColorDefaultBrush}" />
-        <Setter Property="Background" Value="{DynamicResource ControlFillColorTransparentBrush}" />
+        <Setter Property="Background" Value="{DynamicResource ProgressBarBackground}" />
         <Setter Property="IsHitTestVisible" Value="False" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
@@ -24,5 +24,5 @@
             </ControlTemplate>
         </Setter>
     </ControlTheme>
-    
+
 </ResourceDictionary>
