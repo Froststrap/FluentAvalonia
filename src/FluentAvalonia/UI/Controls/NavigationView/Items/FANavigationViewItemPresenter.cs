@@ -14,6 +14,7 @@ public partial class FANavigationViewItemPresenter : ContentControl
 {
     private Viewbox _iconBox;
     private Viewbox _customIconBox;
+    private ContentPresenter _customIconPresenter;
 
     public FANavigationViewItemPresenter()
     {
@@ -25,6 +26,12 @@ public partial class FANavigationViewItemPresenter : ContentControl
         // HACK: Bug in Viewbox doesn't disconnect its child when its removed from the tree
         //       causing a crash when switching pane mode. Force disconnect the icon and 
         //       reapply it after applying the template.
+        if (_customIconPresenter != null)
+        {
+            _customIconPresenter.Content = null;
+            _customIconPresenter.ClearValue(ContentControl.ContentProperty);
+        }
+
         var ts = TemplateSettings;
         var icoSrc = IconSource;
         if (icoSrc != null)
@@ -33,6 +40,13 @@ public partial class FANavigationViewItemPresenter : ContentControl
         }
 
         base.OnApplyTemplate(e);
+
+        _customIconPresenter = e.NameScope.Find<ContentPresenter>("CustomIcon");
+        if (_customIconPresenter != null)
+        {
+            _customIconPresenter.Content = null;
+            _customIconPresenter.ClearValue(ContentControl.ContentProperty);
+        }
 
         _selectionIndicator = e.NameScope.Find<Border>(s_tpSelectionIndicator);
         _contentGrid = e.NameScope.Find<Panel>(s_tpPresenterContentRootGrid);
@@ -78,6 +92,11 @@ public partial class FANavigationViewItemPresenter : ContentControl
         }
         else if (change.Property == IconProperty)
         {
+            if (_customIconPresenter != null)
+            {
+                _customIconPresenter.Content = null;
+                _customIconPresenter.ClearValue(ContentControl.ContentProperty);
+            }
             UpdateCustomIconVisibility();
         }
     }
