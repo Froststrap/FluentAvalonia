@@ -958,7 +958,7 @@
 
             <StaticResource x:Key="NavigationViewDefaultPaneBackground" ResourceKey="SolidBackgroundFillColorBaseBrush" />
             <StaticResource x:Key="NavigationViewExpandedPaneBackground" ResourceKey="SolidBackgroundFillColorTransparent" />
-            <StaticResource x:Key="NavigationViewTopPaneBackground" ResourceKey="ControlFillColorTransparentBrush" />
+            <StaticResource x:Key="NavigationViewTopPaneBackground" ResourceKey="ControlFillColorDefaultBrush" />
             <StaticResource x:Key="NavigationViewContentBackground" ResourceKey="LayerFillColorDefaultBrush" />
 
             <StaticResource x:Key="NavigationViewItemBackground" ResourceKey="SubtleFillColorTransparentBrush" />
@@ -2937,7 +2937,7 @@
 
             <StaticResource x:Key="NavigationViewDefaultPaneBackground" ResourceKey="SolidBackgroundFillColorBaseBrush" />
             <StaticResource x:Key="NavigationViewExpandedPaneBackground" ResourceKey="SolidBackgroundFillColorTransparent" />
-            <StaticResource x:Key="NavigationViewTopPaneBackground" ResourceKey="ControlFillColorTransparentBrush" />
+            <StaticResource x:Key="NavigationViewTopPaneBackground" ResourceKey="ControlFillColorDefaultBrush" />
             <StaticResource x:Key="NavigationViewContentBackground" ResourceKey="LayerFillColorDefaultBrush" />
 
             <StaticResource x:Key="NavigationViewItemBackground" ResourceKey="SubtleFillColorTransparentBrush" />
