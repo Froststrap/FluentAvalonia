@@ -50,14 +50,14 @@
     <!-- This negative margin makes the link visually line up with the title/message -->
     <Thickness x:Key="InfoBarHyperlinkButtonMargin">-12,0,0,0</Thickness>
     <!-- Glyph code points updated for FluentIcons
-        In doing so, the background glyph also updates to work with icons in FluentIcons
-        which don't match Segoe MDL2 Assets
-        
-        We also have to set them in code b/c setting them in style handlers like WinUI
-        does wasn't working. The style was applying (per DevTools) but the Text was showing
-        as null. I suspect this is because Text on TextBlock is a DirectProperty and is
-        probably just not playing nice with the styling system???
-        -->
+    In doing so, the background glyph also updates to work with icons in FluentIcons
+    which don't match Segoe MDL2 Assets
+
+    We also have to set them in code b/c setting them in style handlers like WinUI
+    does wasn't working. The style was applying (per DevTools) but the Text was showing
+    as null. I suspect this is because Text on TextBlock is a DirectProperty and is
+    probably just not playing nice with the styling system???
+    -->
     <!--<x:String x:Key="InfoBarInformationalBackgroundGlyph">&#xF4AC;</x:String>-->
     <!--<x:String x:Key="InfoBarErrorBackgroundGlyph">&#xF3F1;</x:String>-->
     <!--<x:String x:Key="InfoBarWarningBackgroundGlyph">&#xF882;</x:String>-->
@@ -81,7 +81,7 @@
     <Thickness x:Key="InfoBarActionVerticalOrientationMargin">0,12,0,0</Thickness>
     <ui:FASymbol x:Key="InfoBarCloseButtonSymbol">Dismiss</ui:FASymbol>
 
-    
+
     <ControlTheme x:Key="InfoBarCloseButtonStyle"
                   BasedOn="{StaticResource TransparentButton}"
                   TargetType="Button">
@@ -110,7 +110,7 @@
                         CornerRadius="{TemplateBinding CornerRadius}"
                         BackgroundSizing="{TemplateBinding BackgroundSizing}">
 
-                    <!-- Background is used here so that it overrides the severity status color if set. 
+                    <!-- Background is used here so that it overrides the severity status color if set.
                     Padding="{StaticResource InfoBarContentRootPadding}" applied as margin on grid b/c no Padding
                     -->
                     <Panel>
@@ -127,10 +127,10 @@
                                    IsVisible="False">
                                 <Ellipse Name="IconBackground"
                                          Width="16" Height="16"
-                                         VerticalAlignment="Top"
+                                         VerticalAlignment="Center"
                                          Margin="{StaticResource InfoBarIconMargin}"/>
 
-                                <ui:FAFontIcon VerticalAlignment="Top"
+                                <ui:FAFontIcon VerticalAlignment="Center"
                                                FontFamily="{StaticResource SymbolThemeFontFamily}"
                                                Name="StandardIcon"
                                                Margin="{DynamicResource InfoBarIconMargin}"/>
@@ -147,9 +147,9 @@
                             </Viewbox>
 
                             <uip:FAInfoBarPanel Grid.Column="1"
-                                              Margin="{StaticResource InfoBarPanelMargin}"
-                                              HorizontalOrientationPadding="{StaticResource InfoBarPanelHorizontalOrientationPadding}"
-                                              VerticalOrientationPadding="{StaticResource InfoBarPanelVerticalOrientationPadding}">
+                                                Margin="{StaticResource InfoBarPanelMargin}"
+                                                HorizontalOrientationPadding="{StaticResource InfoBarPanelHorizontalOrientationPadding}"
+                                                VerticalOrientationPadding="{StaticResource InfoBarPanelVerticalOrientationPadding}">
 
                                 <TextBlock Name="Title"
                                            Foreground="{DynamicResource InfoBarTitleForeground}"
@@ -157,6 +157,7 @@
                                            uip:FAInfoBarPanel.HorizontalOrientationMargin="{StaticResource InfoBarTitleHorizontalOrientationMargin}"
                                            uip:FAInfoBarPanel.VerticalOrientationMargin="{StaticResource InfoBarTitleVerticalOrientationMargin}"
                                            TextWrapping="Wrap"
+                                           VerticalAlignment="Center"
                                            FontWeight="{StaticResource InfoBarTitleFontWeight}"
                                            FontSize="{StaticResource InfoBarTitleFontSize}" />
 
@@ -166,12 +167,13 @@
                                            uip:FAInfoBarPanel.HorizontalOrientationMargin="{StaticResource InfoBarMessageHorizontalOrientationMargin}"
                                            uip:FAInfoBarPanel.VerticalOrientationMargin="{StaticResource InfoBarMessageVerticalOrientationMargin}"
                                            TextWrapping="Wrap"
+                                           VerticalAlignment="Center"
                                            FontWeight="{StaticResource InfoBarMessageFontWeight}"
                                            FontSize="{StaticResource InfoBarMessageFontSize}"/>
 
                                 <ContentPresenter uip:FAInfoBarPanel.HorizontalOrientationMargin="{StaticResource InfoBarActionHorizontalOrientationMargin}"
                                                   uip:FAInfoBarPanel.VerticalOrientationMargin="{StaticResource InfoBarActionVerticalOrientationMargin}"
-                                                  VerticalAlignment="Top"
+                                                  VerticalAlignment="Center"
                                                   Content="{TemplateBinding ActionButton}"
                                                   HorizontalContentAlignment="Stretch"
                                                   VerticalContentAlignment="Center" />
@@ -313,6 +315,6 @@
         <Style Selector="^:noBannerContent /template/ ContentPresenter#ContentPresenter">
             <Setter Property="Grid.Row" Value="0" />
         </Style>
-        
+
     </ControlTheme>
 </ResourceDictionary>
