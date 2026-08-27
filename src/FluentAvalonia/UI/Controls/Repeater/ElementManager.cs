@@ -1,7 +1,7 @@
-﻿using Avalonia;
-using Avalonia.Controls;
-using System.Collections.Specialized;
+﻿using System.Collections.Specialized;
 using System.Diagnostics;
+using Avalonia;
+using Avalonia.Controls;
 
 namespace FluentAvalonia.UI.Controls;
 
@@ -148,7 +148,7 @@ internal class ElementManager
 
         if (realizedIndex == 0)
         {
-            _firstRealizedDataIndex = _realizedElements.Count == 0 ? 
+            _firstRealizedDataIndex = _realizedElements.Count == 0 ?
                 -1 : _firstRealizedDataIndex + count;
         }
     }
@@ -248,7 +248,7 @@ internal class ElementManager
     }
 
     // Does the given window intersect the range of realized elements
-    public bool IsWindowConnected(Rect window, ScrollOrientation orientation, 
+    public bool IsWindowConnected(Rect window, ScrollOrientation orientation,
         bool scrollOrientationSameAsFlow)
     {
         Debug.Assert(IsVirtualizingContext());
@@ -264,13 +264,13 @@ internal class ElementManager
                 (orientation == ScrollOrientation.Vertical ? ScrollOrientation.Horizontal : ScrollOrientation.Vertical) :
                 orientation;
 
-            var windowStart = effectiveOrientation == ScrollOrientation.Vertical ? 
+            var windowStart = effectiveOrientation == ScrollOrientation.Vertical ?
                 window.Y : window.X;
-            var windowEnd = effectiveOrientation == ScrollOrientation.Vertical ? 
+            var windowEnd = effectiveOrientation == ScrollOrientation.Vertical ?
                 window.Y + window.Height : window.X + window.Width;
-            var firstElementStart = effectiveOrientation == ScrollOrientation.Vertical ? 
+            var firstElementStart = effectiveOrientation == ScrollOrientation.Vertical ?
                 firstElementBounds.Y : firstElementBounds.X;
-            var lastElementEnd = effectiveOrientation == ScrollOrientation.Vertical ? 
+            var lastElementEnd = effectiveOrientation == ScrollOrientation.Vertical ?
                 lastElementBounds.Y + lastElementBounds.Height : lastElementBounds.X + lastElementBounds.Width;
 
             intersects = firstElementStart <= windowEnd &&
@@ -396,7 +396,7 @@ internal class ElementManager
         int frontCutoffIndex = -1;
         int backCutoffIndex = realizedRangeSize;
 
-        for (int i =0; 
+        for (int i = 0;
             i < realizedRangeSize && !Intersects(window, _realizedElementLayoutBounds[i], orientation);
             i++)
         {

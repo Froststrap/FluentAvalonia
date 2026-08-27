@@ -1,8 +1,8 @@
-﻿using Avalonia;
+﻿using System.Diagnostics;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Layout;
 using FluentAvalonia.Core;
-using System.Diagnostics;
 
 namespace FluentAvalonia.UI.Controls;
 
@@ -22,7 +22,7 @@ internal class Phaser
         // the same as the order in which items are realized.
         _pendingElements.Insert(0, new ElementInfo(element, cArgs.Phase, cArgs.callback, virtInfo));
 
-        RegisterForCallback();        
+        RegisterForCallback();
     }
 
     public void StopPhasing(Control element, VirtualizationInfo virtInfo)
@@ -73,12 +73,12 @@ internal class Phaser
                     info.Callback.Invoke(_owner, args);
 
                     int nextPhase = VirtualizationInfo.PhaseReachedEnd;
-                    
+
                     ValidatePhaseOrdering(currentPhase, nextPhase);
 
                     var previousAvailableSize = LayoutInformation.GetPreviousMeasureConstraint(element);
                     element.Measure(previousAvailableSize.Value);
-                    
+
                     if (nextPhase > 0)
                     {
                         // If we are the first item or 
@@ -131,7 +131,7 @@ internal class Phaser
         //Debug.Assert(!_registeredForCallbacks);
 
         if (_pendingElements.Count > 0)
-            RegisterForCallback();        
+            RegisterForCallback();
     }
 
     private void RegisterForCallback()
@@ -194,7 +194,7 @@ internal class Phaser
 
     private readonly struct ElementInfo
     {
-        public ElementInfo(Control element, int phase, TypedEventHandler<FAItemsRepeater, FAContainerContentChangingEventArgs> callback, 
+        public ElementInfo(Control element, int phase, TypedEventHandler<FAItemsRepeater, FAContainerContentChangingEventArgs> callback,
             VirtualizationInfo virtInfo)
         {
             Element = element;

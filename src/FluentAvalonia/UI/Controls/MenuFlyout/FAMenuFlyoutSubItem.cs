@@ -1,12 +1,12 @@
-﻿using Avalonia;
+﻿using System.Collections;
+using System.Collections.Specialized;
+using Avalonia;
 using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.VisualTree;
-using System.Collections;
-using System.Collections.Specialized;
 
 namespace FluentAvalonia.UI.Controls;
 
@@ -66,7 +66,7 @@ public partial class FAMenuFlyoutSubItem : FAMenuFlyoutItemBase
     internal void Open(bool fromKeyboard = false)
     {
         InitPopup();
-        
+
         _subMenu.IsOpen = true;
         _presenter.MenuOpened(fromKeyboard);
     }
@@ -141,7 +141,7 @@ public partial class FAMenuFlyoutSubItem : FAMenuFlyoutItemBase
     }
 
     private void ItemsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-    {  
+    {
         if (ItemsSource != null)
         {
             throw new InvalidOperationException("Cannot edit Items when ItemsSource is set");

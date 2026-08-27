@@ -73,7 +73,7 @@ internal readonly unsafe struct WPARAM : IComparable, IEquatable<WPARAM>
         return (obj is null) ? 1 : throw new ArgumentException("obj is not an instance of WPARAM.");
     }
 
-   // public int CompareTo(WPARAM other) => Value.CompareTo(other.Value);
+    // public int CompareTo(WPARAM other) => Value.CompareTo(other.Value);
 
     public override bool Equals(object obj) => (obj is WPARAM other) && Equals(other);
 
@@ -81,9 +81,9 @@ internal readonly unsafe struct WPARAM : IComparable, IEquatable<WPARAM>
 
     public override int GetHashCode() => Value.GetHashCode();
 
-   // public override string ToString() => Value.ToString((sizeof(nint) == 4) ? "X8" : "X16");
+    // public override string ToString() => Value.ToString((sizeof(nint) == 4) ? "X8" : "X16");
 
-   // public string ToString(string? format, IFormatProvider? formatProvider) => Value.ToString(format, formatProvider);
+    // public string ToString(string? format, IFormatProvider? formatProvider) => Value.ToString(format, formatProvider);
 
     public static explicit operator WPARAM(void* value) => new WPARAM((nuint)(value));
 
@@ -110,7 +110,7 @@ internal readonly unsafe struct WPARAM : IComparable, IEquatable<WPARAM>
     //public static explicit operator HDC(WPARAM value) => new HDC((void*)(value.Value));
 
     //public static explicit operator WPARAM(HDROP value) => new WPARAM((nuint)(value.Value));
-    
+
     //public static explicit operator HDROP(WPARAM value) => new HDROP((void*)(value.Value));
 
     //public static explicit operator WPARAM(HFONT value) => new WPARAM((nuint)(value.Value));
@@ -142,7 +142,7 @@ internal readonly unsafe struct WPARAM : IComparable, IEquatable<WPARAM>
     public static explicit operator HMENU(WPARAM value) => new HMENU((void*)(value.Value));
 
     //public static explicit operator WPARAM(HMODULE value) => new WPARAM((nuint)(value.Value));
-    
+
     //public static explicit operator HMODULE(WPARAM value) => new HMODULE((void*)(value.Value));
 
     //public static explicit operator WPARAM(HPALETTE value) => new WPARAM((nuint)(value.Value));

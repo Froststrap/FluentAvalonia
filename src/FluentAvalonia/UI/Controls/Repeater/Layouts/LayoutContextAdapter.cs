@@ -11,9 +11,9 @@ internal class LayoutContextAdapter : FAVirtualizingLayoutContext
         _nonVirtualizingContext = nonVirtualizingContext;
     }
 
-    protected internal override object LayoutStateCore 
-    { 
-        get => _nonVirtualizingContext?.LayoutState; 
+    protected internal override object LayoutStateCore
+    {
+        get => _nonVirtualizingContext?.LayoutState;
         set
         {
             if (_nonVirtualizingContext != null)

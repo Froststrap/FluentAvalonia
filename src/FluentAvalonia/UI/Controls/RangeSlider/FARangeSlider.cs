@@ -263,8 +263,8 @@ public partial class FARangeSlider : TemplatedControl
     {
         _isDraggingStart = _isDraggingEnd = false;
         OnThumbDragCompleted(e);
-        OnValueChanged(sender.Equals(_minThumb) ? 
-            new FARangeChangedEventArgs(_oldValue, RangeStart, FARangeSelectorProperty.RangeStartValue) : 
+        OnValueChanged(sender.Equals(_minThumb) ?
+            new FARangeChangedEventArgs(_oldValue, RangeStart, FARangeSelectorProperty.RangeStartValue) :
             new FARangeChangedEventArgs(_oldValue, RangeEnd, FARangeSelectorProperty.RangeEndValue));
         SyncThumbs();
 
@@ -454,7 +454,7 @@ public partial class FARangeSlider : TemplatedControl
                 return;
             var rs = RangeStart;
             var re = RangeEnd;
-            
+
             if (delta > 0)
             {
                 if (FAMathHelpers.IsClose(re, max))
@@ -473,15 +473,15 @@ public partial class FARangeSlider : TemplatedControl
                     delta = min - rs;
             }
 
-            
+
             RangeStart += delta;
             RangeEnd += delta;
             _absolutePosition = position;
             return;
         }
-                
+
         var normalizedPosition = ((position / DragWidth) * (Maximum - Minimum)) + Minimum;
-         
+
         if (_pointerManipulatingMin && normalizedPosition < RangeEnd)
         {
             RangeStart = DragThumb(_minThumb, 0, Canvas.GetLeft(_maxThumb), position);
@@ -648,7 +648,7 @@ public partial class FARangeSlider : TemplatedControl
                 fromMinKeyDown ? 0 : Canvas.GetLeft(_minThumb),
                 fromMinKeyDown ? Canvas.GetLeft(_maxThumb) : DragWidth,
                 fromMinKeyDown ? relativeLeft : relativeRight);
-            
+
             if (_toolTipText != null)
             {
                 UpdateToolTipText(fromMinKeyDown ? RangeStart : RangeEnd);

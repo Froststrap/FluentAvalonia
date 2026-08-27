@@ -1,4 +1,6 @@
-﻿using Avalonia;
+﻿using System.Collections;
+using System.Collections.Specialized;
+using Avalonia;
 using Avalonia.Automation;
 using Avalonia.Automation.Peers;
 using Avalonia.Controls;
@@ -6,8 +8,6 @@ using Avalonia.Controls.Templates;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.VisualTree;
-using System.Collections;
-using System.Collections.Specialized;
 
 namespace FluentAvalonia.UI.Controls;
 
@@ -63,7 +63,7 @@ public partial class FAItemsRepeater : Panel
                 // This can occur when children have variable sizes that prevent the ItemsPresenter's desired size from settling.
                 Rect layoutExtent = _viewportManager.LayoutExtent;
                 Size desiredSize = new Size(layoutExtent.Width - layoutExtent.X,
-                    layoutExtent.Height - layoutExtent.Y );
+                    layoutExtent.Height - layoutExtent.Y);
                 return desiredSize;
             }
         }
@@ -222,7 +222,7 @@ public partial class FAItemsRepeater : Panel
         }
         else if (property == ItemTransitionProviderProperty)
         {
-            OnTransitionProviderChanged(args.GetOldValue<FAItemCollectionTransitionProvider>(), 
+            OnTransitionProviderChanged(args.GetOldValue<FAItemCollectionTransitionProvider>(),
                 args.GetNewValue<FAItemCollectionTransitionProvider>());
         }
         else if (property == HorizontalCacheLengthProperty)
@@ -425,7 +425,7 @@ public partial class FAItemsRepeater : Panel
     }
 
     private void OnLayoutUpdated(object sender, EventArgs e)
-    { 
+    {
         // Now that the layout has settled, reset the measure counter to detect the next potential StackLayout layout cycle.
         _stackLayoutMeasureCounter = 0;
 
@@ -561,7 +561,7 @@ public partial class FAItemsRepeater : Panel
         if (newValue == null)
         {
             newValue = GetDefaultLayout();
-        }    
+        }
 
 
         if (oldValue != null)
@@ -707,7 +707,7 @@ public partial class FAItemsRepeater : Panel
     // with this value as small as 61. It was never reached with 60. 
     internal const short _maxStackLayoutIterations = 60;
     internal static Point ClearedElementsArrangePosition = new Point(-10000, -10000);
-    internal static Rect InvalidRect = new Rect(-1,-1,-1,-1);
+    internal static Rect InvalidRect = new Rect(-1, -1, -1, -1);
 
     private readonly TransitionManager _transitionManager;
     private readonly ViewManager _viewManager;
@@ -718,7 +718,7 @@ public partial class FAItemsRepeater : Panel
     private FAVirtualizingLayoutContext _layoutContext;
     private object _layoutState;
     private NotifyCollectionChangedEventArgs _processingItemsSourceChange;
-    
+
     private Size _lastAvailableSize;
     private bool _isLayoutInProgress = false;
     // The value of _layoutOrigin is expected to be set by the layout

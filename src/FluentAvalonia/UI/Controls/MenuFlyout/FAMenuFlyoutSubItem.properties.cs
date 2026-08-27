@@ -1,10 +1,10 @@
-﻿using Avalonia;
+﻿using System.Collections;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Templates;
 using Avalonia.Metadata;
 using Avalonia.Styling;
-using System.Collections;
 
 namespace FluentAvalonia.UI.Controls;
 
@@ -65,7 +65,7 @@ public partial class FAMenuFlyoutSubItem : FAMenuFlyoutItemBase
         set => SetValue(IconSourceProperty, value);
     }
 
-    
+
     /// <summary>
     /// Gets the items of the MenuFlyoutSubItem
     /// </summary>

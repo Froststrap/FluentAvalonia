@@ -89,7 +89,7 @@ internal readonly unsafe struct HMENU : IComparable, IEquatable<HMENU>
 
     public override int GetHashCode() => ((nuint)(Value)).GetHashCode();
 
-   // public override string ToString() => ((nuint)(Value)).ToString((sizeof(nint) == 4) ? "X8" : "X16");
+    // public override string ToString() => ((nuint)(Value)).ToString((sizeof(nint) == 4) ? "X8" : "X16");
 
     //public string ToString(string? format, IFormatProvider? formatProvider) => ((nuint)(Value)).ToString(format, formatProvider);
 }

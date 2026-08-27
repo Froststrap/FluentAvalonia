@@ -91,7 +91,7 @@ public class FAMenuFlyoutPresenter : ItemsControl
             _iconCount = iconCount;
             _toggleCount = toggleCount;
             // Update all other items already realized based on changes to this one
-            UpdateVisualState();            
+            UpdateVisualState();
         }
 
         // This container isn't realized yet, so we need to apply the classes here
@@ -180,7 +180,7 @@ public class FAMenuFlyoutPresenter : ItemsControl
                             else if (cont == item)
                             {
                                 // If we loop back to the original item, stop 
-                                break; 
+                                break;
                             }
                         }
                     }
@@ -269,7 +269,7 @@ public class FAMenuFlyoutPresenter : ItemsControl
                         // NOTE: Order matters here for some reason, focus the MFSI FIRST,
                         // then close it. Otherwise the focus adorner isn't shown
                         mfsi.Focus(NavigationMethod.Directional);
-                        mfsi.Close();                        
+                        mfsi.Close();
                         args.Handled = true;
                     }
                     else
@@ -362,7 +362,7 @@ public class FAMenuFlyoutPresenter : ItemsControl
             {
                 item.Focus(fromKeyboard ? NavigationMethod.Directional : NavigationMethod.Unspecified);
             }
-        }, DispatcherPriority.Render);        
+        }, DispatcherPriority.Render);
     }
 
     internal void MenuClosed()
@@ -387,7 +387,7 @@ public class FAMenuFlyoutPresenter : ItemsControl
             fmf.Close();
         }
     }
-        
+
     private void UpdateVisualState()
     {
         // v2 Change: ControlThemes means we can't use styling on the MFP to apply the 

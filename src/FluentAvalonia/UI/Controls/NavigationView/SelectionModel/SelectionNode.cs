@@ -1,7 +1,7 @@
-﻿using Avalonia.Controls;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Specialized;
 using System.Diagnostics;
+using Avalonia.Controls;
 
 namespace FluentAvalonia.UI.Controls;
 
@@ -244,7 +244,7 @@ internal class SelectionNode : IDisposable
         if (!_selectedIndicesCacheIsValid)
         {
             _selectedIndicesCacheIsValid = true;
-            foreach(var range in _selected)
+            foreach (var range in _selected)
             {
                 for (int index = range.Begin; index <= range.End; index++)
                 {

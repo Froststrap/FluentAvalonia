@@ -1,7 +1,7 @@
-﻿using Avalonia.Collections;
-using FluentAvalonia.Core;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Specialized;
+using Avalonia.Collections;
+using FluentAvalonia.Core;
 
 namespace FluentAvalonia.UI.Controls;
 
@@ -16,7 +16,7 @@ public class FAItemsSourceView
     {
         if (source == null)
             throw new ArgumentNullException(nameof(source));
-        
+
         _vector = source;
         ListenToCollectionChanges();
 
@@ -122,7 +122,7 @@ public class FAItemsSourceView
     /// Gets whether this underlying supports Key-Index mapping
     /// </summary>
     /// <returns></returns>
-    protected virtual bool HasKeyIndexMappingCore() => 
+    protected virtual bool HasKeyIndexMappingCore() =>
         _uniqueIdMapping != null;
 
     /// <summary>

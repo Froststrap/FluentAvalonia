@@ -1,4 +1,8 @@
-﻿using Avalonia;
+﻿using System.Collections;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Diagnostics;
+using Avalonia;
 using Avalonia.Animation.Easings;
 using Avalonia.Automation;
 using Avalonia.Automation.Peers;
@@ -13,10 +17,6 @@ using Avalonia.Layout;
 using Avalonia.Rendering.Composition;
 using Avalonia.Threading;
 using FluentAvalonia.Core;
-using System.Collections;
-using System.Collections.Specialized;
-using System.ComponentModel;
-using System.Diagnostics;
 
 namespace FluentAvalonia.UI.Controls;
 
@@ -43,7 +43,7 @@ public partial class FANavigationView : HeaderedContentControl
         _sizeChangedRevoker = this.GetObservable(BoundsProperty).Subscribe(OnSizeChanged);
 
         _selectionModelSource = new AvaloniaList<IEnumerable>(2) { null, null };
-        
+
         _topDataProvider = new TopNavigationViewDataProvider(this);
 
         MenuItems = new AvaloniaList<object>();
@@ -171,7 +171,7 @@ public partial class FANavigationView : HeaderedContentControl
                 flyout?.Closing += OnFlyoutClosing;
 
                 AutomationProperties.SetName(_topNavOverflowButton,
-                    FALocalizationHelper.Instance.GetLocalizedStringResource(SR_NavigationOverflowButtonName));                
+                    FALocalizationHelper.Instance.GetLocalizedStringResource(SR_NavigationOverflowButtonName));
 
                 var tip = ToolTip.GetTip(_topNavOverflowButton);
                 if (tip != null)
@@ -505,7 +505,7 @@ public partial class FANavigationView : HeaderedContentControl
                 if (((e.KeyModifiers & KeyModifiers.Alt) == KeyModifiers.Alt) && IsPaneOpen && IsLightDismissable)
                 {
                     e.Handled = AttemptClosePaneLightly();
-                    
+
                 }
                 break;
         }
@@ -581,7 +581,7 @@ public partial class FANavigationView : HeaderedContentControl
                 // while the ItemsRepeater was still unloaded. Thus m_selectionModel still does not know about that selection.
                 UpdateSelectionModelSelectionForSelectedItem(item);
             }
-            
+
             AnimateSelectionChanged(item);
         }
     }
@@ -910,7 +910,7 @@ public partial class FANavigationView : HeaderedContentControl
                     //}
                     //else if (!isFocusOutsideCurrentRootRepeater)
                     //{
-                        
+
                     //}
                 }
             }
@@ -3324,7 +3324,7 @@ public partial class FANavigationView : HeaderedContentControl
         {
             var paneContentGrid = _paneContentGrid;
 
-            if ((prevIndicator != nextIndicator) && paneContentGrid != null && prevIndicator != null && 
+            if ((prevIndicator != nextIndicator) && paneContentGrid != null && prevIndicator != null &&
                 nextIndicator != null && FAUISettings.AreAnimationsEnabled())
             {
                 // Make sure both indicators are visible and in their original locations
@@ -3592,7 +3592,7 @@ public partial class FANavigationView : HeaderedContentControl
             }
         }
     }
-        
+
     private Control FindSelectionIndicator(object item)
     {
         if (item != null)
@@ -3902,7 +3902,7 @@ public partial class FANavigationView : HeaderedContentControl
                         OpenPane();
                     }
                 }
-            }            
+            }
         }
     }
 

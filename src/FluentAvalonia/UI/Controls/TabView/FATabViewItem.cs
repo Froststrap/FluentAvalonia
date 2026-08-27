@@ -36,7 +36,7 @@ public partial class FATabViewItem : FASelectorItem
     {
         FocusableProperty.OverrideDefaultValue<FATabViewItem>(true);
     }
-    
+
     protected internal FATabView ParentTabView
     {
         get
@@ -265,7 +265,7 @@ public partial class FATabViewItem : FASelectorItem
             _hasPointerCapture = false;
             _isMiddlePointerButtonPressed = false;
         }
-                
+
         RestoreLeftAdjacentTabSeparatorVisibility();
     }
 

@@ -23,7 +23,7 @@ public class FAConnectedAnimationService
 
     public TimeSpan DefaultDuration { get; set; } = TimeSpan.FromMilliseconds(3000);
 
-    public Easing DefaultEasingFunction { get; set; } = new SplineEasing(0.8,0,0.2,1);
+    public Easing DefaultEasingFunction { get; set; } = new SplineEasing(0.8, 0, 0.2, 1);
 
     public static FAConnectedAnimationService GetForView(TopLevel topLevel)
     {

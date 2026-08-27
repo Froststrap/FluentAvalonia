@@ -1,9 +1,9 @@
-﻿using Avalonia;
+﻿using System.ComponentModel;
+using System.Globalization;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Documents;
 using Avalonia.Media;
-using System.ComponentModel;
-using System.Globalization;
 
 namespace FluentAvalonia.UI.Controls;
 

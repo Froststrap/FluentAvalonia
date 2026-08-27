@@ -1,5 +1,5 @@
-﻿using Avalonia.Controls;
-using System.Collections;
+﻿using System.Collections;
+using Avalonia.Controls;
 
 namespace FluentAvalonia.UI.Controls;
 
@@ -16,14 +16,14 @@ internal class VirtualLayoutContextAdapter : FANonVirtualizingLayoutContext
         return _children;
     }
 
-    protected internal override object LayoutStateCore 
-    { 
+    protected internal override object LayoutStateCore
+    {
         get => GetContext()?.LayoutStateCore;
         set
         {
             if (GetContext() is FAVirtualizingLayoutContext vlc)
                 vlc.LayoutStateCore = value;
-        } 
+        }
     }
 
     private FAVirtualizingLayoutContext GetContext() =>

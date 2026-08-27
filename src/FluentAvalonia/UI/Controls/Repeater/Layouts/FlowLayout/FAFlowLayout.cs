@@ -1,12 +1,12 @@
 ﻿#pragma warning disable
 // Note this class has no documentation yet from Microsoft - disabling the warnings around
 // public APIs with no documentation
+using System.Collections.Specialized;
+using System.Diagnostics;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Layout;
 using FluentAvalonia.Core;
-using System.Collections.Specialized;
-using System.Diagnostics;
 
 namespace FluentAvalonia.UI.Controls;
 
@@ -30,14 +30,14 @@ public class FAFlowLayout : FAVirtualizingLayout, IOrientationBasedMeasures, IFl
 
     }
 
-    public static readonly StyledProperty<FAFlowLayoutLineAlignment> LineAlignmentProperty = 
-        AvaloniaProperty.Register<FAFlowLayout, FAFlowLayoutLineAlignment>(nameof(LineAlignment), 
+    public static readonly StyledProperty<FAFlowLayoutLineAlignment> LineAlignmentProperty =
+        AvaloniaProperty.Register<FAFlowLayout, FAFlowLayoutLineAlignment>(nameof(LineAlignment),
             defaultValue: FAFlowLayoutLineAlignment.Start);
 
     public static readonly StyledProperty<double> MinColumnSpacingProperty =
         AvaloniaProperty.Register<FAFlowLayout, double>(nameof(MinColumnSpacing));
 
-    public static readonly StyledProperty<double> MinRowSpacingProperty = 
+    public static readonly StyledProperty<double> MinRowSpacingProperty =
         AvaloniaProperty.Register<FAFlowLayout, double>(nameof(MinRowSpacing));
 
     public static readonly StyledProperty<Orientation> OrientationProperty =
@@ -85,7 +85,7 @@ public class FAFlowLayout : FAVirtualizingLayout, IOrientationBasedMeasures, IFl
 
             //Note: For FlowLayout Vertical Orientation means we have a Horizontal ScrollOrientation. Horizontal Orientation means we have a Vertical ScrollOrientation.
             //i.e. the properties are the inverse of each other.
-            var scrollOrientation = (orientation == Orientation.Horizontal) ? 
+            var scrollOrientation = (orientation == Orientation.Horizontal) ?
                 ScrollOrientation.Vertical : ScrollOrientation.Horizontal;
             ScrollOrientation = scrollOrientation;
         }
@@ -154,7 +154,7 @@ public class FAFlowLayout : FAVirtualizingLayout, IOrientationBasedMeasures, IFl
         // Always invalidate layout to keep the view accurate.
         InvalidateLayout();
     }
-        
+
     private FlowLayoutState GetAsFlowState(object state) =>
         state as FlowLayoutState;
 
@@ -175,13 +175,13 @@ public class FAFlowLayout : FAVirtualizingLayout, IOrientationBasedMeasures, IFl
 
     // WinUI has these as separate methods and then has these call those, lets just skip that step
 
-    Size IFlowLayoutAlgorithmDelegates.Algorithm_GetMeasureSize(int index, Size availableSize, 
+    Size IFlowLayoutAlgorithmDelegates.Algorithm_GetMeasureSize(int index, Size availableSize,
         FAVirtualizingLayoutContext context)
     {
         return availableSize;
     }
 
-    Size IFlowLayoutAlgorithmDelegates.Algorithm_GetProvisionalArrangeSize(int index, Size measureSize, 
+    Size IFlowLayoutAlgorithmDelegates.Algorithm_GetProvisionalArrangeSize(int index, Size measureSize,
         Size desiredSize, FAVirtualizingLayoutContext context)
     {
         return desiredSize;
@@ -192,7 +192,7 @@ public class FAFlowLayout : FAVirtualizingLayout, IOrientationBasedMeasures, IFl
         return remainingSpace < 0;
     }
 
-    FlowLayoutAnchorInfo IFlowLayoutAlgorithmDelegates.Algorithm_GetAnchorForRealizationRect(Size availableSize, 
+    FlowLayoutAnchorInfo IFlowLayoutAlgorithmDelegates.Algorithm_GetAnchorForRealizationRect(Size availableSize,
         FAVirtualizingLayoutContext context)
     {
         int anchorIndex = -1;
@@ -212,7 +212,7 @@ public class FAFlowLayout : FAVirtualizingLayout, IOrientationBasedMeasures, IFl
 
             double extentMajorSize = this.MajorSize(lastExtent) == 0 ? (itemsCount / averageItemsPerLine) * averageLineSize : this.MajorSize(lastExtent);
             if (itemsCount > 0 &&
-                this.MajorSize(realizationRect) >0 &&
+                this.MajorSize(realizationRect) > 0 &&
                 DoesRealizationWindowOverlapExtent(realizationRect, this.MinorMajorRect(this.MinorStart(lastExtent), this.MajorStart(lastExtent), this.Minor(availableSize), extentMajorSize)))
             {
                 double realizationWindowStartWithExtent = this.MajorStart(realizationRect) - this.MajorStart(lastExtent);
@@ -228,7 +228,7 @@ public class FAFlowLayout : FAVirtualizingLayout, IOrientationBasedMeasures, IFl
         return new FlowLayoutAnchorInfo { Index = anchorIndex, Offset = offset };
     }
 
-    FlowLayoutAnchorInfo IFlowLayoutAlgorithmDelegates.Algorithm_GetAnchorForTargetElement(int targetIndex, 
+    FlowLayoutAnchorInfo IFlowLayoutAlgorithmDelegates.Algorithm_GetAnchorForTargetElement(int targetIndex,
         Size availableSize, FAVirtualizingLayoutContext context)
     {
         double offset = double.NaN;
@@ -249,8 +249,8 @@ public class FAFlowLayout : FAVirtualizingLayout, IOrientationBasedMeasures, IFl
         return new FlowLayoutAnchorInfo { Index = index, Offset = offset };
     }
 
-    Rect IFlowLayoutAlgorithmDelegates.Algorithm_GetExtent(Size availableSize, FAVirtualizingLayoutContext context, 
-        Control firstRealized, int firstRealizedItemIndex, Rect firstRealizedLayoutBounds, Control lastRealized, 
+    Rect IFlowLayoutAlgorithmDelegates.Algorithm_GetExtent(Size availableSize, FAVirtualizingLayoutContext context,
+        Control firstRealized, int firstRealizedItemIndex, Rect firstRealizedLayoutBounds, Control lastRealized,
         int lastRealizedItemIndex, Rect lastRealizedLayoutBounds)
     {
         Rect extent = default;

@@ -8,7 +8,7 @@ namespace FluentAvalonia.UI.Controls;
 /// </summary>
 public sealed class FAInfoBarAutomationPeer : ControlAutomationPeer
 {
-    public FAInfoBarAutomationPeer(Control owner) 
+    public FAInfoBarAutomationPeer(Control owner)
         : base(owner)
     {
     }

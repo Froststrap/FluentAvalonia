@@ -110,7 +110,7 @@ public class FAConnectedAnimation
         var offsetAnim = comp.CreateVector3KeyFrameAnimation();
         offsetAnim.Target = "Offset";
         offsetAnim.Duration = duration;
-        
+
         var offset = new Vector3((float)destVis.Offset.X, (float)destVis.Offset.Y, (float)destVis.Offset.Z);
         offsetAnim.SetVector3Parameter("StartValue", offset + delta);
         offsetAnim.SetVector3Parameter("FinalValue", offset);
@@ -190,7 +190,7 @@ public class FAConnectedAnimation
 
         var offsetAnim = comp.CreateVector3KeyFrameAnimation();
         var offset = new Vector3((float)destVis.Offset.X, (float)destVis.Offset.Y, (float)destVis.Offset.Z);
-        
+
         offsetAnim.Target = "Offset";
         offsetAnim.Duration = duration;
         offsetAnim.SetVector3Parameter("StartValue", offset + delta);

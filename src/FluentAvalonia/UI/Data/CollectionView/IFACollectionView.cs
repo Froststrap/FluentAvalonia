@@ -1,5 +1,5 @@
-﻿using Avalonia.Collections;
-using System.Collections.Specialized;
+﻿using System.Collections.Specialized;
+using Avalonia.Collections;
 
 namespace FluentAvalonia.UI.Data;
 

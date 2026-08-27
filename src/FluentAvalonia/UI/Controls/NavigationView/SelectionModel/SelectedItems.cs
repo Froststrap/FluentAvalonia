@@ -21,7 +21,7 @@ internal class SelectedItems<T> : IReadOnlyList<T>
     {
         _infos = infos;
         _getAtImpl = getAtImpl;
-        foreach(var info in infos)
+        foreach (var info in infos)
         {
             if (info.Node.TryGetTarget(out var selNode))
             {

@@ -1,6 +1,6 @@
-﻿using Avalonia.Controls;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Specialized;
+using Avalonia.Controls;
 
 namespace FluentAvalonia.UI.Controls;
 

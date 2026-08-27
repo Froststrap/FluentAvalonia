@@ -1,11 +1,11 @@
-﻿using Avalonia;
+﻿using System.Collections.Specialized;
+using System.ComponentModel;
+using Avalonia;
 using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using Avalonia.Metadata;
-using System.Collections.Specialized;
-using System.ComponentModel;
 
 namespace FluentAvalonia.UI.Controls;
 

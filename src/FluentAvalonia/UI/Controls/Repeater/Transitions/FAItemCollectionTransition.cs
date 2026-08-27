@@ -17,7 +17,7 @@ public class FAItemCollectionTransition
     public FAItemCollectionTransition(FAItemCollectionTransitionProvider provider, Control element,
         FAItemCollectionTransitionTriggers triggers,
         Rect oldBounds, Rect newBounds)
-        : this(provider, element, FAItemCollectionTransitionOperation.Move, triggers, 
+        : this(provider, element, FAItemCollectionTransitionOperation.Move, triggers,
               oldBounds, newBounds)
     {
 

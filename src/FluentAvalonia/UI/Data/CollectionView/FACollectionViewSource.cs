@@ -1,10 +1,10 @@
-﻿using Avalonia;
+﻿using System.Collections;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using Avalonia;
 using Avalonia.Collections;
 using Avalonia.Data;
 using Avalonia.Metadata;
-using System.Collections;
-using System.Collections.Specialized;
-using System.ComponentModel;
 
 namespace FluentAvalonia.UI.Data;
 

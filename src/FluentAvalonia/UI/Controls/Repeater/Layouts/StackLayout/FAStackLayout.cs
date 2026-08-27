@@ -1,8 +1,8 @@
-﻿using Avalonia;
+﻿using System.Collections.Specialized;
+using System.Diagnostics;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Layout;
-using System.Collections.Specialized;
-using System.Diagnostics;
 
 namespace FluentAvalonia.UI.Controls;
 
@@ -28,7 +28,7 @@ public class FAStackLayout : FAVirtualizingLayout, IFlowLayoutAlgorithmDelegates
     /// <summary>
     /// Defines the <see cref="Orientation"/> property
     /// </summary>
-    public static readonly StyledProperty<Orientation> OrientationProperty = 
+    public static readonly StyledProperty<Orientation> OrientationProperty =
         StackPanel.OrientationProperty.AddOwner<FAStackLayout>(
             new StyledPropertyMetadata<Orientation>(
                 defaultValue: Orientation.Vertical));
@@ -56,7 +56,7 @@ public class FAStackLayout : FAVirtualizingLayout, IFlowLayoutAlgorithmDelegates
 
     private ScrollOrientation ScrollOrientation { get; set; } = ScrollOrientation.Vertical;
 
-    ScrollOrientation IOrientationBasedMeasures.ScrollOrientation 
+    ScrollOrientation IOrientationBasedMeasures.ScrollOrientation
     {
         get => this.ScrollOrientation;
         set => this.ScrollOrientation = value;
@@ -213,13 +213,13 @@ public class FAStackLayout : FAVirtualizingLayout, IFlowLayoutAlgorithmDelegates
         }
     }
 
-    Size IFlowLayoutAlgorithmDelegates.Algorithm_GetMeasureSize(int index, Size availableSize, 
+    Size IFlowLayoutAlgorithmDelegates.Algorithm_GetMeasureSize(int index, Size availableSize,
         FAVirtualizingLayoutContext context)
     {
         return availableSize;
     }
 
-    Size IFlowLayoutAlgorithmDelegates.Algorithm_GetProvisionalArrangeSize(int index, Size measureSize, 
+    Size IFlowLayoutAlgorithmDelegates.Algorithm_GetProvisionalArrangeSize(int index, Size measureSize,
         Size desiredSize, FAVirtualizingLayoutContext context)
     {
         var measureSizeMinor = this.Minor(measureSize);
@@ -233,11 +233,11 @@ public class FAStackLayout : FAVirtualizingLayout, IFlowLayoutAlgorithmDelegates
     bool IFlowLayoutAlgorithmDelegates.Algorithm_ShouldBreakLine(int index, double remainingSpace) =>
         true;
 
-    FlowLayoutAnchorInfo IFlowLayoutAlgorithmDelegates.Algorithm_GetAnchorForRealizationRect(Size availableSize, 
+    FlowLayoutAnchorInfo IFlowLayoutAlgorithmDelegates.Algorithm_GetAnchorForRealizationRect(Size availableSize,
         FAVirtualizingLayoutContext context) =>
         GetAnchorForRealizationRect(availableSize, context);
 
-    FlowLayoutAnchorInfo IFlowLayoutAlgorithmDelegates.Algorithm_GetAnchorForTargetElement(int targetIndex, 
+    FlowLayoutAnchorInfo IFlowLayoutAlgorithmDelegates.Algorithm_GetAnchorForTargetElement(int targetIndex,
         Size availableSize, FAVirtualizingLayoutContext context)
     {
         double offset = double.NaN;
@@ -255,8 +255,8 @@ public class FAStackLayout : FAVirtualizingLayout, IFlowLayoutAlgorithmDelegates
         return new FlowLayoutAnchorInfo { Index = index, Offset = offset };
     }
 
-    Rect IFlowLayoutAlgorithmDelegates.Algorithm_GetExtent(Size availableSize, FAVirtualizingLayoutContext context, 
-        Control firstRealized, int firstRealizedIndex, Rect firstRealizedLayoutBounds, Control lastRealized, 
+    Rect IFlowLayoutAlgorithmDelegates.Algorithm_GetExtent(Size availableSize, FAVirtualizingLayoutContext context,
+        Control firstRealized, int firstRealizedIndex, Rect firstRealizedLayoutBounds, Control lastRealized,
         int lastRealizedItemIndex, Rect lastRealizedLayoutBounds)
     {
         return GetExtent(availableSize, context, firstRealized,
@@ -264,7 +264,7 @@ public class FAStackLayout : FAVirtualizingLayout, IFlowLayoutAlgorithmDelegates
             lastRealized, lastRealizedItemIndex, lastRealizedLayoutBounds);
     }
 
-    void IFlowLayoutAlgorithmDelegates.Algorithm_OnElementMeasured(Control element, int index, Size availableSize, 
+    void IFlowLayoutAlgorithmDelegates.Algorithm_OnElementMeasured(Control element, int index, Size availableSize,
         Size measureSize, Size desiredSize, Size provisionalArrangeSize, FAVirtualizingLayoutContext context)
     {
         OnElementMeasured(element, index, availableSize, measureSize, desiredSize,

@@ -50,7 +50,7 @@ public class FARecyclePool
             _elements.Add(key, pool);
         }
     }
-    
+
     protected virtual Control TryGetElementCore(string key, Control owner)
     {
         if (_elements.TryGetValue(key, out var elements))
@@ -140,7 +140,7 @@ public class FARecyclePool
         public Panel Owner;
     }
 
-    private readonly Dictionary<string, List<ElementInfo>> _elements = 
+    private readonly Dictionary<string, List<ElementInfo>> _elements =
         new Dictionary<string, List<ElementInfo>>();
 
     // WinUI stores this as a DependencyProperty on DataTemplate (attached), but since

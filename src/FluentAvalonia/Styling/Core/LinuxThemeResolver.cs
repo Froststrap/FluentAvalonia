@@ -73,51 +73,52 @@ internal static class LinuxThemeResolver
             switch (_desktopEnvironment)
             {
                 case DesktopEnvironment.KDE:
-                {
-                    var match = new Regex("^ColorScheme=(.*)$", RegexOptions.Multiline)
-                        .Match(_config);
-                    if (match.Success)
                     {
-                        return GetThemeFromName(match.Groups[1].Value);
-                    }
+                        var match = new Regex("^ColorScheme=(.*)$", RegexOptions.Multiline)
+                            .Match(_config);
+                        if (match.Success)
+                        {
+                            return GetThemeFromName(match.Groups[1].Value);
+                        }
 
-                    break;
-                }
+                        break;
+                    }
                 case DesktopEnvironment.LXDE:
-                {
-                    var match = new Regex("^sNet\\/ThemeName=(.*)$", RegexOptions.Multiline).Match(_config);
-                    if (match.Success)
                     {
-                        return GetThemeFromName(match.Groups[1].Value);
-                    }
+                        var match = new Regex("^sNet\\/ThemeName=(.*)$", RegexOptions.Multiline).Match(_config);
+                        if (match.Success)
+                        {
+                            return GetThemeFromName(match.Groups[1].Value);
+                        }
 
-                    break;
-                }
+                        break;
+                    }
                 case DesktopEnvironment.LXQt:
-                {
-                    var match = new Regex("^theme=(.*)$", RegexOptions.Multiline).Match(_config);
-                    if (match.Success)
                     {
-                        return GetThemeFromName(match.Groups[1].Value);
-                    }
+                        var match = new Regex("^theme=(.*)$", RegexOptions.Multiline).Match(_config);
+                        if (match.Success)
+                        {
+                            return GetThemeFromName(match.Groups[1].Value);
+                        }
 
-                    break;
-                }
+                        break;
+                    }
             }
         }
-        else switch (_desktopEnvironment)
-        {
-            case DesktopEnvironment.Cinnamon:
-                return GetThemeFromName(ReadGsettingsKey("org.cinnamon.desktop.interface", "gtk-theme"));
-            case DesktopEnvironment.Other:
-                var color = ReadGsettingsKey("org.gnome.desktop.interface", "color-scheme");
-                return color switch
-                {
-                    "prefer-light" => ThemeVariant.Light,
-                    "prefer-dark" => ThemeVariant.Dark,
-                    _ => GetThemeFromName(ReadGsettingsKey("org.gnome.desktop.interface", "gtk-theme"))
-                };
-        }
+        else
+            switch (_desktopEnvironment)
+            {
+                case DesktopEnvironment.Cinnamon:
+                    return GetThemeFromName(ReadGsettingsKey("org.cinnamon.desktop.interface", "gtk-theme"));
+                case DesktopEnvironment.Other:
+                    var color = ReadGsettingsKey("org.gnome.desktop.interface", "color-scheme");
+                    return color switch
+                    {
+                        "prefer-light" => ThemeVariant.Light,
+                        "prefer-dark" => ThemeVariant.Dark,
+                        _ => GetThemeFromName(ReadGsettingsKey("org.gnome.desktop.interface", "gtk-theme"))
+                    };
+            }
 
         return ThemeVariant.Light;
     }

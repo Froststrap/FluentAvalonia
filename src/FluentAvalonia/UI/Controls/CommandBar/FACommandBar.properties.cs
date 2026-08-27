@@ -1,8 +1,8 @@
-﻿using Avalonia.Collections;
+﻿using Avalonia;
+using Avalonia.Collections;
 using Avalonia.Controls;
-using Avalonia;
-using FluentAvalonia.Core;
 using Avalonia.Controls.Metadata;
+using FluentAvalonia.Core;
 
 namespace FluentAvalonia.UI.Controls;
 

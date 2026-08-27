@@ -19,7 +19,7 @@ public partial class FAPathIcon : FAIconElement
     {
         base.OnPropertyChanged(change);
 
-        if (change.Property == StretchProperty || 
+        if (change.Property == StretchProperty ||
             change.Property == StretchDirectionProperty ||
             change.Property == DataProperty)
         {

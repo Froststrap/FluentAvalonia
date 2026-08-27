@@ -1,6 +1,6 @@
-﻿using Avalonia.Controls.Presenters;
+﻿using Avalonia.Controls;
+using Avalonia.Controls.Presenters;
 using Avalonia.Controls.Primitives;
-using Avalonia.Controls;
 
 namespace FluentAvalonia.UI.Windowing;
 

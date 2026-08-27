@@ -9,7 +9,7 @@ internal class BreadcrumbLayout : FANonVirtualizingLayout
 
     public BreadcrumbLayout(FABreadcrumbBar breadcrumb)
     {
-        _breadcrumb = new WeakReference<FABreadcrumbBar>(breadcrumb);        
+        _breadcrumb = new WeakReference<FABreadcrumbBar>(breadcrumb);
     }
 
     internal ref readonly bool EllipsisIsRendered => ref _ellipsisIsRendered;

@@ -186,7 +186,7 @@ public sealed class FAProgressRingAnimatedVisual : Control
                 _paint.Color = _background.Value;
                 dc.DrawArc(_visualBounds, 0, 360, false, _paint);
             }
-            
+
             _paint.Color = _foreground;
             dc.DrawPath(_path, _paint);
 
@@ -281,7 +281,7 @@ public sealed class FAProgressRingAnimatedVisual : Control
                 _path.AddArc(_visualBounds, -90, 360 * (size - _min) / (_max - _min));
             }
             else
-            {                
+            {
                 _path.Reset();
                 _path.MoveTo(40, 10);
                 _path.AddArc(_visualBounds, -90, 360 * (_value - _min) / (_max - _min));
@@ -321,7 +321,7 @@ public sealed class FAProgressRingAnimatedVisual : Control
                                 RegisterForNextAnimationFrameUpdate();
                                 return;
                             }
-                        }                        
+                        }
                         break;
 
                     case HandlerMessageType.Active:

@@ -1,11 +1,11 @@
-﻿using Avalonia;
+﻿using System.Windows.Input;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.LogicalTree;
 using FluentAvalonia.Core;
 using FluentAvalonia.UI.Input;
-using System.Windows.Input;
 
 namespace FluentAvalonia.UI.Controls;
 

@@ -16,25 +16,25 @@ public partial class FASettingsExpander
     /// <summary>
     /// Defines the <see cref="Description"/> property
     /// </summary>
-    public static readonly StyledProperty<string> DescriptionProperty = 
+    public static readonly StyledProperty<string> DescriptionProperty =
         AvaloniaProperty.Register<FASettingsExpander, string>(nameof(Description));
 
     /// <summary>
     /// Defines the <see cref="IconSource"/> property
     /// </summary>
-    public static readonly StyledProperty<FAIconSource> IconSourceProperty = 
+    public static readonly StyledProperty<FAIconSource> IconSourceProperty =
         AvaloniaProperty.Register<FASettingsExpander, FAIconSource>(nameof(IconSource));
 
     /// <summary>
     /// Defines the <see cref="Footer"/> property
     /// </summary>
-    public static readonly StyledProperty<object> FooterProperty = 
+    public static readonly StyledProperty<object> FooterProperty =
         AvaloniaProperty.Register<FASettingsExpander, object>(nameof(Footer));
 
     /// <summary>
     /// Defines the <see cref="FooterTemplate"/> property
     /// </summary>
-    public static readonly StyledProperty<IDataTemplate> FooterTemplateProperty = 
+    public static readonly StyledProperty<IDataTemplate> FooterTemplateProperty =
         AvaloniaProperty.Register<FASettingsExpander, IDataTemplate>(nameof(FooterTemplate));
 
     /// <summary>
@@ -46,25 +46,25 @@ public partial class FASettingsExpander
     /// <summary>
     /// Defines the <see cref="ActionIconSource"/> property
     /// </summary>
-    public static readonly StyledProperty<FAIconSource> ActionIconSourceProperty = 
+    public static readonly StyledProperty<FAIconSource> ActionIconSourceProperty =
         AvaloniaProperty.Register<FASettingsExpander, FAIconSource>(nameof(ActionIconSource));
 
     /// <summary>
     /// Defines the <see cref="IsClickEnabled"/> property
     /// </summary>
-    public static readonly StyledProperty<bool> IsClickEnabledProperty = 
+    public static readonly StyledProperty<bool> IsClickEnabledProperty =
         AvaloniaProperty.Register<FASettingsExpander, bool>(nameof(IsClickEnabled));
 
     /// <summary>
     /// Defines the <see cref="Command"/> property
     /// </summary>
-    public static readonly StyledProperty<ICommand> CommandProperty = 
+    public static readonly StyledProperty<ICommand> CommandProperty =
         Button.CommandProperty.AddOwner<FASettingsExpander>();
 
     /// <summary>
     /// Defines the <see cref="CommandParameter"/> property
     /// </summary>
-    public static readonly StyledProperty<object> CommandParameterProperty = 
+    public static readonly StyledProperty<object> CommandParameterProperty =
         Button.CommandParameterProperty.AddOwner<FASettingsExpander>();
 
     // NOTE: Don't use Button.Click event here - when SettingsExpanderItem is in the top-level SettingsExpander

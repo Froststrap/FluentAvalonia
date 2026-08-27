@@ -1,4 +1,5 @@
-﻿using Avalonia;
+﻿using System.Globalization;
+using Avalonia;
 using Avalonia.Automation;
 using Avalonia.Automation.Peers;
 using Avalonia.Controls;
@@ -7,7 +8,6 @@ using Avalonia.Data;
 using Avalonia.Input;
 using Avalonia.Interactivity;
 using FluentAvalonia.Core;
-using System.Globalization;
 
 namespace FluentAvalonia.UI.Controls;
 
@@ -45,7 +45,7 @@ public partial class FANumberBox : TemplatedControl
             }
         }
         _popupDownButton?.Click += OnSpinDownClick;
-      
+
 
         _spinUp = e.NameScope.Find<RepeatButton>(s_tpUpSpinButton);
         _popupUpButton = e.NameScope.Find<RepeatButton>(s_tpPopupUpSpinButton);
@@ -61,7 +61,7 @@ public partial class FANumberBox : TemplatedControl
         }
 
         _popupUpButton?.Click += OnSpinUpClick;
-        
+
         _textBox = e.NameScope.Find<TextBox>(s_tpInputBox);
         if (_textBox != null)
         {

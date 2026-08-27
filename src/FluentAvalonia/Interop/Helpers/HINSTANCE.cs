@@ -89,5 +89,5 @@ internal readonly unsafe struct HINSTANCE : IComparable, IEquatable<HINSTANCE>
 
     //public override string ToString() => ((nuint)(Value)).ToString((sizeof(nint) == 4) ? "X8" : "X16");
 
-   // public string ToString(string format, IFormatProvider formatProvider) => ((nuint)(Value)).ToString(format, formatProvider);
+    // public string ToString(string format, IFormatProvider formatProvider) => ((nuint)(Value)).ToString(format, formatProvider);
 }

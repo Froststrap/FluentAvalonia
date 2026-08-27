@@ -38,7 +38,7 @@ internal class VirtualizationInfo
 
     public object Data => _data == null ? null :
         _data.TryGetTarget(out var target) ? target : null;
- 
+
     internal void UpdatePhasingInfo(object data)
     {
         _data = new WeakReference<object>(data);
@@ -121,7 +121,7 @@ internal class VirtualizationInfo
     private string _uniqueId;
     private ElementOwner _owner;
 
-    private WeakReference<object> _data;    
+    private WeakReference<object> _data;
 
     internal const int PhaseReachedEnd = -1;
 

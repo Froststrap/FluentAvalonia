@@ -13,7 +13,7 @@ namespace FluentAvalonia.UI.Controls;
 public class FAComboBoxAutomationPeer : SelectingItemsControlAutomationPeer,
     IExpandCollapseProvider, IValueProvider
 {
-    public FAComboBoxAutomationPeer(SelectingItemsControl owner) 
+    public FAComboBoxAutomationPeer(SelectingItemsControl owner)
         : base(owner)
     {
 

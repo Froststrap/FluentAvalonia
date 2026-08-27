@@ -1,7 +1,7 @@
 using Avalonia;
-using Avalonia.Media;
 using Avalonia.Controls;
 using Avalonia.Controls.Shapes;
+using Avalonia.Media;
 using Path = Avalonia.Controls.Shapes.Path;
 
 namespace FluentAvalonia.UI.Controls;

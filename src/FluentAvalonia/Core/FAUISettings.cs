@@ -59,7 +59,7 @@ public class FAUISettings
         {
             cxDrag = 4 * scaling;
             cyDrag = 4 * scaling;
-        }        
+        }
     }
 
     private static void GetWin32DragSize(double scaling, out double cxDrag, out double cyDrag)

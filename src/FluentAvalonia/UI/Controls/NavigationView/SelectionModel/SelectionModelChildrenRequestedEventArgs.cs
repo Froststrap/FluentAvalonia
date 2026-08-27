@@ -51,7 +51,7 @@ internal class SelectionModelChildrenRequestedEventArgs : EventArgs
             return _sourceIndexPath;
         }
     }
-        
+
     internal void Initialize(
         object source,
         IndexPath sourceIndexPath,

@@ -1,4 +1,5 @@
-﻿using Avalonia;
+﻿using System.Diagnostics;
+using Avalonia;
 using Avalonia.Automation.Peers;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
@@ -12,7 +13,6 @@ using Avalonia.Styling;
 using Avalonia.Threading;
 using Avalonia.VisualTree;
 using FluentAvalonia.Core;
-using System.Diagnostics;
 
 namespace FluentAvalonia.UI.Controls;
 
@@ -298,7 +298,7 @@ public partial class FAComboBox : HeaderedSelectingItemsControl
                         _popup.Close();
                         e.Handled = true;
                     }
-                }                
+                }
             }
             else
             {

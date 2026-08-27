@@ -67,7 +67,7 @@ public class FAAppWindowTitleBar
     /// </summary>
     public Color? InactiveForegroundColor
     {
-        get => _inactiveForegroundColor; 
+        get => _inactiveForegroundColor;
         set
         {
             if (_inactiveForegroundColor != value)
@@ -83,7 +83,7 @@ public class FAAppWindowTitleBar
     /// </summary>
     public Color? ButtonBackgroundColor
     {
-        get => _buttonBackgroundColor; 
+        get => _buttonBackgroundColor;
         set
         {
             if (_buttonBackgroundColor != value)
@@ -99,7 +99,7 @@ public class FAAppWindowTitleBar
     /// </summary>
     public Color? ButtonForegroundColor
     {
-        get => _buttonForegroundColor; 
+        get => _buttonForegroundColor;
         set
         {
             if (_buttonForegroundColor != value)
@@ -133,7 +133,7 @@ public class FAAppWindowTitleBar
     /// </summary>
     public Color? ButtonHoverForegroundColor
     {
-        get => _buttonHoverForegroundColor; 
+        get => _buttonHoverForegroundColor;
         set
         {
             if (_buttonHoverForegroundColor != value)
@@ -167,7 +167,7 @@ public class FAAppWindowTitleBar
     /// </summary>
     public Color? ButtonPressedForegroundColor
     {
-        get => _buttonPressedForegroundColor; 
+        get => _buttonPressedForegroundColor;
         set
         {
             if (_buttonPressedForegroundColor != value)
@@ -183,7 +183,7 @@ public class FAAppWindowTitleBar
     /// </summary>
     public Color? ButtonInactiveBackgroundColor
     {
-        get => _buttonInactiveBackgroundColor; 
+        get => _buttonInactiveBackgroundColor;
         set
         {
             if (_buttonInactiveBackgroundColor != value)
@@ -199,7 +199,7 @@ public class FAAppWindowTitleBar
     /// </summary>
     public Color? ButtonInactiveForegroundColor
     {
-        get => _buttonInactiveForegroundColor; 
+        get => _buttonInactiveForegroundColor;
         set
         {
             if (_buttonInactiveForegroundColor != value)

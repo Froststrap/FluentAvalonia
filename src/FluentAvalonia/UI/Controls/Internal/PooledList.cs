@@ -296,7 +296,7 @@ internal class PooledList<T> : IList<T>, IList, IDisposable
     {
         get => _items.Length;
         set
-        {            
+        {
             if (value != _items.Length)
             {
                 if (value > 0)
@@ -933,7 +933,7 @@ internal class PooledList<T> : IList<T>, IList, IDisposable
     public void InsertRange(int index, T[] array)
     {
         //if (array is null)
-            //ThrowHelper.ThrowArgumentNullException(ExceptionArgument.array);
+        //ThrowHelper.ThrowArgumentNullException(ExceptionArgument.array);
         InsertRange(index, array.AsSpan());
     }
 
@@ -1298,8 +1298,8 @@ internal class PooledList<T> : IList<T>, IList, IDisposable
     private static bool ShouldClear(ClearMode mode)
     {
 #if NETCOREAPP2_1_OR_GREATER
-            return mode == ClearMode.Always
-                || (mode == ClearMode.Auto && RuntimeHelpers.IsReferenceOrContainsReferences<T>());
+        return mode == ClearMode.Always
+            || (mode == ClearMode.Auto && RuntimeHelpers.IsReferenceOrContainsReferences<T>());
 #else
         return mode != ClearMode.Never;
 #endif

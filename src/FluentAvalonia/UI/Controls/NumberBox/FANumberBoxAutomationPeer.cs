@@ -9,7 +9,7 @@ public class FANumberBoxAutomationPeer : ControlAutomationPeer, IRangeValueProvi
 {
     public FANumberBoxAutomationPeer(Control owner) : base(owner)
     {
-        
+
     }
 
     public bool IsReadOnly { get; }

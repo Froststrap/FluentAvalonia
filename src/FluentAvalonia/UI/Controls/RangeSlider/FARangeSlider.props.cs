@@ -21,36 +21,36 @@ public partial class FARangeSlider
     /// <summary>
     /// Defines the <see cref="Minimum"/> property
     /// </summary>
-    public static readonly StyledProperty<double> MinimumProperty = 
+    public static readonly StyledProperty<double> MinimumProperty =
         RangeBase.MinimumProperty.AddOwner<FARangeSlider>(
             new StyledPropertyMetadata<double>(0d));
 
     /// <summary>
     /// Defines the <see cref="Maximum"/> property
     /// </summary>
-    public static readonly StyledProperty<double> MaximumProperty = 
+    public static readonly StyledProperty<double> MaximumProperty =
         RangeBase.MaximumProperty.AddOwner<FARangeSlider>(
             new StyledPropertyMetadata<double>(100d));
 
     /// <summary>
     /// Defines the <see cref="RangeStart"/> property
     /// </summary>
-    public static readonly StyledProperty<double> RangeStartProperty = 
+    public static readonly StyledProperty<double> RangeStartProperty =
         AvaloniaProperty.Register<FARangeSlider, double>(nameof(RangeStart),
             defaultValue: 0, defaultBindingMode: BindingMode.TwoWay);
 
     /// <summary>
     /// Defines the <see cref="RangeEnd"/> property
     /// </summary>
-    public static readonly StyledProperty<double> RangeEndProperty = 
-        AvaloniaProperty.Register<FARangeSlider, double>(nameof(RangeEnd), 
+    public static readonly StyledProperty<double> RangeEndProperty =
+        AvaloniaProperty.Register<FARangeSlider, double>(nameof(RangeEnd),
             defaultValue: 100, defaultBindingMode: BindingMode.TwoWay);
 
     /// <summary>
     /// Defines the <see cref="StepFrequency"/> property
     /// </summary>
-    public static readonly StyledProperty<double> StepFrequencyProperty = 
-        AvaloniaProperty.Register<FARangeSlider, double>(nameof(StepFrequency), 
+    public static readonly StyledProperty<double> StepFrequencyProperty =
+        AvaloniaProperty.Register<FARangeSlider, double>(nameof(StepFrequency),
             defaultValue: 1);
 
     /// <summary>
@@ -62,14 +62,14 @@ public partial class FARangeSlider
     /// <summary>
     /// Defines the <see cref="MinimumRange"/> property
     /// </summary>
-    public static readonly StyledProperty<double> MinimumRangeProperty = 
+    public static readonly StyledProperty<double> MinimumRangeProperty =
         AvaloniaProperty.Register<FARangeSlider, double>(nameof(MinimumRange), defaultValue: 0d);
-    
+
 
     /// <summary>
     /// Defines the <see cref="ShowValueToolTip"/> property
     /// </summary>
-    public static readonly StyledProperty<bool> ShowValueToolTipProperty = 
+    public static readonly StyledProperty<bool> ShowValueToolTipProperty =
         AvaloniaProperty.Register<FARangeSlider, bool>(nameof(ShowValueToolTip), defaultValue: true);
 
     /// <summary>

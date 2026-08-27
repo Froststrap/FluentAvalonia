@@ -81,7 +81,7 @@ internal readonly unsafe struct HBITMAP : IComparable, IEquatable<HBITMAP>
         return (obj is null) ? 1 : throw new ArgumentException("obj is not an instance of HBITMAP.");
     }
 
-   // public int CompareTo(HBITMAP other) => ((nuint)(Value)).CompareTo((nuint)(other.Value));
+    // public int CompareTo(HBITMAP other) => ((nuint)(Value)).CompareTo((nuint)(other.Value));
 
     public override bool Equals(object obj) => (obj is HBITMAP other) && Equals(other);
 
@@ -91,9 +91,9 @@ internal readonly unsafe struct HBITMAP : IComparable, IEquatable<HBITMAP>
 
     //public override string ToString() => ((nuint)(Value)).ToString((sizeof(nint) == 4) ? "X8" : "X16");
 
-   // public string ToString(string? format, IFormatProvider? formatProvider) => ((nuint)(Value)).ToString(format, formatProvider);
+    // public string ToString(string? format, IFormatProvider? formatProvider) => ((nuint)(Value)).ToString(format, formatProvider);
 
-   // public static explicit operator HBITMAP(HGDIOBJ value) => new HBITMAP(value.Value);
+    // public static explicit operator HBITMAP(HGDIOBJ value) => new HBITMAP(value.Value);
 
     //public static implicit operator HGDIOBJ(HBITMAP value) => new HGDIOBJ(value.Value);
 }

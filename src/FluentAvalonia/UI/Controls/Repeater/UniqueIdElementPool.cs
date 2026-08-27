@@ -1,5 +1,5 @@
-﻿using Avalonia.Controls;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using Avalonia.Controls;
 
 namespace FluentAvalonia.UI.Controls;
 

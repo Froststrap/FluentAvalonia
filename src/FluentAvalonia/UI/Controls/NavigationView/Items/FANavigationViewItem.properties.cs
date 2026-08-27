@@ -1,9 +1,9 @@
-﻿using Avalonia.Controls;
+﻿using System.Collections;
 using Avalonia;
-using FluentAvalonia.UI.Controls.Primitives;
-using System.Collections;
-using FluentAvalonia.Core;
+using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
+using FluentAvalonia.Core;
+using FluentAvalonia.UI.Controls.Primitives;
 
 namespace FluentAvalonia.UI.Controls;
 
@@ -237,7 +237,7 @@ public partial class FANavigationViewItem
     private const string s_tpNVIRootGrid = "NVIRootGrid";
     private const string s_tpNVIMenuItemsHost = "NVIMenuItemsHost";
     private const string s_tpFlyoutContentGrid = "FlyoutContentGrid";
-        
+
     private const string s_pcSelected = ":selected";
     private const string s_pcIconCollapsed = ":iconcollapsed";
     private const string s_pcInfoBadge = ":infobadge";

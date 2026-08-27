@@ -39,12 +39,12 @@ public partial class FAAppWindow : Window
 
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {
-        base.OnApplyTemplate(e);      
+        base.OnApplyTemplate(e);
 
         if (IsWindows && !Design.IsDesignMode)
         {
             _templateRoot = e.NameScope.Find<Border>("RootBorder");
-            
+
             _defaultTitleBar = e.NameScope.Find<Panel>("DefaultTitleBar");
 
             // This will set all our TemplateSettings properties
@@ -66,7 +66,7 @@ public partial class FAAppWindow : Window
     protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
     {
         base.OnPropertyChanged(change);
-        
+
         if (change.Property == ExtendClientAreaToDecorationsHintProperty)
         {
             if (IsWindows)
@@ -112,7 +112,7 @@ public partial class FAAppWindow : Window
     {
         _splashContext?.TryCancel();
 
-        base.OnClosed(e);     
+        base.OnClosed(e);
     }
 
     internal void OnExtendsContentIntoTitleBarChanged(bool isExtended)
@@ -222,7 +222,7 @@ public partial class FAAppWindow : Window
     {
         PseudoClasses.Set(":noFullScreen", value);
     }
-    
+
     private async void LoadApp()
     {
         if (Presenter is not ContentPresenter cp)

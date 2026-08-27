@@ -1,10 +1,10 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Logging;
-using FluentAvalonia.Interop;
-using FluentAvalonia.Interop.WinRT;
 using Avalonia.Media;
 using Avalonia.Platform;
 using Avalonia.Styling;
+using FluentAvalonia.Interop;
+using FluentAvalonia.Interop.WinRT;
 
 namespace FluentAvalonia.Styling;
 
@@ -33,7 +33,7 @@ public partial class FluentAvaloniaTheme
                 Logger.TryGet(LogEventLevel.Information, "FluentAvaloniaTheme")?
                         .Log("FluentAvaloniaTheme", "Unable to create instance of ComObject IUISettings");
                 LoadDefaultAccentColor();
-            }            
+            }
         }
         else
         {

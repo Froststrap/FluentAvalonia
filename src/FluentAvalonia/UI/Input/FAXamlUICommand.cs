@@ -1,5 +1,5 @@
-﻿using Avalonia;
-using System.Windows.Input;
+﻿using System.Windows.Input;
+using Avalonia;
 
 namespace FluentAvalonia.UI.Input;
 

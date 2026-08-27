@@ -1,11 +1,11 @@
-﻿using Avalonia.Controls.Primitives;
-using Avalonia.Controls.Templates;
+﻿using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Metadata;
+using Avalonia.Controls.Primitives;
+using Avalonia.Controls.Templates;
 using Avalonia.Data;
 using Avalonia.Media;
-using Avalonia;
 using FluentAvalonia.Core;
-using Avalonia.Controls.Metadata;
 
 namespace FluentAvalonia.UI.Controls;
 

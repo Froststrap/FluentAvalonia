@@ -4,6 +4,7 @@ using Avalonia.Controls;
 using Avalonia.VisualTree;
 
 namespace FluentAvalonia.UI.Controls;
+
 internal sealed class TransitionManager
 {
     public TransitionManager(FAItemsRepeater owner)

@@ -13,7 +13,7 @@ namespace FluentAvalonia.UI.Controls;
 // InfoBar up to date with WinUI as of 5/9/26
 
 public partial class FAInfoBar : ContentControl
-{    
+{
     /// <inheritdoc />
     protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
     {

@@ -79,7 +79,7 @@ internal class ViewportManager
     public Control MadeAnchor => _makeAnchorElement;
 
     private bool HasScroller => _scroller != null;
-        
+
     public Rect GetLayoutVisibleWindowDiscardAnchor()
     {
         var visibleWindow = _visibleWindow;

@@ -1,4 +1,5 @@
-﻿using Avalonia;
+﻿using System.Collections;
+using Avalonia;
 using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
@@ -6,7 +7,6 @@ using Avalonia.Layout;
 using Avalonia.VisualTree;
 using FluentAvalonia.Core;
 using FluentAvalonia.UI.Media.Animation;
-using System.Collections;
 
 namespace FluentAvalonia.UI.Controls;
 

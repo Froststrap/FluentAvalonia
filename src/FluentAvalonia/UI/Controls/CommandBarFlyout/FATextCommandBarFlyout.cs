@@ -80,7 +80,7 @@ public class FATextCommandBarFlyout : FACommandBarFlyout
         addButtonToCommandsIfPresent(TextControlButtons.Cut, SecondaryCommands);
         addButtonToCommandsIfPresent(TextControlButtons.Copy, SecondaryCommands);
         addButtonToCommandsIfPresent(TextControlButtons.Paste, SecondaryCommands);
-        
+
         //TODO: the bool arg
         //addRichEditButtonToCommandsIfPresent(TextControlButtons.Bold, PrimaryCommands, false);
         //addRichEditButtonToCommandsIfPresent(TextControlButtons.Italic, PrimaryCommands, false);
@@ -184,7 +184,7 @@ public class FATextCommandBarFlyout : FACommandBarFlyout
         {
             buttonsToAdd |= TextControlButtons.Copy;
         }
-        
+
         return buttonsToAdd;
     }
 
@@ -234,7 +234,7 @@ public class FATextCommandBarFlyout : FACommandBarFlyout
             {
                 UpdateButtons();
             }
-        }        
+        }
     }
 
     private async void ExecuteCopyCommand()
@@ -266,7 +266,7 @@ public class FATextCommandBarFlyout : FACommandBarFlyout
             {
                 UpdateButtons();
             }
-        }        
+        }
     }
 
     private async void ExecutePasteCommand()
@@ -298,7 +298,7 @@ public class FATextCommandBarFlyout : FACommandBarFlyout
             {
                 UpdateButtons();
             }
-        }           
+        }
     }
 
     private void ExecuteBoldCommand()

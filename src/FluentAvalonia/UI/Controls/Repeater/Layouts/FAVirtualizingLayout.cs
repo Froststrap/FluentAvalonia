@@ -1,5 +1,5 @@
-﻿using Avalonia;
-using System.Collections.Specialized;
+﻿using System.Collections.Specialized;
+using Avalonia;
 
 namespace FluentAvalonia.UI.Controls;
 

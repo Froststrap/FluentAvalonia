@@ -1,4 +1,6 @@
-﻿using Avalonia;
+﻿using System.Collections.Specialized;
+using System.Runtime.CompilerServices;
+using Avalonia;
 using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Layout;
@@ -7,8 +9,6 @@ using Avalonia.Media;
 using Avalonia.Platform;
 using Avalonia.Styling;
 using FluentAvalonia.UI.Media;
-using System.Collections.Specialized;
-using System.Runtime.CompilerServices;
 
 namespace FluentAvalonia.Styling;
 
@@ -83,15 +83,15 @@ public partial class FluentAvaloniaTheme : Styles, IResourceProvider
     {
         get => _preferUserAccentColor;
         set
-        { 
-            if(_preferUserAccentColor != value)
+        {
+            if (_preferUserAccentColor != value)
             {
                 _preferUserAccentColor = value;
 
                 // Unlike PreferSystemTheme, we call this everytime as LoadCustomAccentColor handles
                 // switching between a system and custom color (and back)
                 LoadCustomAccentColor();
-            }            
+            }
         }
     }
 
@@ -135,7 +135,7 @@ public partial class FluentAvaloniaTheme : Styles, IResourceProvider
         TextVerticalAlignmentOverride.EnabledNonWindows;
 
     public AvaloniaList<IResourceDictionary> MergedDictionaries { get; }
-      
+
     bool IResourceNode.HasResources => true;
 
     /// <inheritdoc />
@@ -192,7 +192,7 @@ public partial class FluentAvaloniaTheme : Styles, IResourceProvider
             _platformSettings = Application.Current.PlatformSettings;
             _platformSettings.ColorValuesChanged += OnPlatformColorValuesChanged;
         }
-                        
+
         if (OperatingSystem.IsWindows())
         {
             theme = ResolveWindowsSystemSettings(_platformSettings);
@@ -224,7 +224,7 @@ public partial class FluentAvaloniaTheme : Styles, IResourceProvider
         if (theme != null)
         {
             Application.Current.RequestedThemeVariant = theme;
-        }     
+        }
     }
 
     private void OnPlatformColorValuesChanged(object sender, PlatformColorValues e)
@@ -335,8 +335,8 @@ public partial class FluentAvaloniaTheme : Styles, IResourceProvider
         bool isSystemInHighContrast = platformColors.ContrastPreference == ColorContrastPreference.High;
         if (!isSystemInHighContrast)
         {
-           return platformColors.ThemeVariant == PlatformThemeVariant.Light ?
-                ThemeVariant.Light : ThemeVariant.Dark;
+            return platformColors.ThemeVariant == PlatformThemeVariant.Light ?
+                 ThemeVariant.Light : ThemeVariant.Dark;
         }
         else
         {
@@ -396,7 +396,7 @@ public partial class FluentAvaloniaTheme : Styles, IResourceProvider
         s3.Setters.Add(new Setter(Layoutable.VerticalAlignmentProperty, VerticalAlignment.Center));
         Add(s3);
     }
-       
+
     private void LoadCustomAccentColor()
     {
         if (!_customAccentColor.HasValue)
@@ -406,7 +406,7 @@ public partial class FluentAvaloniaTheme : Styles, IResourceProvider
                 if (OperatingSystem.IsWindows())
                 {
                     TryLoadWindowsAccentColor();
-                }                
+                }
                 else if (OperatingSystem.IsLinux())
                 {
                     TryLoadLinuxAccentColor();
@@ -434,7 +434,7 @@ public partial class FluentAvaloniaTheme : Styles, IResourceProvider
             (Color)col.LightenPercent(-0.30f),
             (Color)col.LightenPercent(-0.45f));
     }
-        
+
     private void TryLoadMacOSAccentColor(IPlatformSettings platformSettings)
     {
         try

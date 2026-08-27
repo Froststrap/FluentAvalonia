@@ -1,17 +1,17 @@
 ﻿using System.Collections;
-using Avalonia.Controls.Primitives;
-using Avalonia.Controls.Templates;
-using Avalonia;
-using System.Windows.Input;
-using FluentAvalonia.Core;
 using System.Collections.Specialized;
-using Avalonia.Input;
-using Avalonia.Metadata;
+using System.Windows.Input;
+using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Presenters;
-using Avalonia.Controls;
-using FluentAvalonia.UI.Controls.Primitives;
+using Avalonia.Controls.Primitives;
+using Avalonia.Controls.Templates;
+using Avalonia.Input;
+using Avalonia.Metadata;
 using Avalonia.Utilities;
+using FluentAvalonia.Core;
+using FluentAvalonia.UI.Controls.Primitives;
 
 namespace FluentAvalonia.UI.Controls;
 
@@ -147,31 +147,31 @@ public partial class FATabView
     /// <summary>
     /// Defines the <see cref="IsVerticalPaneOpen"/> property
     /// </summary>
-    public static readonly StyledProperty<bool> IsVerticalPaneOpenProperty = 
+    public static readonly StyledProperty<bool> IsVerticalPaneOpenProperty =
         AvaloniaProperty.Register<FATabView, bool>(nameof(IsVerticalPaneOpen), defaultValue: true);
 
     /// <summary>
     /// Defines the <see cref="VerticalOpenPaneLength"/> property
     /// </summary>
-    public static readonly StyledProperty<double> VerticalOpenPaneLengthProperty = 
+    public static readonly StyledProperty<double> VerticalOpenPaneLengthProperty =
         AvaloniaProperty.Register<FATabView, double>(nameof(VerticalOpenPaneLength), defaultValue: 225d);
 
     /// <summary>
     /// Defines the <see cref="MinimumVerticalOpenPaneLength"/> property
     /// </summary>
-    public static readonly StyledProperty<double> MinimumVerticalOpenPaneLengthProperty = 
+    public static readonly StyledProperty<double> MinimumVerticalOpenPaneLengthProperty =
         AvaloniaProperty.Register<FATabView, double>(nameof(MinimumVerticalOpenPaneLength), defaultValue: 40d);
 
     /// <summary>
     /// Defines the <see cref="MaximumVerticalOpenPaneLength"/> property
     /// </summary>
-    public static readonly StyledProperty<double> MaximumVerticalOpenPaneLengthProperty = 
+    public static readonly StyledProperty<double> MaximumVerticalOpenPaneLengthProperty =
         AvaloniaProperty.Register<FATabView, double>(nameof(MaximumVerticalOpenPaneLength), defaultValue: 700d);
 
     /// <summary>
     /// Defines the <see cref="VerticalPaneDisplayMode"/> property
     /// </summary>
-    public static readonly StyledProperty<SplitViewDisplayMode> VerticalPaneDisplayModeProperty = 
+    public static readonly StyledProperty<SplitViewDisplayMode> VerticalPaneDisplayModeProperty =
         AvaloniaProperty.Register<FATabView, SplitViewDisplayMode>(nameof(VerticalPaneDisplayMode), defaultValue: SplitViewDisplayMode.Inline);
 
     /// <summary>
@@ -479,7 +479,7 @@ public partial class FATabView
 
     // TabViewItem subs to these in OnApplyTemplate, but we need to make sure the strong ref to TabView isn't
     // held if the TabViewItem is removed
-    internal static readonly WeakEvent<FATabView, FATabViewTabDragStartingEventArgs> TabDragStartingWeakEvent = 
+    internal static readonly WeakEvent<FATabView, FATabViewTabDragStartingEventArgs> TabDragStartingWeakEvent =
         WeakEvent.Register<FATabView, FATabViewTabDragStartingEventArgs>(
                 (c, s) =>
                 {

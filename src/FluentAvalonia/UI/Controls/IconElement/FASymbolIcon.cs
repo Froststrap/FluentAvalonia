@@ -57,7 +57,7 @@ public class FASymbolIcon : FAIconElement
         }
         else if (change.Property == TextElement.ForegroundProperty)
         {
-            _textLayout = null;  
+            _textLayout = null;
             // FAIconElement calls InvalidateVisual
         }
     }

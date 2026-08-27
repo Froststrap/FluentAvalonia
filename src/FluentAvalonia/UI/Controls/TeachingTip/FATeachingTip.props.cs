@@ -1,10 +1,10 @@
-﻿using Avalonia;
-using System.Windows.Input;
+﻿using System.Windows.Input;
+using Avalonia;
 using Avalonia.Controls;
-using FluentAvalonia.Core;
-using Avalonia.Styling;
-using FluentAvalonia.Core.Attributes;
 using Avalonia.Controls.Metadata;
+using Avalonia.Styling;
+using FluentAvalonia.Core;
+using FluentAvalonia.Core.Attributes;
 using Path = Avalonia.Controls.Shapes.Path;
 
 namespace FluentAvalonia.UI.Controls;

@@ -51,7 +51,7 @@ public partial class FASettingsExpander : HeaderedItemsControl, ICommandSource
             {
                 throw new InvalidOperationException("Cannot set Items and mark IsClickEnabled to true on a SettingsExpander");
             }
-                       
+
             if (_expanderToggleButton != null)
             {
                 // Disable pointerover/pressed styles if we aren't clickable (empty or !IsClickEnabled)
@@ -61,7 +61,7 @@ public partial class FASettingsExpander : HeaderedItemsControl, ICommandSource
                 // ControlThemes don't let is drill into sub-templates so we have to do this manually here
                 // Set a style on the ToggleButton to indicate we want to hide the expand/collapse chevron
                 ((IPseudoClasses)_expanderToggleButton.Classes).Set(s_pcEmpty, newVal);
-            }                
+            }
         }
         else if (change.Property == IsExpandedProperty)
         {
@@ -125,7 +125,7 @@ public partial class FASettingsExpander : HeaderedItemsControl, ICommandSource
             // Disable the interaction states if items collection is cleared
             bool isInteractable = ItemCount > 0;
             ((IPseudoClasses)_expanderToggleButton.Classes).Set(FASharedPseudoclasses.s_pcAllowClick, isInteractable);
-            ((IPseudoClasses)_expanderToggleButton.Classes).Set(s_pcEmpty, !isInteractable); 
+            ((IPseudoClasses)_expanderToggleButton.Classes).Set(s_pcEmpty, !isInteractable);
         }
     }
 
@@ -198,7 +198,7 @@ public partial class FASettingsExpander : HeaderedItemsControl, ICommandSource
             command.Execute(@param);
         }
     }
-       
+
     private void ExpanderLoaded(object sender, RoutedEventArgs e)
     {
         // Don't need this anymore, clear it
@@ -224,7 +224,7 @@ public partial class FASettingsExpander : HeaderedItemsControl, ICommandSource
         // Set a style on the ToggleButton to indicate we want to hide the expand/collapse chevron
         ((IPseudoClasses)_expanderToggleButton.Classes).Set(s_pcEmpty, IsClickEnabled || ItemCount == 0);
     }
-    
+
     private void ExpanderExpanding(object sender, CancelRoutedEventArgs e)
     {
         if (ItemCount == 0 && IsClickEnabled)

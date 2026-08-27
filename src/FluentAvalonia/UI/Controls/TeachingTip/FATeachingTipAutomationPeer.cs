@@ -8,7 +8,7 @@ namespace FluentAvalonia.UI.Controls;
 /// </summary>
 public class FATeachingTipAutomationPeer : ContentControlAutomationPeer
 {
-    internal FATeachingTipAutomationPeer(FATeachingTip owner) 
+    internal FATeachingTipAutomationPeer(FATeachingTip owner)
         : base(owner)
     {
 

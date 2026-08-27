@@ -23,7 +23,7 @@ public partial class FAFrame : ContentControl
     /// </summary>
     public static readonly StyledProperty<int> CacheSizeProperty =
         AvaloniaProperty.Register<FAFrame, int>(nameof(CacheSize),
-            defaultValue: 10, 
+            defaultValue: 10,
             coerce: (x, v) => v >= 0 ? v : 0);
 
     /// <summary>
@@ -125,7 +125,7 @@ public partial class FAFrame : ContentControl
     /// <summary>
     /// Gets a value that indicates whether there is at least one entry in forward navigation history.
     /// </summary>
-    public bool CanGoForward=> _forwardStack.Count > 0;
+    public bool CanGoForward => _forwardStack.Count > 0;
 
     /// <summary>
     /// Gets a type reference for the content that is currently displayed.
@@ -158,7 +158,7 @@ public partial class FAFrame : ContentControl
     /// </summary>
     public bool IsNavigationStackEnabled
     {
-        get => GetValue(IsNavigationStackEnabledProperty); 
+        get => GetValue(IsNavigationStackEnabledProperty);
         set => SetValue(IsNavigationStackEnabledProperty, value);
     }
 

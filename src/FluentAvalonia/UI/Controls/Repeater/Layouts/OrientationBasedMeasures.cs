@@ -8,7 +8,7 @@ internal interface IOrientationBasedMeasures
 }
 
 internal static class OrientationBasedMeasuresExt
-{   
+{
     public static double Major(this IOrientationBasedMeasures m, Size size) =>
         m.ScrollOrientation == ScrollOrientation.Vertical ? size.Height : size.Width;
 
@@ -67,7 +67,7 @@ internal static class OrientationBasedMeasuresExt
         m.ScrollOrientation == ScrollOrientation.Vertical ?
             rect.X + rect.Width : rect.Y + rect.Height;
 
-    public static Rect MinorMajorRect(this IOrientationBasedMeasures m, 
+    public static Rect MinorMajorRect(this IOrientationBasedMeasures m,
         double minor, double major, double minorSize, double majorSize) =>
         m.ScrollOrientation == ScrollOrientation.Vertical ?
             new Rect(minor, major, minorSize, majorSize) :

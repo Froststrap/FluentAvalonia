@@ -1,11 +1,11 @@
-﻿using Avalonia.Controls;
-using Avalonia;
-using Avalonia.Controls.Primitives;
-using Avalonia.Styling;
-using Avalonia.LogicalTree;
-using FluentAvalonia.UI.Input;
-using FluentAvalonia.Core;
+﻿using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Controls.Presenters;
+using Avalonia.Controls.Primitives;
+using Avalonia.LogicalTree;
+using Avalonia.Styling;
+using FluentAvalonia.Core;
+using FluentAvalonia.UI.Input;
 
 namespace FluentAvalonia.UI.Controls;
 

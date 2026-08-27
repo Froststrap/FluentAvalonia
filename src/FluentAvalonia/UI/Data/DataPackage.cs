@@ -121,7 +121,7 @@ public sealed class DataPackage : IDataTransfer, IAsyncDataTransfer
     {
         return _dt.TryGetValue(format);
     }
-    
+
     /// <summary>
     /// If present, asynchronously retreives the item in the Data Transfer package
     /// using the specified <see cref="DataFormat{T}"/>

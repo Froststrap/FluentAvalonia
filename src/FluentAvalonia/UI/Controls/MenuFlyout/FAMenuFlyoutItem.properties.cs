@@ -1,9 +1,9 @@
-﻿using Avalonia.Controls;
+﻿using System.Windows.Input;
+using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Controls.Metadata;
 using Avalonia.Input;
 using Avalonia.Interactivity;
-using Avalonia;
-using System.Windows.Input;
-using Avalonia.Controls.Metadata;
 using FluentAvalonia.Core;
 
 namespace FluentAvalonia.UI.Controls;

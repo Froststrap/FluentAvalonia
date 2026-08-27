@@ -1,9 +1,9 @@
-﻿using Avalonia.Collections;
-using Avalonia.Data;
-using FluentAvalonia.Core;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using Avalonia.Collections;
+using Avalonia.Data;
+using FluentAvalonia.Core;
 
 namespace FluentAvalonia.UI.Data;
 

@@ -188,7 +188,7 @@ public partial class FASettingsExpanderItem : ContentControl, ICommandSource
 
                 OnClick();
             }
-        }       
+        }
     }
 
     protected override void OnPointerCaptureLost(PointerCaptureLostEventArgs e)

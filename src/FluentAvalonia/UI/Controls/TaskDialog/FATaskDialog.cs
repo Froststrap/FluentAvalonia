@@ -47,7 +47,7 @@ public partial class FATaskDialog : ContentControl
         if (_moreDetailsButton != null)
         {
             _moreDetailsButton.Click += MoreDetailsButtonClick;
-        }        
+        }
     }
 
     protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
@@ -92,7 +92,7 @@ public partial class FATaskDialog : ContentControl
             PseudoClasses.Set(s_pcIconForeground, change.NewValue != null);
         }
     }
-    
+
     protected override bool RegisterContentPresenter(ContentPresenter presenter)
     {
         if (presenter.Name == "ContentPresenter")
@@ -113,7 +113,7 @@ public partial class FATaskDialog : ContentControl
             SetButtons();
             SetCommands();
             TrySetInitialFocus();
-        }       
+        }
     }
 
     private void OnKeyDownPreview(object sender, KeyEventArgs e)
@@ -165,7 +165,7 @@ public partial class FATaskDialog : ContentControl
         _isOpening = true;
 
         OnOpening();
-        
+
         var owner = XamlRoot ?? TopLevel.GetTopLevel(this);
 
         void UnparentDialog()
@@ -270,8 +270,8 @@ public partial class FATaskDialog : ContentControl
                     e.Cancel = true;
                     CloseCore(FATaskDialogStandardResult.None);
                 };
-            }            
-            
+            }
+
             _host = host;
             IsVisible = true;
 
@@ -374,7 +374,7 @@ public partial class FATaskDialog : ContentControl
         }
 
         if (_host is Window w)
-        {            
+        {
             _ignoreWindowClosingEvent = true;
 
             w.Close(result);
@@ -523,7 +523,7 @@ public partial class FATaskDialog : ContentControl
 
                 com.Classes.Add(s_cFATDCom);
 
-                commands.Add(com);                
+                commands.Add(com);
             }
             else if (_commands[i] is FATaskDialogRadioButton tdrb)
             {

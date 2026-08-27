@@ -80,9 +80,9 @@ public partial class FATeachingTip : ContentControl
 
         _alternateCloseButton.Click += OnCloseButtonClicked;
 
-        AutomationProperties.SetName(_alternateCloseButton, 
+        AutomationProperties.SetName(_alternateCloseButton,
             FALocalizationHelper.Instance.GetLocalizedStringResource(SR_TeachingTipAlternateCloseButtonName));
-        ToolTip.SetTip(_alternateCloseButton, 
+        ToolTip.SetTip(_alternateCloseButton,
             FALocalizationHelper.Instance.GetLocalizedStringResource(SR_TeachingTipAlternateCloseButtonTooltip));
 
 
@@ -330,7 +330,7 @@ public partial class FATeachingTip : ContentControl
 
             case FATeachingTipPlacementMode.LeftTop:
                 TrySetCenterPoint(_tailOcclusionGrid, width - lastColumnWidth, height - (nextToLastRowHeight + lastRowHeight + 1));
-               // TrySetCenterPoint(_tailEdgeBorder, 0, height - (nextToLastRowHeight + firstRowHeight + lastRowHeight));
+                // TrySetCenterPoint(_tailEdgeBorder, 0, height - (nextToLastRowHeight + firstRowHeight + lastRowHeight));
                 UpdateDynamicHeroContentPlacementToTop();
                 GoToState(FATeachingTipPlacementMode.LeftTop);
                 break;
@@ -407,7 +407,7 @@ public partial class FATeachingTip : ContentControl
             // We can't just use combinations of pseudoclasses here because we'd have no way to
             // differentiate between LeftTop and TopLeft visual states, for example
             if ((int)mode == -1) // Untargeted, remove all position pseudoclasses
-            {                
+            {
                 PseudoClasses.Set(s_pcTop, false);
                 PseudoClasses.Set(s_pcBottom, false);
                 PseudoClasses.Set(s_pcLeft, false);
@@ -1478,7 +1478,7 @@ public partial class FATeachingTip : ContentControl
         }
         IsOpen = false;
     }
-   
+
     private void RaiseClosingEvent(bool attachDeferralCompletedHandler)
     {
         var args = new FATeachingTipClosingEventArgs(_lastCloseReason);
@@ -1718,7 +1718,7 @@ public partial class FATeachingTip : ContentControl
             _expandAnimation.SetScalarParameter("Width", s_defaultTipHeightAndWidth);
             _expandAnimation.SetScalarParameter("Height", s_defaultTipHeightAndWidth);
         }
-        
+
         _expandEasingFunction = new SplineEasing(0.1, 0.9, 0.2, 1);
 
         _expandAnimation.InsertExpressionKeyFrame(0.0f, "Vector3(Min(0.01, 20.0 / Width), Min(0.01, 20.0 / Height), 1.0)");
@@ -1759,7 +1759,7 @@ public partial class FATeachingTip : ContentControl
         }
 
         (_contractAnimation as Vector3KeyFrameAnimation).InsertKeyFrame(0f, Vector3.One);
-        _contractAnimation.InsertExpressionKeyFrame(1.0f, "Vector3(20.0 / Width, 20.0 / Height, 1.0)", (Easing)_contractEasingFunction);        
+        _contractAnimation.InsertExpressionKeyFrame(1.0f, "Vector3(20.0 / Width, 20.0 / Height, 1.0)", (Easing)_contractEasingFunction);
         _contractAnimation.Duration = _contractAnimationDuration;
         _contractAnimation.Target = s_ScaleTargetName;
 
@@ -1822,7 +1822,7 @@ public partial class FATeachingTip : ContentControl
         // animation to finish before we continue
         if (_isExpandAnimationPlaying)
             _scopedBatch.Start(_expandAnimationDuration);
-        
+
         // Under normal circumstances we would have launched an animation just now, if we did not then we should make sure that the idle state is correct
         if (!_isExpandAnimationPlaying && !_isContractAnimationPlaying)
         {
@@ -1836,7 +1836,7 @@ public partial class FATeachingTip : ContentControl
         {
             CreateContractAnimation();
         }
-        
+
         // TODO: Need ScopedBatch to do this right
         if (_contractAnimation != null)
         {
@@ -1874,7 +1874,7 @@ public partial class FATeachingTip : ContentControl
         // animation to finish before we continue
         if (_isContractAnimationPlaying)
             _scopedBatch.Start(_contractAnimationDuration);
-                
+
         // Under normal circumstances we would have launched an animation just now, if we did not then we should make sure that the idle state is correct
         if (!_isExpandAnimationPlaying && !_isContractAnimationPlaying)
         {
@@ -2392,7 +2392,7 @@ public partial class FATeachingTip : ContentControl
     // These will just use the s_pc[] naming, but preserve these for reference from upstream
     // private static readonly string s_TitleTextVisibleStateName = ":showTitle";
     // private static readonly string s_SubTitleTextVisibleStateName = ":showSubtitle";
-    
+
 
     private class ScopedBatchHelper
     {

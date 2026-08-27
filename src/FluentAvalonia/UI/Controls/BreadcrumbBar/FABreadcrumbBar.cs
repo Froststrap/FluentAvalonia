@@ -20,7 +20,7 @@ namespace FluentAvalonia.UI.Controls;
 /// <summary>
 /// The BreadcrumbBar control provides the direct path of pages or folders to the current location.
 /// </summary>
-[TemplatePart(Name = s_tpItemsRepeater, Type=typeof(FAItemsRepeater))]
+[TemplatePart(Name = s_tpItemsRepeater, Type = typeof(FAItemsRepeater))]
 public class FABreadcrumbBar : TemplatedControl
 {
     public FABreadcrumbBar()
@@ -28,7 +28,7 @@ public class FABreadcrumbBar : TemplatedControl
         _itemsRepeaterElementFactory = new BreadcrumbElementFactory();
         _itemsRepeaterLayout = new BreadcrumbLayout(this);
         _itemsIterable = new BreadcrumbIterable(null);
-        
+
         // Note WinUI sets these in OnApplyTemplate
         AddHandler(KeyDownEvent, OnChildPreviewKeyDown, RoutingStrategies.Tunnel);
         //AccessKeyInvoked - Avalonia use override method instead
@@ -467,7 +467,7 @@ public class FABreadcrumbBar : TemplatedControl
     private bool MoveFocusNext()
     {
         int movementNext = 1;
-        
+
         if (_focusedIndex == 0)
         {
             var ir = _itemsRepeater;

@@ -6,7 +6,7 @@ namespace FluentAvalonia.UI.Controls;
 
 public class FAItemsRepeaterAutomationPeer : ControlAutomationPeer
 {
-    public FAItemsRepeaterAutomationPeer(Control owner) 
+    public FAItemsRepeaterAutomationPeer(Control owner)
         : base(owner)
     {
     }

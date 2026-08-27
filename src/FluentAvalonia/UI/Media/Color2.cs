@@ -1,7 +1,7 @@
-﻿using Avalonia.Media;
-using FluentAvalonia.Core;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Globalization;
+using Avalonia.Media;
+using FluentAvalonia.Core;
 
 namespace FluentAvalonia.UI.Media;
 

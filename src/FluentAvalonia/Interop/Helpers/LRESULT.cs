@@ -119,15 +119,15 @@ internal readonly unsafe struct LRESULT : IComparable, IEquatable<LRESULT>
 
     //public static explicit operator LRESULT(HGDIOBJ value) => new LRESULT((nint)(value.Value));
 
-   // public static explicit operator HGDIOBJ(LRESULT value) => new HGDIOBJ((void*)(value.Value));
+    // public static explicit operator HGDIOBJ(LRESULT value) => new HGDIOBJ((void*)(value.Value));
 
     //public static explicit operator LRESULT(HGLOBAL value) => new LRESULT((nint)(value.Value));
 
     //public static explicit operator HGLOBAL(LRESULT value) => new HGLOBAL((void*)(value.Value));
 
-   // public static explicit operator LRESULT(HICON value) => new LRESULT((nint)(value.Value));
+    // public static explicit operator LRESULT(HICON value) => new LRESULT((nint)(value.Value));
 
-   // public static explicit operator HICON(LRESULT value) => new HICON((void*)(value.Value));
+    // public static explicit operator HICON(LRESULT value) => new HICON((void*)(value.Value));
 
     //public static explicit operator LRESULT(HINSTANCE value) => new LRESULT((nint)(value.Value));
 

@@ -17,7 +17,7 @@ public sealed class FATabViewAutomationPeer : ControlAutomationPeer, ISelectionP
     public bool CanSelectMultiple => false;
 
     public bool IsSelectionRequired => true;
-        
+
     protected override string GetClassNameCore() => nameof(FATabView);
 
     protected override AutomationControlType GetAutomationControlTypeCore() =>

@@ -1,10 +1,10 @@
-﻿using Avalonia;
+﻿using System.Collections.Specialized;
+using Avalonia;
 using Avalonia.Collections;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using FluentAvalonia.Core;
-using System.Collections.Specialized;
 
 namespace FluentAvalonia.UI.Controls;
 
@@ -53,7 +53,7 @@ public partial class FACommandBar : ContentControl
         {
             _moreButton.Click += OnMoreButtonClick;
         }
-        
+
         _appliedTemplate = true;
 
         AttachItems();
@@ -179,7 +179,7 @@ public partial class FACommandBar : ContentControl
             }
 
             if (_overflowSeparator != null)
-            { 
+            {
                 _overflowSeparator.IsVisible = _numInOverflow > 0 && SecondaryCommands.Count > 0;
 
                 var idx = _numInOverflow;
@@ -271,7 +271,7 @@ public partial class FACommandBar : ContentControl
             return;
 
         if (_primaryItems == null)
-        { 
+        {
             AttachItems();
             goto SetState;
         }
@@ -343,7 +343,7 @@ public partial class FACommandBar : ContentControl
                 break;
         }
 
-SetState:
+    SetState:
         PseudoClasses.Set(s_pcPrimaryOnly, _primaryCommands.Count > 0 && _secondaryCommands.Count == 0);
         PseudoClasses.Set(s_pcSecondaryOnly, _primaryCommands.Count == 0 && _secondaryCommands.Count > 0);
         InvalidateMeasure();
@@ -395,7 +395,7 @@ SetState:
                 break;
         }
 
-SetState:
+    SetState:
         PseudoClasses.Set(s_pcPrimaryOnly, _primaryCommands.Count > 0 && _secondaryCommands.Count == 0);
         PseudoClasses.Set(s_pcSecondaryOnly, _primaryCommands.Count == 0 && _secondaryCommands.Count > 0);
 

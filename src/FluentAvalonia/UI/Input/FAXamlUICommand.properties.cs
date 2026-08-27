@@ -1,8 +1,8 @@
-﻿using Avalonia;
+﻿using System.Windows.Input;
+using Avalonia;
 using Avalonia.Input;
 using FluentAvalonia.Core;
 using FluentAvalonia.UI.Controls;
-using System.Windows.Input;
 
 namespace FluentAvalonia.UI.Input;
 

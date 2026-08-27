@@ -146,7 +146,7 @@ public partial class FAComboBox : HeaderedSelectingItemsControl
         get => GetValue(IsDropDownOpenProperty);
         set => SetValue(IsDropDownOpenProperty, value);
     }
-        
+
     /// <summary>
     /// Gets whether the SelectionBox is hightlighted
     /// </summary>

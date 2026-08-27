@@ -1,10 +1,10 @@
 ﻿using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Presenters;
-using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using FluentAvalonia.Core;
 using Avalonia.Media;
+using FluentAvalonia.Core;
 
 namespace FluentAvalonia.UI.Controls;
 
@@ -47,7 +47,7 @@ public partial class FATaskDialog
     /// </summary>
     public static readonly DirectProperty<FATaskDialog, IList<FATaskDialogButton>> ButtonsProperty =
         AvaloniaProperty.RegisterDirect<FATaskDialog, IList<FATaskDialogButton>>(nameof(Buttons),
-            x => x.Buttons, (x,v) => x.Buttons = v);
+            x => x.Buttons, (x, v) => x.Buttons = v);
 
     /// <summary>
     /// Defines the <see cref="Commands"/> property

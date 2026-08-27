@@ -1,9 +1,9 @@
-﻿using Avalonia;
-using System.Windows.Input;
+﻿using System.Windows.Input;
+using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Metadata;
 using Avalonia.Controls.Templates;
 using Avalonia.Interactivity;
-using Avalonia.Controls.Metadata;
 using FluentAvalonia.Core;
 
 namespace FluentAvalonia.UI.Controls;
@@ -17,49 +17,49 @@ public partial class FASettingsExpanderItem : ContentControl
     /// <summary>
     /// Defines the <see cref="Description"/> property
     /// </summary>
-    public static readonly StyledProperty<string> DescriptionProperty = 
+    public static readonly StyledProperty<string> DescriptionProperty =
         FASettingsExpander.DescriptionProperty.AddOwner<FASettingsExpanderItem>();
 
     /// <summary>
     /// Defines the <see cref="IconSource"/> property
     /// </summary>
-    public static readonly StyledProperty<FAIconSource> IconSourceProperty = 
+    public static readonly StyledProperty<FAIconSource> IconSourceProperty =
         FASettingsExpander.IconSourceProperty.AddOwner<FASettingsExpanderItem>();
 
     /// <summary>
     /// Defines the <see cref="Footer"/> property
     /// </summary>
-    public static readonly StyledProperty<object> FooterProperty = 
+    public static readonly StyledProperty<object> FooterProperty =
         FASettingsExpander.FooterProperty.AddOwner<FASettingsExpanderItem>();
 
     /// <summary>
     /// Defines the <see cref="FooterTemplate"/> property
     /// </summary>
-    public static readonly StyledProperty<IDataTemplate> FooterTemplateProperty = 
+    public static readonly StyledProperty<IDataTemplate> FooterTemplateProperty =
         FASettingsExpander.FooterTemplateProperty.AddOwner<FASettingsExpanderItem>();
 
     /// <summary>
     /// Defines the <see cref="ActionIconSource"/> property
     /// </summary>
-    public static readonly StyledProperty<FAIconSource> ActionIconSourceProperty = 
+    public static readonly StyledProperty<FAIconSource> ActionIconSourceProperty =
         FASettingsExpander.ActionIconSourceProperty.AddOwner<FASettingsExpanderItem>();
 
     /// <summary>
     /// Defines the <see cref="IsClickEnabled"/> property
     /// </summary>
-    public static readonly StyledProperty<bool> IsClickEnabledProperty = 
+    public static readonly StyledProperty<bool> IsClickEnabledProperty =
         FASettingsExpander.IsClickEnabledProperty.AddOwner<FASettingsExpanderItem>();
-        
+
     /// <summary>
     /// Defines the <see cref="Command"/> property
     /// </summary>
-    public static readonly StyledProperty<ICommand> CommandProperty = 
+    public static readonly StyledProperty<ICommand> CommandProperty =
         Button.CommandProperty.AddOwner<FASettingsExpanderItem>();
 
     /// <summary>
     /// Defines the <see cref="CommandParameter"/> property
     /// </summary>
-    public static readonly StyledProperty<object> CommandParameterProperty = 
+    public static readonly StyledProperty<object> CommandParameterProperty =
         Button.CommandParameterProperty.AddOwner<FASettingsExpanderItem>();
 
     /// <summary>

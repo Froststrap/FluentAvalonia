@@ -60,7 +60,7 @@ public sealed class FAExpanderExt : AvaloniaObject
             expander.ClearValue(ExpanderAnimationInfoProperty);
         }
     }
-        
+
 
     private static readonly string s_Fluentv2 = "FluentV2";
 
@@ -138,7 +138,7 @@ public sealed class FAExpanderExt : AvaloniaObject
                         case ExpandDirection.Right:
                             RunExpandLeftRightAnimation(direction == ExpandDirection.Right);
                             break;
-                    }                    
+                    }
                 }
                 else
                 {
@@ -153,7 +153,7 @@ public sealed class FAExpanderExt : AvaloniaObject
                         case ExpandDirection.Right:
                             RunCollapseLeftRightAnimation(direction == ExpandDirection.Right);
                             break;
-                    }                    
+                    }
                 }
             }
         }
@@ -174,7 +174,7 @@ public sealed class FAExpanderExt : AvaloniaObject
                 _expanderContent.Measure(Size.Infinity);
                 _contentSize = _expanderContent.DesiredSize;
             }
-                
+
             var startY = down ? -_contentSize.Height : _contentSize.Height;
             var ani = new Animation
             {
