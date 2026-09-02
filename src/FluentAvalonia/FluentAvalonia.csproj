@@ -9,7 +9,7 @@
     <PackageId>FluentAvaloniaUI</PackageId>
     <IsAotCompatible>true</IsAotCompatible>
 
-    <NoWarn>$(NoWarn);NU1507;CS2002</NoWarn>
+    <NoWarn>$(NoWarn);NU1507</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
