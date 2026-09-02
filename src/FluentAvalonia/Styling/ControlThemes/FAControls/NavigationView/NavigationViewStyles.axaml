@@ -8,7 +8,7 @@
                 <ui:FANavigationView.MenuItems>
                     <ui:FANavigationViewItem Content="Save" />
                 </ui:FANavigationView.MenuItems>
-                
+
                 <TextBlock Text="CONTENT" Margin="20" />
             </ui:FANavigationView>
         </Border>
@@ -35,17 +35,17 @@
                                Margin="{DynamicResource NavigationViewButtonHolderGridMargin}" Grid.Row="1">
 
                             <Button Name="NavigationViewBackButton"
-                                    Theme="{StaticResource NavigationBackButtonNormalStyle}"                                    
+                                    Theme="{StaticResource NavigationBackButtonNormalStyle}"
                                     VerticalAlignment="Top"
                                     IsVisible="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.BackButtonVisibility}"
                                     IsEnabled="{TemplateBinding IsBackEnabled}"
                                     ToolTip.Tip="Go Back" />
-                            
+
                             <Button Name="NavigationViewCloseButton"
                                     Theme="{StaticResource NavigationBackButtonNormalStyle}"
                                     VerticalAlignment="Top"
                                     ToolTip.Tip="Close Navigation" />
-                            
+
                             <Button Name="TogglePaneButton"
                                     Theme="{StaticResource PaneToggleButtonStyle}"
                                     HorizontalAlignment="Center"
@@ -142,11 +142,11 @@
                                     </ScrollViewer>
 
                                     <Button Name="TopNavOverflowButton"
-                                               Grid.Column="4"
-                                               Content="More"
-                                               Margin="{DynamicResource TopNavigationViewOverflowButtonMargin}"
-                                               Theme="{StaticResource NavigationViewOverflowButtonStyleWhenPaneOnTop}"
-                                               IsVisible="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.OverflowButtonVisibility}">
+                                            Grid.Column="4"
+                                            Content="More"
+                                            Margin="{DynamicResource TopNavigationViewOverflowButtonMargin}"
+                                            Theme="{StaticResource NavigationViewOverflowButtonStyleWhenPaneOnTop}"
+                                            IsVisible="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.OverflowButtonVisibility}">
                                         <Button.Styles>
                                             <Style Selector="FlyoutPresenter">
                                                 <Setter Property="Theme" Value="{StaticResource NavViewFlyoutStyle}" />
@@ -189,7 +189,7 @@
                                                     Grid.Column="7" />
 
                                     <ui:FAItemsRepeater Grid.Column="8"
-                                                   Name="TopFooterMenuItemsHost">
+                                                        Name="TopFooterMenuItemsHost">
                                         <ui:FAItemsRepeater.Layout>
                                             <ui:FAStackLayout Orientation="Horizontal" />
                                         </ui:FAItemsRepeater.Layout>
@@ -226,8 +226,8 @@
                                         <RowDefinition Height="0" />
                                         <!--above button margin + back button space-->
                                         <!--x:Name="PaneContentGridToggleButtonRow"
-                                             Removed & set only in TogglePaneButtonVisible VisualState...TODO
-                                             MinHeight="{StaticResource NavigationViewPaneHeaderRowMinHeight}"-->
+                                        Removed & set only in TogglePaneButtonVisible VisualState...TODO
+                                        MinHeight="{StaticResource NavigationViewPaneHeaderRowMinHeight}"-->
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="Auto" />
@@ -282,7 +282,7 @@
                                                     VerticalContentAlignment="Stretch"
                                                     HorizontalContentAlignment="Stretch"
                                                     Grid.Row="4" />
-                                    
+
                                     <Rectangle IsHitTestVisible="False"
                                                Height="{DynamicResource NavigationViewPaneHeaderRowMinHeight}"
                                                Grid.Row="2"
@@ -291,7 +291,7 @@
 
                                     <!--"Non header" content-->
                                     <Grid Name="ItemsContainerGrid" Grid.Row="6"
-                                          Margin="0 0 0 8">
+                                          Margin="0">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*" />
                                             <!-- MenuItems -->
@@ -317,11 +317,11 @@
                                         </ScrollViewer>
 
                                         <ui:FANavigationViewItemSeparator Name="VisualItemsSeparator"
-                                                                        Grid.Row="1"
-                                                                        Margin="0 0 0 2"
-                                                                        VerticalAlignment="Center"
-                                                                        HorizontalAlignment="Stretch"
-                                                                        IsVisible="False" />
+                                                                          Grid.Row="1"
+                                                                          Margin="0 0 0 2"
+                                                                          VerticalAlignment="Center"
+                                                                          HorizontalAlignment="Stretch"
+                                                                          IsVisible="False" />
 
                                         <!--PaneFooter-->
                                         <ContentControl Name="FooterContentBorder"
