@@ -1,5 +1,6 @@
 ﻿#nullable enable
 
+using System;
 using System.ComponentModel;
 using Avalonia;
 using Avalonia.Controls;
@@ -27,6 +28,7 @@ public class AutoCompleteDropdownBehaviour : Behavior<AutoCompleteBox>
         AssociatedObject.DetachedFromVisualTree += OnDetachedFromVisualTree;
 
         AssociatedObject.KeyUp += OnKeyUp;
+        AssociatedObject.GotFocus += OnGotFocus;
         AssociatedObject.DropDownOpening += DropDownOpening;
         AssociatedObject.LostFocus += OnLostFocus;
 
@@ -68,6 +70,7 @@ public class AutoCompleteDropdownBehaviour : Behavior<AutoCompleteBox>
             AssociatedObject.AttachedToVisualTree -= OnAttachedToVisualTree;
             AssociatedObject.DetachedFromVisualTree -= OnDetachedFromVisualTree;
             AssociatedObject.KeyUp -= OnKeyUp;
+            AssociatedObject.GotFocus -= OnGotFocus;
             AssociatedObject.DropDownOpening -= DropDownOpening;
             AssociatedObject.LostFocus -= OnLostFocus;
         }
@@ -93,6 +96,7 @@ public class AutoCompleteDropdownBehaviour : Behavior<AutoCompleteBox>
             return;
 
         AssociatedObject.SetCurrentValue(AutoCompleteBox.IsDropDownOpenProperty, false);
+        _topLevel?.FocusManager?.Focus(null);
     }
 
     private void OnLostFocus(object? sender, RoutedEventArgs e)
@@ -105,6 +109,14 @@ public class AutoCompleteDropdownBehaviour : Behavior<AutoCompleteBox>
             return;
 
         AssociatedObject.SetCurrentValue(AutoCompleteBox.IsDropDownOpenProperty, false);
+    }
+
+    private void OnGotFocus(object? sender, FocusChangedEventArgs e)
+    {
+        if (AssociatedObject is null || AssociatedObject.IsDropDownOpen)
+            return;
+
+        ShowDropdown();
     }
 
     private void OnKeyUp(object? sender, KeyEventArgs e)
