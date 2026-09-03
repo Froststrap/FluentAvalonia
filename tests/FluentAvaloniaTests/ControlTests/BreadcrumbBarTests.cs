@@ -47,7 +47,7 @@ public class BreadcrumbBarTests : IDisposable
         _window.Content = bcb;
         _window.UpdateLayout();
 
-        var ir = bcb.GetTemplateChildren().Where(x => x.Name == "PART_ItemsRepeater").FirstOrDefault();
+        var ir = bcb.GetTemplateDescendants().Where(x => x.Name == "PART_ItemsRepeater").FirstOrDefault();
 
         Assert.NotNull(ir);
         Assert.IsType<FAItemsRepeater>(ir);
@@ -230,7 +230,7 @@ public class BreadcrumbBarTests : IDisposable
         var n1 = ir.TryGetElement(0) as FABreadcrumbBarItem;
         Assert.NotNull(n1);
 
-        var eb = n1.GetTemplateChildren().Where(x => x.Name == "PART_ItemButton")
+        var eb = n1.GetTemplateDescendants().Where(x => x.Name == "PART_ItemButton")
             .FirstOrDefault() as Button;
         Assert.NotNull(eb);
 
@@ -239,7 +239,7 @@ public class BreadcrumbBarTests : IDisposable
         inv.Invoke();
         Dispatcher.UIThread.RunJobs();
 
-        var rootGrid = n1.GetTemplateChildren()
+        var rootGrid = n1.GetTemplateDescendants()
             .Where(x => x is Grid g && g.Resources.Count > 0)
             .FirstOrDefault();
         Assert.NotNull(rootGrid);
@@ -251,7 +251,7 @@ public class BreadcrumbBarTests : IDisposable
 
         // The WinUI version of this test makes no sense, so this is custom from here
         var ellNode1 = ir2.TryGetElement(0) as FABreadcrumbBarItem;
-        var presenter = ellNode1.GetTemplateChildren()
+        var presenter = ellNode1.GetTemplateDescendants()
             .Where(x => x is ContentPresenter cp && cp.Name == "PART_EllipsisDropDownItemContentPresenter")
             .FirstOrDefault();
         Assert.NotNull(presenter);
@@ -304,7 +304,7 @@ public class BreadcrumbBarTests : IDisposable
         var n1 = ir.TryGetElement(0) as FABreadcrumbBarItem;
         Assert.NotNull(n1);
 
-        var eb = n1.GetTemplateChildren().Where(x => x.Name == "PART_ItemButton")
+        var eb = n1.GetTemplateDescendants().Where(x => x.Name == "PART_ItemButton")
             .FirstOrDefault() as Button;
         Assert.NotNull(eb);
 
@@ -313,7 +313,7 @@ public class BreadcrumbBarTests : IDisposable
         inv.Invoke();
         Dispatcher.UIThread.RunJobs();
 
-        var rootGrid = n1.GetTemplateChildren()
+        var rootGrid = n1.GetTemplateDescendants()
             .Where(x => x is Grid g && g.Resources.Count > 0)
             .FirstOrDefault();
         Assert.NotNull(rootGrid);
@@ -325,7 +325,7 @@ public class BreadcrumbBarTests : IDisposable
 
         // The WinUI version of this test makes no sense, so this is custom from here
         var ellNode1 = ir2.TryGetElement(0) as FABreadcrumbBarItem;
-        var presenter = ellNode1.GetTemplateChildren()
+        var presenter = ellNode1.GetTemplateDescendants()
             .Where(x => x is ContentPresenter cp && cp.Name == "PART_EllipsisDropDownItemContentPresenter")
             .FirstOrDefault();
         Assert.NotNull(presenter);
@@ -449,7 +449,7 @@ public class BreadcrumbBarTests : IDisposable
         var n1 = ir.TryGetElement(0) as FABreadcrumbBarItem;
         Assert.NotNull(n1);
 
-        var eb = n1.GetTemplateChildren().Where(x => x.Name == "PART_ItemButton")
+        var eb = n1.GetTemplateDescendants().Where(x => x.Name == "PART_ItemButton")
             .FirstOrDefault() as Button;
         Assert.NotNull(eb);
 
@@ -458,7 +458,7 @@ public class BreadcrumbBarTests : IDisposable
         inv.Invoke();
         Dispatcher.UIThread.RunJobs();
 
-        var rootGrid = n1.GetTemplateChildren()
+        var rootGrid = n1.GetTemplateDescendants()
             .Where(x => x is Grid g && g.Resources.Count > 0)
             .FirstOrDefault();
         Assert.NotNull(rootGrid);
@@ -548,7 +548,7 @@ public class BreadcrumbBarTests : IDisposable
         var n1 = ir.TryGetElement(0) as FABreadcrumbBarItem;
         Assert.NotNull(n1);
 
-        var eb = n1.GetTemplateChildren().Where(x => x.Name == "PART_ItemButton")
+        var eb = n1.GetTemplateDescendants().Where(x => x.Name == "PART_ItemButton")
             .FirstOrDefault() as Button;
         Assert.NotNull(eb);
 
@@ -557,7 +557,7 @@ public class BreadcrumbBarTests : IDisposable
         inv.Invoke();
         Dispatcher.UIThread.RunJobs();
 
-        var rootGrid = n1.GetTemplateChildren()
+        var rootGrid = n1.GetTemplateDescendants()
             .Where(x => x is Grid g && g.Resources.Count > 0)
             .FirstOrDefault();
         Assert.NotNull(rootGrid);
@@ -682,7 +682,7 @@ public class BreadcrumbBarTests : IDisposable
 
     private static FAItemsRepeater GetRepeater(FABreadcrumbBar b)
     {
-        return b.GetTemplateChildren().Where(x => x.Name == "PART_ItemsRepeater")
+        return b.GetTemplateDescendants().Where(x => x.Name == "PART_ItemsRepeater")
             .FirstOrDefault() as FAItemsRepeater;
     }
 

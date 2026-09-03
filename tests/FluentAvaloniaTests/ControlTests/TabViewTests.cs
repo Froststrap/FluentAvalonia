@@ -144,7 +144,7 @@ public class TabViewTests
 
         static bool IsContentPresenterVisible(FATabViewItem item)
         {
-            var pres = item.GetTemplateChildren()
+            var pres = item.GetTemplateDescendants()
                 .FirstOrDefault(x => x is ContentPresenter);
 
             if (pres == null)
@@ -177,7 +177,7 @@ public class TabViewTests
     {
         var (w, TabView) = GetTabView();
 
-        var presenter = TabView.GetTemplateChildren()
+        var presenter = TabView.GetTemplateDescendants()
             .FirstOrDefault(x => x is ContentPresenter c && c.Name.Equals(FATabView.s_tpTabContentPresenter)) as ContentPresenter;
 
         Assert.Equal((TabView.TabItems[0] as FATabViewItem).Content, presenter.Content);

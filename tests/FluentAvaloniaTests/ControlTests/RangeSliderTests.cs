@@ -64,7 +64,7 @@ public class RangeSliderTests : IDisposable
         var rs = new FARangeSlider();
         _window.Content = rs;
         _window.UpdateLayout();
-        var minThumb = rs.GetTemplateChildren().Where(x => x.Name == "MinThumb").First();
+        var minThumb = rs.GetTemplateDescendants().Where(x => x.Name == "MinThumb").First();
 
         var downPoint = TransformToHost(minThumb);
         var delta = new Point(10, 0);
@@ -97,7 +97,7 @@ public class RangeSliderTests : IDisposable
         var rs = new FARangeSlider();
         _window.Content = rs;
         _window.UpdateLayout();
-        var maxThumb = rs.GetTemplateChildren().Where(x => x.Name == "MaxThumb").First();
+        var maxThumb = rs.().Where(x => x.Name == "MaxThumb").First();
 
         var downPoint = TransformToHost(maxThumb);
         var delta = new Point(-10, 0);
@@ -132,7 +132,7 @@ public class RangeSliderTests : IDisposable
         var rs = new FARangeSlider();
         _window.Content = rs;
         _window.UpdateLayout();
-        var minThumb = rs.GetTemplateChildren().Where(x => x.Name == "MinThumb").First();
+        var minThumb = rs.GetTemplateDescendants().Where(x => x.Name == "MinThumb").First();
 
         double stepFreq = 5;
         rs.StepFrequency = stepFreq;
@@ -169,7 +169,7 @@ public class RangeSliderTests : IDisposable
         var rs = new FARangeSlider();
         _window.Content = rs;
         _window.UpdateLayout();
-        var maxThumb = rs.GetTemplateChildren().Where(x => x.Name == "MaxThumb").First();
+        var maxThumb = rs.GetTemplateDescendants().Where(x => x.Name == "MaxThumb").First();
 
         double stepFreq = 5;
         rs.StepFrequency = stepFreq;
@@ -212,7 +212,7 @@ public class RangeSliderTests : IDisposable
         };
         _window.Content = rs;
         _window.UpdateLayout();
-        var minThumb = rs.GetTemplateChildren().Where(x => x.Name == "MinThumb").First();
+        var minThumb = rs.GetTemplateDescendants().Where(x => x.Name == "MinThumb").First();
 
         minThumb.Focus();
 
@@ -232,7 +232,7 @@ public class RangeSliderTests : IDisposable
         };
         _window.Content = rs;
         _window.UpdateLayout();
-        var maxThumb = rs.GetTemplateChildren().Where(x => x.Name == "MaxThumb").First();
+        var maxThumb = rs.GetTemplateDescendants().Where(x => x.Name == "MaxThumb").First();
 
         maxThumb.Focus();
 
@@ -249,7 +249,7 @@ public class RangeSliderTests : IDisposable
         var rs = new FARangeSlider();
         _window.Content = rs;
         _window.UpdateLayout();
-        var minThumb = rs.GetTemplateChildren().Where(x => x.Name == "MinThumb").First();
+        var minThumb = rs.GetTemplateDescendants().Where(x => x.Name == "MinThumb").First();
 
         var downPoint = TransformToHost(minThumb);
         var delta = new Point(10, 0);
@@ -264,7 +264,7 @@ public class RangeSliderTests : IDisposable
         var rs = new FARangeSlider();
         _window.Content = rs;
         _window.UpdateLayout();
-        var maxThumb = rs.GetTemplateChildren().Where(x => x.Name == "MaxThumb").First();
+        var maxThumb = rs.GetTemplateDescendants().Where(x => x.Name == "MaxThumb").First();
 
         var downPoint = TransformToHost(maxThumb);
         var delta = new Point(10, 0);
@@ -282,7 +282,7 @@ public class RangeSliderTests : IDisposable
         };
         _window.Content = rs;
         _window.UpdateLayout();
-        var minThumb = rs.GetTemplateChildren().Where(x => x.Name == "MinThumb").First();
+        var minThumb = rs.GetTemplateDescendants().Where(x => x.Name == "MinThumb").First();
 
         minThumb.Focus();
 
@@ -332,7 +332,7 @@ public class RangeSliderTests : IDisposable
         };
         _window.Content = rs;
         _window.UpdateLayout();
-        var minThumb = rs.GetTemplateChildren().Where(x => x.Name == "MinThumb").First();
+        var minThumb = rs.GetTemplateDescendants().Where(x => x.Name == "MinThumb").First();
 
         var downPoint = TransformToHost(minThumb);
         var delta = new Point(10, 0);
@@ -347,7 +347,7 @@ public class RangeSliderTests : IDisposable
         var rs = new FARangeSlider();
         _window.Content = rs;
         _window.UpdateLayout();
-        var minThumb = rs.GetTemplateChildren().Where(x => x.Name == "MinThumb").First();
+        var minThumb = rs.GetTemplateDescendants().Where(x => x.Name == "MinThumb").First();
 
         int count = 0;
         rs.ValueChanged += (s, e) =>
@@ -370,7 +370,7 @@ public class RangeSliderTests : IDisposable
         var rs = new FARangeSlider();
         _window.Content = rs;
         _window.UpdateLayout();
-        var minThumb = rs.GetTemplateChildren().Where(x => x.Name == "MinThumb").First();
+        var minThumb = rs.GetTemplateDescendants().Where(x => x.Name == "MinThumb").First();
 
         int count = 0;
         rs.ValueChanged += (s, e) =>

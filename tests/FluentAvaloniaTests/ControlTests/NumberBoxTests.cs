@@ -16,7 +16,7 @@ public class NumberBoxTests
     public void VerifyTextAlignmentProperties()
     {
         var c = GetNumberBox();
-        var tb = c.nb.GetTemplateChildren().FirstOrDefault(x => x is TextBox tb && tb.Name == "InputBox") as TextBox;
+        var tb = c.nb.GetTemplateDescendants().FirstOrDefault(x => x is TextBox tb && tb.Name == "InputBox") as TextBox;
 
         // Apparently Start is the default value, not left b/c we needed this...
         // TextAlignment shouuld be Left, Center, Right, or Justify, more unneeded crap
@@ -56,7 +56,7 @@ public class NumberBoxTests
     public void ChangingTextBoxTextUpdatesValueAndText()
     {
         var c = GetNumberBox();
-        var tb = c.nb.GetTemplateChildren().FirstOrDefault(x => x is TextBox tb && tb.Name == "InputBox") as TextBox;
+        var tb = c.nb.GetTemplateDescendants().FirstOrDefault(x => x is TextBox tb && tb.Name == "InputBox") as TextBox;
 
         tb.Text = "35";
         tb.RaiseEvent(new KeyEventArgs { Key = Key.Enter, KeyDeviceType = KeyDeviceType.Keyboard, PhysicalKey = PhysicalKey.Enter, Source = tb, RoutedEvent = InputElement.KeyUpEvent });
@@ -101,7 +101,7 @@ public class NumberBoxTests
         c.w.UpdateLayout();
         Dispatcher.UIThread.RunJobs();
 
-        var tb = c.nb.GetTemplateChildren().FirstOrDefault(x => x is TextBox tb && tb.Name == "InputBox") as TextBox;
+        var tb = c.nb.GetTemplateDescendants().FirstOrDefault(x => x is TextBox tb && tb.Name == "InputBox") as TextBox;
         tb.Focus();
         tb.Text = "344";
         Assert.True(b.Focus());
