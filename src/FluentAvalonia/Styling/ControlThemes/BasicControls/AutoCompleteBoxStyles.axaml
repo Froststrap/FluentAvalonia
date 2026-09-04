@@ -20,12 +20,7 @@
     <Thickness x:Key="AutoSuggestListPadding">-1,0</Thickness>
 
     <ControlTheme TargetType="AutoCompleteBox" x:Key="{x:Type AutoCompleteBox}">
-        <Setter Property="(ia:Interaction.Behaviors)">
-            <ia:BehaviorCollection>
-                <controls:AutoCompleteDropdownBehaviour/>
-            </ia:BehaviorCollection>
-        </Setter>
-
+        <Setter Property="controls:AutoCompleteDropdownBehaviourAttacher.IsEnabled" Value="True"/>
         <Setter Property="VerticalAlignment" Value="Top" />
         <Setter Property="Foreground" Value="{DynamicResource TextControlForeground}" />
         <Setter Property="Background" Value="{DynamicResource TextControlBackground}" />

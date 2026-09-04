@@ -258,3 +258,22 @@ public class AutoCompleteDropdownBehaviour : Behavior<AutoCompleteBox>
         }
     }
 }
+
+public static class AutoCompleteDropdownBehaviourAttacher
+{
+    public static readonly AttachedProperty<bool> IsEnabledProperty =
+        AvaloniaProperty.RegisterAttached<AutoCompleteBox, bool>(
+            "IsEnabled", typeof(AutoCompleteDropdownBehaviourAttacher));
+
+    static AutoCompleteDropdownBehaviourAttacher()
+    {
+        IsEnabledProperty.Changed.AddClassHandler<AutoCompleteBox>((box, e) =>
+        {
+            if (e.NewValue is true)
+                Interaction.GetBehaviors(box).Add(new AutoCompleteDropdownBehaviour());
+        });
+    }
+
+    public static void SetIsEnabled(AutoCompleteBox box, bool value) => box.SetValue(IsEnabledProperty, value);
+    public static bool GetIsEnabled(AutoCompleteBox box) => box.GetValue(IsEnabledProperty);
+}
