@@ -51,4 +51,7 @@
     <InternalsVisibleTo Include="FAControlsGallery"/>
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Interop/WinRT/WinRT.Generated.cs" />
+  </ItemGroup>
 </Project>
