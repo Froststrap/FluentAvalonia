@@ -225,10 +225,7 @@ public partial class FAFrame : ContentControl
     /// and what transition animation is used.</param>
     /// <returns><c>false</c> if a <see cref="NavigationFailed"/> event handler has set Handled to true or
     /// if <see cref="NavigationPageFactory" /> is not specified; otherwise, <c>true</c>.</returns>
-    public bool NavigateFromObject<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicParameterlessConstructor)] T>(
-        T target,
-        FAFrameNavigationOptions navOptions = null
-    )
+    public bool NavigateFromObject(object target, FAFrameNavigationOptions navOptions = null)
     {
         // Check the cache first to see if we have an existing page that matches
         // For this check we check by both type and object reference
@@ -244,12 +241,17 @@ public partial class FAFrame : ContentControl
                 return false;
         }
 
+#pragma warning disable IL2072
         // The page source Type here will be whatever was specified as 'target'
-        var entry = new FAPageStackEntry(typeof(T), null, navOptions?.TransitionInfoOverride)
+        // Must use target.GetType here - cannot make method Generic and use typeof(T) because typeof(T) and
+        // target.GetType might not be the same thing (see the sample app, where typeof(T) = object, but 
+        // target.GetType() is an actual page type
+        var entry = new FAPageStackEntry(target.GetType(), null, navOptions?.TransitionInfoOverride)
         {
             Instance = existing,
             Context = target
         };
+#pragma warning restore IL2072
 
         return NavigateCore(entry, FANavigationMode.New, navOptions);
     }
