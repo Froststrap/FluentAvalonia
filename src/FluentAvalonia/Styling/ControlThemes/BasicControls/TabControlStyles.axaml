@@ -100,8 +100,8 @@
                         <ContentPresenter Name="PART_IconPresenter"
                                           Content="{TemplateBinding local:TabItemHelper.Icon}"
                                           IsVisible="{TemplateBinding local:TabItemHelper.Icon, Converter={x:Static conv:ObjectConverters.IsNotNull}}"
-                                          Width="20"
-                                          Height="20"
+                                          Width="18"
+                                          Height="18"
                                           VerticalAlignment="Center" />
                         <ContentPresenter Name="PART_ContentPresenter"
                                           Content="{TemplateBinding Header}"
