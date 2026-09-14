@@ -18,6 +18,15 @@ public class ShowValueSlider : Slider
         set => SetValue(ShowValueProperty, value);
     }
 
+    public static readonly StyledProperty<int> ValueDecimalsProperty =
+        AvaloniaProperty.Register<ShowValueSlider, int>(nameof(ValueDecimals), defaultValue: 4);
+
+    public int ValueDecimals
+    {
+        get => GetValue(ValueDecimalsProperty);
+        set => SetValue(ValueDecimalsProperty, value);
+    }
+
     private Thumb? _thumb;
     private Popup? _popup;
     private TextBlock? _popupText;
@@ -66,7 +75,7 @@ public class ShowValueSlider : Slider
             return;
 
         _isPressed = true;
-        _popupText.Text = Value.ToString("F0");
+        _popupText.Text = FormatValue(Value);
         _popup.IsOpen = true;
     }
 
@@ -85,7 +94,16 @@ public class ShowValueSlider : Slider
 
         if (change.Property == ValueProperty && _isPressed && _popupText != null)
         {
-            _popupText.Text = Value.ToString("F0");
+            _popupText.Text = FormatValue(Value);
         }
+    }
+
+    private string FormatValue(double value)
+    {
+        var decimals = ValueDecimals < 0 ? 0 : ValueDecimals;
+        var rounded = System.Math.Round(value, decimals, System.MidpointRounding.AwayFromZero);
+        var format = decimals == 0 ? "0" : "0." + new string('#', decimals);
+
+        return rounded.ToString(format, System.Globalization.CultureInfo.CurrentCulture);
     }
 }
