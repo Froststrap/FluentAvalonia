@@ -46,6 +46,7 @@ namespace FluentAvalonia.UI.Controls;
 [TemplatePart(s_tpMenuItemsScrollViewer, typeof(ScrollViewer))]
 [TemplatePart(s_tpFooterItemsScrollViewer, typeof(ScrollViewer))]
 [TemplatePart(s_tpItemsContainerGrid, typeof(Control))]
+[TemplatePart(s_tpPaneToggleRowContentPresenter, typeof(ContentControl))]
 public partial class FANavigationView : HeaderedContentControl
 {
     /// <summary>
@@ -218,6 +219,9 @@ public partial class FANavigationView : HeaderedContentControl
     /// </summary>
     public static readonly StyledProperty<string> PaneTitleProperty =
         AvaloniaProperty.Register<FANavigationView, string>(nameof(PaneTitle));
+
+    public static readonly StyledProperty<Control> PaneToggleRowContentProperty =
+        AvaloniaProperty.Register<FANavigationView, Control>(nameof(PaneToggleRowContent));
 
     /// <summary>
     /// Defines the <see cref="SelectedItem"/> property
@@ -493,6 +497,12 @@ public partial class FANavigationView : HeaderedContentControl
         set => SetValue(PaneTitleProperty, value);
     }
 
+    public Control PaneToggleRowContent
+    {
+        get => GetValue(PaneToggleRowContentProperty);
+        set => SetValue(PaneToggleRowContentProperty, value);
+    }
+
     /// <summary>
     /// Gets or sets the selected item.
     /// </summary>
@@ -645,6 +655,7 @@ public partial class FANavigationView : HeaderedContentControl
     private const string s_tpMenuItemsScrollViewer = "MenuItemsScrollViewer";
     private const string s_tpFooterItemsScrollViewer = "FooterItemsScrollViewer";
     private const string s_tpItemsContainerGrid = "ItemsContainerGrid";
+    private const string s_tpPaneToggleRowContentPresenter = "PaneToggleRowContentPresenter";
 
     private const string s_pcSeparator = ":separator";
     private const string s_pcListSizeCompact = ":listsizecompact";

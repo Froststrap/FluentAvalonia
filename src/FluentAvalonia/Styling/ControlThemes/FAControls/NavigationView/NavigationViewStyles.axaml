@@ -73,6 +73,24 @@
                     </Grid>
 
                     <!--Content layouts-->
+                    <Grid Name="PaneToggleRowContentHost"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Height="{DynamicResource PaneToggleButtonHeight}"
+                          Margin="0,4,0,0"
+                          ZIndex="101">
+                        <Grid.Transitions>
+                            <Transitions>
+                                <DoubleTransition Property="Width" Duration="0:0:0.2" Easing="CubicEaseOut" />
+                                <DoubleTransition Property="Opacity" Duration="0:0:0.2" Easing="CubicEaseOut" />
+                            </Transitions>
+                        </Grid.Transitions>
+                        <ContentControl Name="PaneToggleRowContentPresenter"
+                                        Content="{TemplateBinding PaneToggleRowContent}"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"/>
+                    </Grid>
+
                     <Grid RowDefinitions="Auto,*">
 
                         <!--DisplayMode top-->
@@ -413,6 +431,26 @@
 
         <Style Selector="^ /template/ Button#NavigationViewBackButton">
             <Setter Property="Width" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplateSettings.SmallerPaneToggleButtonWidth}" />
+        </Style>
+
+        <Style Selector="^ /template/ Grid#PaneToggleRowContentHost">
+            <Setter Property="Width" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=OpenPaneLength}" />
+            <Setter Property="Opacity" Value="1" />
+            <Setter Property="IsHitTestVisible" Value="True" />
+        </Style>
+
+        <Style Selector="^:closedcompact /template/ Grid#PaneToggleRowContentHost">
+            <Setter Property="Width" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=CompactPaneLength}" />
+            <Setter Property="Opacity" Value="0" />
+            <Setter Property="IsHitTestVisible" Value="False" />
+        </Style>
+
+        <Style Selector="^:minimal /template/ Grid#PaneToggleRowContentHost">
+            <Setter Property="IsVisible" Value="False" />
+        </Style>
+
+        <Style Selector="^:topnavminimal /template/ Grid#PaneToggleRowContentHost">
+            <Setter Property="IsVisible" Value="False" />
         </Style>
 
         <Style Selector="^:minimal">
