@@ -637,6 +637,7 @@ public partial class FANavigationView : HeaderedContentControl
     private Control _nextIndicator;
     private Control _activeIndicator;
     private object _lastSelectedItemPendingAnimationInTopNav;
+    private bool _pendingIndicatorRetry;
 
     //private IControl _togglePaneTopPadding;
     //private IControl _contentPaneTopPadding;
