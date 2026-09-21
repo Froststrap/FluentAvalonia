@@ -26,8 +26,6 @@ All previous - Avalonia 11.0
 
 Documentation and how to get started using FluentAvalonia is available [here](https://amwx.github.io/FluentAvaloniaDocs). Please note, these doc pages are still under development.
 
-You can also check out the sample app (FAControlsGallery) for a demo of FluentAvalonia with more code samples.
-
 <!-- TODO: Add image here of new app -->
 
 ## Contributing

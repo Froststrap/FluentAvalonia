@@ -1,7 +1,0 @@
-﻿<ScrollViewer>
-    <ui:FAItemsRepeater Name="OuterRepeater"
-                        VerticalAlignment="Top"
-                        ItemTemplate="{StaticResource CategoryTemplate}"
-                        ItemsSource="{Binding NestedCategories}"> 
-    </ui:FAItemsRepeater>
-</ScrollViewer>
