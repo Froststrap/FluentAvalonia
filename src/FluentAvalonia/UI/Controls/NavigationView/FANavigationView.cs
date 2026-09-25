@@ -3318,7 +3318,22 @@ public partial class FANavigationView : HeaderedContentControl
 
         _activeIndicator = nextIndicator;
 
-        if (!FAUISettings.AreAnimationsEnabled() || prevIndicator == null || nextIndicator == null)
+        if (prevIndicator != null && nextIndicator == null)
+        {
+            FadeOutPill(prevIndicator);
+            _prevIndicator = prevIndicator;
+            _nextIndicator = null;
+            DispatcherTimer.RunOnce(OnAnimationComplete, TimeSpan.FromMilliseconds(400), DispatcherPriority.Render);
+            return;
+        }
+
+        if (prevIndicator == null)
+        {
+            ResetElementAnimationProperties(nextIndicator, 1.0);
+            return;
+        }
+
+        if (!FAUISettings.AreAnimationsEnabled())
         {
             ResetElementAnimationProperties(prevIndicator, 0.0);
             ResetElementAnimationProperties(nextIndicator, 1.0);
@@ -3333,12 +3348,30 @@ public partial class FANavigationView : HeaderedContentControl
         _prevIndicator = prevIndicator;
         _nextIndicator = nextIndicator;
 
-        DispatcherTimer.RunOnce(OnAnimationComplete, TimeSpan.FromMilliseconds(300), DispatcherPriority.Render);
+        DispatcherTimer.RunOnce(OnAnimationComplete, TimeSpan.FromMilliseconds(400), DispatcherPriority.Render);
+    }
+
+    private void FadeOutPill(Control pill)
+    {
+        var v = ElementComposition.GetElementVisual(pill);
+        if (v == null)
+            return;
+
+        var comp = v.Compositor;
+
+        var opacityAnim = comp.CreateScalarKeyFrameAnimation();
+        opacityAnim.InsertKeyFrame(0f, 1f);
+        opacityAnim.InsertKeyFrame(1f, 0f, new SplineEasing(0.4, 0.0, 1.0, 1.0));
+        opacityAnim.Duration = TimeSpan.FromMilliseconds(250);
+
+        v.StartAnimation("Opacity", opacityAnim);
     }
 
     private void PlayPillTransition(Control outgoing, Control incoming)
     {
-        const double ScaleFrom = 0.6;
+        const double ScaleFrom = 0.7;
+        const int FadeOutMs = 250;
+        const int FadeInMs = 300;
 
         if (outgoing != null)
         {
@@ -3346,22 +3379,25 @@ public partial class FANavigationView : HeaderedContentControl
             if (v != null)
             {
                 var comp = v.Compositor;
-                var size = outgoing.Bounds.Size;
-                v.CenterPoint = new Vector3D(size.Width / 2, size.Height / 2, 0);
 
                 var opacityAnim = comp.CreateScalarKeyFrameAnimation();
                 opacityAnim.InsertKeyFrame(0f, 1f);
                 opacityAnim.InsertKeyFrame(1f, 0f, new SplineEasing(0.4, 0.0, 1.0, 1.0));
-                opacityAnim.Duration = TimeSpan.FromMilliseconds(160);
-
-                var scaleAnim = comp.CreateVector3DKeyFrameAnimation();
-                scaleAnim.InsertKeyFrame(0f, new Vector3D(1, 1, 1));
-                scaleAnim.InsertKeyFrame(1f, new Vector3D(ScaleFrom, ScaleFrom, 1),
-                    new SplineEasing(0.4, 0.0, 1.0, 1.0));
-                scaleAnim.Duration = TimeSpan.FromMilliseconds(160);
-
+                opacityAnim.Duration = TimeSpan.FromMilliseconds(FadeOutMs);
                 v.StartAnimation("Opacity", opacityAnim);
-                v.StartAnimation("Scale", scaleAnim);
+
+                var size = outgoing.Bounds.Size;
+                if (size.Width > 0 && size.Height > 0)
+                {
+                    v.CenterPoint = new Vector3D(size.Width / 2, size.Height / 2, 0);
+
+                    var scaleAnim = comp.CreateVector3DKeyFrameAnimation();
+                    scaleAnim.InsertKeyFrame(0f, new Vector3D(1, 1, 1));
+                    scaleAnim.InsertKeyFrame(1f, new Vector3D(ScaleFrom, ScaleFrom, 1),
+                        new SplineEasing(0.4, 0.0, 1.0, 1.0));
+                    scaleAnim.Duration = TimeSpan.FromMilliseconds(FadeOutMs);
+                    v.StartAnimation("Scale", scaleAnim);
+                }
             }
         }
 
@@ -3371,22 +3407,25 @@ public partial class FANavigationView : HeaderedContentControl
             if (v != null)
             {
                 var comp = v.Compositor;
-                var size = incoming.Bounds.Size;
-                v.CenterPoint = new Vector3D(size.Width / 2, size.Height / 2, 0);
 
                 var opacityAnim = comp.CreateScalarKeyFrameAnimation();
                 opacityAnim.InsertKeyFrame(0f, 0f);
                 opacityAnim.InsertKeyFrame(1f, 1f, new SplineEasing(0.1, 0.9, 0.2, 1.0));
-                opacityAnim.Duration = TimeSpan.FromMilliseconds(240);
-
-                var scaleAnim = comp.CreateVector3DKeyFrameAnimation();
-                scaleAnim.InsertKeyFrame(0f, new Vector3D(ScaleFrom, ScaleFrom, 1));
-                scaleAnim.InsertKeyFrame(1f, new Vector3D(1, 1, 1),
-                    new SplineEasing(0.1, 0.9, 0.2, 1.0));
-                scaleAnim.Duration = TimeSpan.FromMilliseconds(240);
-
+                opacityAnim.Duration = TimeSpan.FromMilliseconds(FadeInMs);
                 v.StartAnimation("Opacity", opacityAnim);
-                v.StartAnimation("Scale", scaleAnim);
+
+                var size = incoming.Bounds.Size;
+                if (size.Width > 0 && size.Height > 0)
+                {
+                    v.CenterPoint = new Vector3D(size.Width / 2, size.Height / 2, 0);
+
+                    var scaleAnim = comp.CreateVector3DKeyFrameAnimation();
+                    scaleAnim.InsertKeyFrame(0f, new Vector3D(ScaleFrom, ScaleFrom, 1));
+                    scaleAnim.InsertKeyFrame(1f, new Vector3D(1, 1, 1),
+                        new SplineEasing(0.1, 0.9, 0.2, 1.0));
+                    scaleAnim.Duration = TimeSpan.FromMilliseconds(FadeInMs);
+                    v.StartAnimation("Scale", scaleAnim);
+                }
             }
         }
     }
@@ -3417,7 +3456,7 @@ public partial class FANavigationView : HeaderedContentControl
             cv.Opacity = (float)desiredOpacity;
         }
 
-        element.Opacity = 1.0;
+        element.Opacity = desiredOpacity;
     }
 
     private Control FindSelectionIndicator(object item)
