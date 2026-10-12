@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup Label="Package Info">
-    <RepositoryUrl>https://github.com/amwx/FluentAvalonia</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Froststrap/FluentAvalonia</RepositoryUrl>
     <Description>Control library focused on fluent design and bringing more WinUI controls into Avalonia </Description>
     <PackageTags>c-sharp;xaml;cross-platform;dotnet;dotnetcore;avalonia;avaloniaui;fluent;fluent-design</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
