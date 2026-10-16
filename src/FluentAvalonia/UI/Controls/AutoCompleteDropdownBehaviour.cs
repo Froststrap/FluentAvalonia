@@ -2,6 +2,7 @@
 
 using System.Collections;
 using System.ComponentModel;
+using System.Windows.Input;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
@@ -15,6 +16,8 @@ namespace FluentAvalonia.UI.Controls;
 
 public class AutoCompleteDropdownBehaviour : Behavior<AutoCompleteBox>
 {
+    private const double LoadMoreThreshold = 64;
+
     private Popup? _popup;
     private SelectingItemsControl? _suggestionList;
     private TopLevel? _topLevel;
@@ -55,6 +58,30 @@ public class AutoCompleteDropdownBehaviour : Behavior<AutoCompleteBox>
         }
 
         _suggestionList = e.NameScope.Find<SelectingItemsControl>("PART_SelectingItemsControl");
+        if (_suggestionList is not null)
+        {
+            _suggestionList.RemoveHandler(ScrollViewer.ScrollChangedEvent, OnSuggestionListScrollChanged);
+            _suggestionList.AddHandler(ScrollViewer.ScrollChangedEvent, OnSuggestionListScrollChanged);
+        }
+    }
+
+    private void OnSuggestionListScrollChanged(object? sender, ScrollChangedEventArgs e)
+    {
+        if (AssociatedObject is null || e.Source is not ScrollViewer viewer || viewer.Extent.Height <= 0)
+            return;
+
+        if (e.OffsetDelta.Y < 0)
+            return;
+
+        if (viewer.Offset.Y + viewer.Viewport.Height < viewer.Extent.Height - LoadMoreThreshold)
+            return;
+
+        ICommand? command = AutoCompleteDropdownBehaviourAttacher.GetLoadMoreCommand(AssociatedObject);
+
+        if (command is null || !command.CanExecute(null))
+            return;
+
+        command.Execute(null);
     }
 
     private void OnAttachedToVisualTree(object? sender, VisualTreeAttachmentEventArgs e)
@@ -106,6 +133,9 @@ public class AutoCompleteDropdownBehaviour : Behavior<AutoCompleteBox>
             _window.Activated -= OnWindowActivated;
             _window = null;
         }
+
+        if (_suggestionList is not null)
+            _suggestionList.RemoveHandler(ScrollViewer.ScrollChangedEvent, OnSuggestionListScrollChanged);
 
         _popup = null;
         _suggestionList = null;
@@ -265,6 +295,10 @@ public static class AutoCompleteDropdownBehaviourAttacher
         AvaloniaProperty.RegisterAttached<AutoCompleteBox, bool>(
             "IsEnabled", typeof(AutoCompleteDropdownBehaviourAttacher));
 
+    public static readonly AttachedProperty<ICommand> LoadMoreCommandProperty =
+        AvaloniaProperty.RegisterAttached<AutoCompleteBox, ICommand>(
+            "LoadMoreCommand", typeof(AutoCompleteDropdownBehaviourAttacher));
+
     static AutoCompleteDropdownBehaviourAttacher()
     {
         IsEnabledProperty.Changed.AddClassHandler<AutoCompleteBox>((box, e) =>
@@ -276,4 +310,7 @@ public static class AutoCompleteDropdownBehaviourAttacher
 
     public static void SetIsEnabled(AutoCompleteBox box, bool value) => box.SetValue(IsEnabledProperty, value);
     public static bool GetIsEnabled(AutoCompleteBox box) => box.GetValue(IsEnabledProperty);
+
+    public static void SetLoadMoreCommand(AutoCompleteBox box, ICommand? value) => box.SetValue(LoadMoreCommandProperty, value!);
+    public static ICommand? GetLoadMoreCommand(AutoCompleteBox box) => box.GetValue(LoadMoreCommandProperty);
 }
