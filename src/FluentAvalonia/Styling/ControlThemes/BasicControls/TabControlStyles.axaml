@@ -30,7 +30,7 @@
         <Setter Property="Padding" Value="12" />
         <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
         <Setter Property="Background" Value="{DynamicResource ControlFillColorDefaultBrush}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource ControlElevationBorderBrush}" />
+        <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Template">
             <ControlTemplate>
@@ -72,7 +72,7 @@
         <Setter Property="Margin" Value="0" />
         <Setter Property="Padding" Value="12,8" />
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderBrush" Value="{DynamicResource ControlElevationBorderBrush}" />
+        <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
@@ -129,10 +129,7 @@
         </Style>
 
         <Style Selector="^:pointerover:not(:selected) /template/ Border#PART_LayoutRoot">
-            <Setter Property="Background" Value="{DynamicResource ControlFillColorSecondaryBrush}" />
-        </Style>
-        <Style Selector="^:pointerover:not(:selected)">
-            <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
+            <Setter Property="Background" Value="{DynamicResource SubtleFillColorTertiaryBrush}" />
         </Style>
 
         <Style Selector="^:pressed:not(:selected) /template/ Border#PART_LayoutRoot">
