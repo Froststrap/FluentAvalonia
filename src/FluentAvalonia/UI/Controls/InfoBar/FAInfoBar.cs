@@ -23,7 +23,8 @@ public partial class FAInfoBar : ContentControl
         base.OnApplyTemplate(e);
 
         _closeButton = e.NameScope.Find<Button>(s_tpCloseButton);
-        if (_closeButton != null)
+
+        if (_closeButton is not null)
         {
             _closeButton.Click += OnCloseButtonClick;
 
@@ -37,7 +38,7 @@ public partial class FAInfoBar : ContentControl
         }
 
         var iconTextBlock = e.NameScope.Find<FAFontIcon>(s_tpStandardIcon);
-        if (iconTextBlock != null)
+        if (iconTextBlock is not null)
         {
             _standardIcon = iconTextBlock;
             AutomationProperties.SetName(iconTextBlock,

@@ -68,7 +68,7 @@
     <!--<x:String x:Key="InfoBarWarningIconGlyph">&#xF86A;</x:String>-->
     <!--<x:String x:Key="InfoBarSuccessIconGlyph">&#xF29A;</x:String>-->
     <Thickness x:Key="InfoBarContentRootPadding">16,0,0,0</Thickness>
-    <Thickness x:Key="InfoBarIconMargin">0,16,14,16</Thickness>
+    <Thickness x:Key="InfoBarIconMargin">0,16</Thickness>
     <x:Double x:Key="InfoBarIconFontSize">16</x:Double>
     <Thickness x:Key="InfoBarPanelMargin">0,0,16,0</Thickness>
     <Thickness x:Key="InfoBarPanelHorizontalOrientationPadding">0,0,0,0</Thickness>
@@ -146,16 +146,13 @@
                                 <ui:FAIconSourceElement IconSource="{TemplateBinding IconSource}" />
                             </Viewbox>
 
-                            <uip:FAInfoBarPanel Grid.Column="1"
-                                                Margin="{StaticResource InfoBarPanelMargin}"
-                                                HorizontalOrientationPadding="{StaticResource InfoBarPanelHorizontalOrientationPadding}"
-                                                VerticalOrientationPadding="{StaticResource InfoBarPanelVerticalOrientationPadding}">
-
+                            <WrapPanel Grid.Column="1"
+                                   Margin="0,8"
+                                   VerticalAlignment="Center"
+                                   Orientation="Horizontal">
                                 <TextBlock Name="Title"
                                            Foreground="{DynamicResource InfoBarTitleForeground}"
                                            Text="{TemplateBinding Title}"
-                                           uip:FAInfoBarPanel.HorizontalOrientationMargin="{StaticResource InfoBarTitleHorizontalOrientationMargin}"
-                                           uip:FAInfoBarPanel.VerticalOrientationMargin="{StaticResource InfoBarTitleVerticalOrientationMargin}"
                                            TextWrapping="Wrap"
                                            VerticalAlignment="Center"
                                            FontWeight="{StaticResource InfoBarTitleFontWeight}"
@@ -164,21 +161,18 @@
                                 <TextBlock x:Name="Message"
                                            Foreground="{DynamicResource InfoBarMessageForeground}"
                                            Text="{TemplateBinding Message}"
-                                           uip:FAInfoBarPanel.HorizontalOrientationMargin="{StaticResource InfoBarMessageHorizontalOrientationMargin}"
-                                           uip:FAInfoBarPanel.VerticalOrientationMargin="{StaticResource InfoBarMessageVerticalOrientationMargin}"
+                                           Margin="12,0,0,0"
                                            TextWrapping="Wrap"
                                            VerticalAlignment="Center"
                                            FontWeight="{StaticResource InfoBarMessageFontWeight}"
-                                           FontSize="{StaticResource InfoBarMessageFontSize}"/>
+                                           FontSize="{StaticResource InfoBarMessageFontSize}" />
 
-                                <ContentPresenter uip:FAInfoBarPanel.HorizontalOrientationMargin="{StaticResource InfoBarActionHorizontalOrientationMargin}"
-                                                  uip:FAInfoBarPanel.VerticalOrientationMargin="{StaticResource InfoBarActionVerticalOrientationMargin}"
-                                                  VerticalAlignment="Center"
-                                                  Content="{TemplateBinding ActionButton}"
-                                                  HorizontalContentAlignment="Stretch"
-                                                  VerticalContentAlignment="Center" />
-
-                            </uip:FAInfoBarPanel>
+                               <ContentPresenter Name="ActionHost"
+                                          VerticalAlignment="Center"
+                                          Content="{TemplateBinding ActionButton}"
+                                          HorizontalContentAlignment="Stretch"
+                                          VerticalContentAlignment="Center" />
+                            </WrapPanel>
 
                             <ContentPresenter Grid.Column="1"
                                               Grid.Row="1"
@@ -316,5 +310,8 @@
             <Setter Property="Grid.Row" Value="0" />
         </Style>
 
+        <Style Selector="^ /template/ ContentPresenter#ActionHost > :is(Control)">
+            <Setter Property="Margin" Value="16,0,0,0" />
+        </Style>
     </ControlTheme>
 </ResourceDictionary>
