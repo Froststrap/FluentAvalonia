@@ -29,11 +29,11 @@ public partial class FAInfoBar : ContentControl
 
             ToolTip.SetTip(_closeButton, FALocalizationHelper.Instance.GetLocalizedStringResource(SR_InfoBarCloseButtonTooltip));
 
-            if (AutomationProperties.GetName(_closeButton) == null)
-            {
-                var closeButtonName = FALocalizationHelper.Instance.GetLocalizedStringResource(SR_InfoBarCloseButtonName);
-                AutomationProperties.SetName(_closeButton, closeButtonName);
-            }
+            if (AutomationProperties.GetName(_closeButton) != null)
+                return;
+
+            var closeButtonName = FALocalizationHelper.Instance.GetLocalizedStringResource(SR_InfoBarCloseButtonName);
+            AutomationProperties.SetName(_closeButton, closeButtonName);
         }
 
         var iconTextBlock = e.NameScope.Find<FAFontIcon>(s_tpStandardIcon);
@@ -167,39 +167,39 @@ public partial class FAInfoBar : ContentControl
         else
         {
             var peer = ControlAutomationPeer.FromElement(this);
-            if (force || IsOpen != _isVisible)
+            if (!force || IsOpen == _isVisible)
+                return;
+
+            if (IsOpen)
             {
-                if (IsOpen)
+                _isVisible = true;
+                PseudoClasses.Set(FASharedPseudoclasses.s_pcHidden, false);
+
+                if (notify && peer is FAInfoBarAutomationPeer p)
                 {
-                    _isVisible = true;
-                    PseudoClasses.Set(FASharedPseudoclasses.s_pcHidden, false);
+                    var local = FALocalizationHelper.Instance;
+                    var notificationString = $"{local.GetLocalizedStringResource(SR_InfoBarOpenedNotification)}" +
+                        $"{local.GetLocalizedStringResource(GetIconSeverityLevelResourceName(Severity))}" +
+                        $"{Title} {Message}";
 
-                    if (notify && peer is FAInfoBarAutomationPeer p)
-                    {
-                        var local = FALocalizationHelper.Instance;
-                        var notificationString = $"{local.GetLocalizedStringResource(SR_InfoBarOpenedNotification)}" +
-                            $"{local.GetLocalizedStringResource(GetIconSeverityLevelResourceName(Severity))}" +
-                            $"{Title} {Message}";
-
-                        p.RaiseOpenedEvent(Severity, notificationString);
-                    }
-
-                    AutomationProperties.SetAccessibilityView(this, AccessibilityView.Control);
+                    p.RaiseOpenedEvent(Severity, notificationString);
                 }
-                else
+
+                AutomationProperties.SetAccessibilityView(this, AccessibilityView.Control);
+            }
+            else
+            {
+                if (notify && peer is FAInfoBarAutomationPeer p)
                 {
-                    if (notify && peer is FAInfoBarAutomationPeer p)
-                    {
-                        var notificationString = FALocalizationHelper.Instance
-                            .GetLocalizedStringResource(SR_InfoBarClosedNotification);
+                    var notificationString = FALocalizationHelper.Instance
+                        .GetLocalizedStringResource(SR_InfoBarClosedNotification);
 
-                        p.RaiseClosedEvent(Severity, notificationString);
-                    }
-
-                    _isVisible = false;
-                    PseudoClasses.Set(FASharedPseudoclasses.s_pcHidden, true);
-                    AutomationProperties.SetAccessibilityView(this, AccessibilityView.Raw);
+                    p.RaiseClosedEvent(Severity, notificationString);
                 }
+
+                _isVisible = false;
+                PseudoClasses.Set(FASharedPseudoclasses.s_pcHidden, true);
+                AutomationProperties.SetAccessibilityView(this, AccessibilityView.Raw);
             }
         }
     }
