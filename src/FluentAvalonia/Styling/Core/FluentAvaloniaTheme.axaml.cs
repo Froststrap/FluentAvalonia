@@ -46,12 +46,9 @@ public partial class FluentAvaloniaTheme : Styles, IResourceProvider
     /// Gets or sets whether to use the current system theme (light or dark mode).
     /// </summary>
     /// <remarks>
-    /// This property is respected on Windows, MacOS, and Linux. However, on linux,
-    /// the detection is different depending on the user's desktop environment. On KDE,
-    /// Cinnamon, LXDE and LXQt, it requires the user's theme (color scheme in the
-    /// case of KDE) name to contain "dark". On GNOME or Xfce, it requires 'color-scheme'
-    /// to be set to either 'prefer-light', 'prefer-dark', or 'gtk-theme' to contain 'dark'.
-    /// Also note, that high contrast theme will only resolve here on Windows.
+    /// This property is respected on Windows, MacOS, and Linux. On Linux, the theme is read
+    /// from the XDG Desktop Portal 'color-scheme' setting, and falls back to light when no
+    /// portal is available. Also note, that high contrast theme will only resolve here on Windows.
     /// </remarks>
     public bool PreferSystemTheme
     {
@@ -75,9 +72,8 @@ public partial class FluentAvaloniaTheme : Styles, IResourceProvider
     /// Gets or sets whether to use the current user's accent color as the resource SystemAccentColor
     /// </summary>
     /// <remarks>
-    /// On Linux, accent color detection is only supported on KDE (from current scheme,
-    /// from wallpaper and custom), LXQt (from selection color) and LXDE (from custom selection
-    /// color).
+    /// On Linux, the accent color is read from the XDG Desktop Portal 'accent-color' setting,
+    /// when the desktop environment provides one.
     /// </remarks>
     public bool PreferUserAccentColor
     {
@@ -197,13 +193,9 @@ public partial class FluentAvaloniaTheme : Styles, IResourceProvider
         {
             theme = ResolveWindowsSystemSettings(_platformSettings);
         }
-        else if (OperatingSystem.IsLinux())
+        else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS())
         {
-            theme = ResolveLinuxSystemSettings(_platformSettings);
-        }
-        else if (OperatingSystem.IsMacOS())
-        {
-            theme = ResolveMacOSSystemSettings(_platformSettings);
+            theme = ResolvePlatformSystemSettings(_platformSettings);
         }
         else
         {
@@ -213,9 +205,7 @@ public partial class FluentAvaloniaTheme : Styles, IResourceProvider
             if (PreferSystemTheme)
                 theme = GetThemeFromIPlatformSettings(_platformSettings);
 
-            // MacOS logic is also used for WASM/Mobile since it just pulls from 
-            // IPlatformSettings Color Values
-            TryLoadMacOSAccentColor(_platformSettings);
+            TryLoadPlatformAccentColor(_platformSettings);
 
             AddOrUpdateSystemResource("ContentControlThemeFontFamily", FontFamily.Default);
         }
@@ -256,18 +246,14 @@ public partial class FluentAvaloniaTheme : Styles, IResourceProvider
             {
                 TryLoadWindowsAccentColor();
             }
-            else if (OperatingSystem.IsMacOS())
+            else
             {
-                TryLoadMacOSAccentColor(_platformSettings);
-            }
-            else if (OperatingSystem.IsLinux())
-            {
-                TryLoadLinuxAccentColor();
+                TryLoadPlatformAccentColor(_platformSettings);
             }
         }
     }
 
-    private ThemeVariant ResolveMacOSSystemSettings(IPlatformSettings platformSettings)
+    private ThemeVariant ResolvePlatformSystemSettings(IPlatformSettings platformSettings)
     {
         ThemeVariant theme = null;
         if (PreferSystemTheme)
@@ -281,43 +267,7 @@ public partial class FluentAvaloniaTheme : Styles, IResourceProvider
         }
         else if (PreferUserAccentColor)
         {
-            TryLoadMacOSAccentColor(platformSettings);
-        }
-        else
-        {
-            LoadDefaultAccentColor();
-        }
-
-        AddOrUpdateSystemResource("ContentControlThemeFontFamily", FontFamily.Default);
-
-        return theme;
-    }
-
-    private ThemeVariant ResolveLinuxSystemSettings(IPlatformSettings platformSettings)
-    {
-        ThemeVariant theme = null;
-        if (PreferSystemTheme)
-        {
-            // See TryLoadLinuxAccentColor() for note on what Avalonia IPlatformSettings supports
-            // on Linux. We'll try the existing logic first before attempting IPlatformSettings
-            var resolvedTheme = LinuxThemeResolver.TryLoadSystemTheme();
-            if (resolvedTheme != null)
-            {
-                theme = resolvedTheme;
-            }
-            else
-            {
-                theme = GetThemeFromIPlatformSettings(platformSettings);
-            }
-        }
-
-        if (CustomAccentColor != null)
-        {
-            LoadCustomAccentColor();
-        }
-        else if (PreferUserAccentColor)
-        {
-            TryLoadLinuxAccentColor();
+            TryLoadPlatformAccentColor(platformSettings);
         }
         else
         {
@@ -407,13 +357,9 @@ public partial class FluentAvaloniaTheme : Styles, IResourceProvider
                 {
                     TryLoadWindowsAccentColor();
                 }
-                else if (OperatingSystem.IsLinux())
+                else
                 {
-                    TryLoadLinuxAccentColor();
-                }
-                else // Mac & WASM/Mobile
-                {
-                    TryLoadMacOSAccentColor(_platformSettings);
+                    TryLoadPlatformAccentColor(_platformSettings);
                 }
             }
             else
@@ -435,7 +381,7 @@ public partial class FluentAvaloniaTheme : Styles, IResourceProvider
             (Color)col.LightenPercent(-0.45f));
     }
 
-    private void TryLoadMacOSAccentColor(IPlatformSettings platformSettings)
+    private void TryLoadPlatformAccentColor(IPlatformSettings platformSettings)
     {
         try
         {
@@ -451,33 +397,6 @@ public partial class FluentAvaloniaTheme : Styles, IResourceProvider
                 (Color)aColor.LightenPercent(-0.45f));
         }
         catch
-        {
-            LoadDefaultAccentColor();
-        }
-    }
-
-    private void TryLoadLinuxAccentColor()
-    {
-        // Per GH#9913:
-        // Only works if distro implements newest (~2021) standard of FreeDesktop. GTK and others specific settings are ignored.
-        // Accent colors are not supported, and frame theme isn't changeable from the app (not sure if it's possible, if anybody wants to help - please do).
-        // No high contrast support.
-        // So we'll keep the existing logic here
-
-        var aColor = LinuxThemeResolver.TryLoadAccentColor();
-        if (aColor != null)
-        {
-            Color2 col = aColor.Value;
-
-            UpdateAccentColors((Color)col,
-                (Color)col.LightenPercent(0.15f),
-                (Color)col.LightenPercent(0.30f),
-                (Color)col.LightenPercent(0.45f),
-                (Color)col.LightenPercent(-0.15f),
-                (Color)col.LightenPercent(-0.30f),
-                (Color)col.LightenPercent(-0.45f));
-        }
-        else
         {
             LoadDefaultAccentColor();
         }
