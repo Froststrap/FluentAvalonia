@@ -48,7 +48,8 @@ public sealed class FAProgressRingAnimatedVisual : Control
         // The progress ring's aspect ratio is preserved, so we constrain to the smallest dimension we have
         var minSize = Math.Min(e.NewSize.Width, e.NewSize.Height);
         // The animated visual is 80x80, we scale the composition visual to scale up or down accordingly
-        _sfc.Scale = new Vector3D(minSize / 80, minSize / 80, 1);
+        if (_sfc is not null)
+            _sfc.Scale = new Vector3D(minSize / 80, minSize / 80, 1);
     }
 
     internal void SetMinimum(double min)
