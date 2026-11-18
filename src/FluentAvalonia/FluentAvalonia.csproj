@@ -4,7 +4,6 @@
     <TargetFrameworks>net10.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
-    <MicroComGeneratorRuntimeNamespace>MicroCom.Runtime</MicroComGeneratorRuntimeNamespace>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
     <PackageId>Froststrap.FluentAvalonia</PackageId>
     <IsAotCompatible>true</IsAotCompatible>
@@ -37,24 +36,15 @@
   <ItemGroup>
     <PackageReference Include="Avalonia" />
     <PackageReference Include="Avalonia.Controls.ColorPicker" />
-    <!--<PackageReference Include="Avalonia.Controls.ItemsRepeater" />-->
     <PackageReference Include="Avalonia.Skia" />
-    <!--<PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" />-->
-    <PackageReference Include="MicroCom.CodeGenerator.MSBuild" PrivateAssets="All" />
-    <PackageReference Include="MicroCom.Runtime" />
     <PackageReference Include="Avalonia.Xaml.Interactivity" />
     <PackageReference Include="Microsoft.Build.Tasks.Git">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <MicroComIdl Include="$(MSBuildThisFileDirectory)\Interop\WinRT\WinRT.idl" CSharpInteropPath="$(MSBuildThisFileDirectory)\Interop\WinRT\WinRT.Generated.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <InternalsVisibleTo Include="FAControlsGallery" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Interop/WinRT/WinRT.Generated.cs" />
   </ItemGroup>
 </Project>

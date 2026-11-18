@@ -370,15 +370,7 @@ public partial class FluentAvaloniaTheme : Styles, IResourceProvider
             return;
         }
 
-        Color2 col = _customAccentColor.Value;
-
-        UpdateAccentColors((Color)_customAccentColor.Value,
-            (Color)col.LightenPercent(0.15f),
-            (Color)col.LightenPercent(0.30f),
-            (Color)col.LightenPercent(0.45f),
-            (Color)col.LightenPercent(-0.15f),
-            (Color)col.LightenPercent(-0.30f),
-            (Color)col.LightenPercent(-0.45f));
+        UpdateAccentColorsFromBase(_customAccentColor.Value);
     }
 
     private void TryLoadPlatformAccentColor(IPlatformSettings platformSettings)
@@ -386,15 +378,7 @@ public partial class FluentAvaloniaTheme : Styles, IResourceProvider
         try
         {
             // Replaced old logic with PlatformSettings from Avalonia
-            Color2 aColor = platformSettings.GetColorValues().AccentColor1;
-
-            UpdateAccentColors((Color)aColor,
-                (Color)aColor.LightenPercent(0.15f),
-                (Color)aColor.LightenPercent(0.30f),
-                (Color)aColor.LightenPercent(0.45f),
-                (Color)aColor.LightenPercent(-0.15f),
-                (Color)aColor.LightenPercent(-0.30f),
-                (Color)aColor.LightenPercent(-0.45f));
+            UpdateAccentColorsFromBase((Color)platformSettings.GetColorValues().AccentColor1);
         }
         catch
         {
@@ -444,6 +428,19 @@ public partial class FluentAvaloniaTheme : Styles, IResourceProvider
         };
 
         Resources.MergedDictionaries.Add(_accentColorsDictionary);
+    }
+
+    private void UpdateAccentColorsFromBase(Color accent)
+    {
+        var accent2 = new Color2(accent);
+
+        UpdateAccentColors(accent,
+            (Color)accent2.LightenPercent(0.15f),
+            (Color)accent2.LightenPercent(0.30f),
+            (Color)accent2.LightenPercent(0.45f),
+            (Color)accent2.LightenPercent(-0.15f),
+            (Color)accent2.LightenPercent(-0.30f),
+            (Color)accent2.LightenPercent(-0.45f));
     }
 
     private void MergedDictionariesCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

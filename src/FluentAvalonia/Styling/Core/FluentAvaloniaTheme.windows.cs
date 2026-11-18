@@ -1,15 +1,17 @@
-﻿using Avalonia.Controls;
+﻿using System.Runtime.Versioning;
+using Avalonia.Controls;
 using Avalonia.Logging;
 using Avalonia.Media;
 using Avalonia.Platform;
 using Avalonia.Styling;
 using FluentAvalonia.Interop;
-using FluentAvalonia.Interop.WinRT;
+using FluentAvalonia.Interop.Win32;
 
 namespace FluentAvalonia.Styling;
 
 public partial class FluentAvaloniaTheme
 {
+    [SupportedOSPlatform("windows")]
     private ThemeVariant ResolveWindowsSystemSettings(IPlatformSettings platformSettings)
     {
         ThemeVariant theme = null;
@@ -31,7 +33,7 @@ public partial class FluentAvaloniaTheme
             catch
             {
                 Logger.TryGet(LogEventLevel.Information, "FluentAvaloniaTheme")?
-                        .Log("FluentAvaloniaTheme", "Unable to create instance of ComObject IUISettings");
+                        .Log("FluentAvaloniaTheme", "Unable to read the Windows accent color");
                 LoadDefaultAccentColor();
             }
         }
@@ -67,23 +69,11 @@ public partial class FluentAvaloniaTheme
 
     private void TryLoadHighContrastThemeColors()
     {
-        IUISettings settings;
-        try
-        {
-            settings = WinRTInterop.CreateInstance<IUISettings>("Windows.UI.ViewManagement.UISettings");
-        }
-        catch
-        {
-            Logger.TryGet(LogEventLevel.Information, "FluentAvaloniaTheme")?
-                .Log("FluentAvaloniaTheme", "Loading high contrast theme resources failed. Unable to create ComObject IUISettings");
-            return;
-        }
-
-        void TryAddResource(string resKey, UIElementType element)
+        void TryAddResource(string resKey, SYS_COLOR_INDEX systemColor)
         {
             try
             {
-                var color = (Color)settings.UIElementColor(element);
+                var color = Win32Interop.GetSystemColor(systemColor);
                 var res = Resources.MergedDictionaries[0] as ResourceDictionary;
                 (res.ThemeDictionaries[HighContrastTheme] as ResourceDictionary)[resKey] = color;
             }
@@ -94,29 +84,39 @@ public partial class FluentAvaloniaTheme
             }
         }
 
-        TryAddResource("SystemColorWindowTextColor", UIElementType.WindowText);
-        TryAddResource("SystemColorGrayTextColor", UIElementType.GrayText);
-        TryAddResource("SystemColorButtonFaceColor", UIElementType.ButtonFace);
-        TryAddResource("SystemColorWindowColor", UIElementType.Window);
-        TryAddResource("SystemColorButtonTextColor", UIElementType.ButtonText);
-        TryAddResource("SystemColorHighlightColor", UIElementType.Highlight);
-        TryAddResource("SystemColorHighlightTextColor", UIElementType.HighlightText);
-        TryAddResource("SystemColorHotlightColor", UIElementType.Hotlight);
+        TryAddResource("SystemColorWindowTextColor", SYS_COLOR_INDEX.COLOR_WINDOWTEXT);
+        TryAddResource("SystemColorGrayTextColor", SYS_COLOR_INDEX.COLOR_GRAYTEXT);
+        TryAddResource("SystemColorButtonFaceColor", SYS_COLOR_INDEX.COLOR_BTNFACE);
+        TryAddResource("SystemColorWindowColor", SYS_COLOR_INDEX.COLOR_WINDOW);
+        TryAddResource("SystemColorButtonTextColor", SYS_COLOR_INDEX.COLOR_BTNTEXT);
+        TryAddResource("SystemColorHighlightColor", SYS_COLOR_INDEX.COLOR_HIGHLIGHT);
+        TryAddResource("SystemColorHighlightTextColor", SYS_COLOR_INDEX.COLOR_HIGHLIGHTTEXT);
+        TryAddResource("SystemColorHotlightColor", SYS_COLOR_INDEX.COLOR_HOTLIGHT);
     }
 
+    [SupportedOSPlatform("windows")]
     private void TryLoadWindowsAccentColor()
     {
         try
         {
-            var settings3 = WinRTInterop.CreateInstance<IUISettings3>("Windows.UI.ViewManagement.UISettings");
+            // Prefer the exact shade ramp the shell uses (the same values WinRT's
+            // IUISettings3 exposes); fall back to one derived locally if the palette
+            // isn't present.
+            if (Win32Interop.TryGetAccentPalette(out var accent,
+                    out var light1, out var light2, out var light3,
+                    out var dark1, out var dark2, out var dark3))
+            {
+                UpdateAccentColors(accent, light1, light2, light3, dark1, dark2, dark3);
+                return;
+            }
 
-            UpdateAccentColors((Color)settings3.GetColorValue(UIColorType.Accent),
-                (Color)settings3.GetColorValue(UIColorType.AccentLight1),
-                (Color)settings3.GetColorValue(UIColorType.AccentLight2),
-                (Color)settings3.GetColorValue(UIColorType.AccentLight3),
-                (Color)settings3.GetColorValue(UIColorType.AccentDark1),
-                (Color)settings3.GetColorValue(UIColorType.AccentDark2),
-                (Color)settings3.GetColorValue(UIColorType.AccentDark3));
+            if (Win32Interop.TryGetAccentColor(out accent))
+            {
+                UpdateAccentColorsFromBase(accent);
+                return;
+            }
+
+            LoadDefaultAccentColor();
         }
         catch
         {

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 using System.Security;
 using Avalonia;
+using Avalonia.Media;
 using FluentAvalonia.Interop;
 using FluentAvalonia.Interop.Win32;
-using MicroCom.Runtime;
+using Microsoft.Win32;
 
 namespace FluentAvalonia.Interop;
 
@@ -106,22 +108,11 @@ internal static unsafe partial class Win32Interop
     [LibraryImport(s_dwmapi, SetLastError = true)]
     public static partial HRESULT DwmExtendFrameIntoClientArea(HWND hWnd, MARGINS* margins);
 
-    [LibraryImport(s_ole32)]
-    public static partial HRESULT CoCreateInstance(Guid* rclsid, void* pUnkOuter,
-        int dwClsContext, Guid* riid, void** ppv);
+    [LibraryImport(s_user32)]
+    public static partial uint GetSysColor(SYS_COLOR_INDEX nIndex);
 
-    internal unsafe static T CreateInstance<T>(Guid clsid, Guid iid) where T : IUnknown
-    {
-        void* pUnk;
-        var hresult = CoCreateInstance(&clsid, null, 1, &iid, &pUnk);
-        if (hresult != 0)
-        {
-            throw new COMException("CreateInstance", hresult);
-        }
-
-        using var unk = MicroComRuntime.CreateProxyFor<IUnknown>(pUnk, true);
-        return MicroComRuntime.QueryInterface<T>(unk);
-    }
+    [LibraryImport(s_dwmapi)]
+    public static partial HRESULT DwmGetColorizationColor(out uint pcrColorization, out BOOL fOpaqueBlend);
 
     [LibraryImport(s_dwmapi, SetLastError = true)]
     public static partial int DwmSetWindowAttribute(nint hWnd, DWMWINDOWATTRIBUTE attr, void* value, int attrSize);
@@ -274,17 +265,104 @@ internal static unsafe partial class Win32Interop
     // TPM
     public const int TPM_RETURNCMD = 0x0100;
 
-    public static readonly Guid ITaskBarList3CLSID = Guid.Parse("56FDF344-FD6D-11D0-958A-006097C9A090");
-    public static readonly Guid ITaskBarList3IID = Guid.Parse("ea1afb91-9e28-4b86-90e9-9e9f8a5eefaf");
-
     public static PixelPoint PointFromLParam(LPARAM lParam)
     {
         int lP = (int)lParam;
         return new PixelPoint((short)(lP & 0xffff), (short)(lP >> 16));
     }
 
+    public static Color GetSystemColor(SYS_COLOR_INDEX index)
+    {
+        // COLORREF is 0x00BBGGRR
+        var colorRef = GetSysColor(index);
+        return Color.FromArgb(0xFF,
+            (byte)(colorRef & 0xFF),
+            (byte)((colorRef >> 8) & 0xFF),
+            (byte)((colorRef >> 16) & 0xFF));
+    }
 
-    private const string s_ole32 = "ole32.dll";
+    [SupportedOSPlatform("windows")]
+    public static bool TryGetAccentColor(out Color color)
+    {
+        if (TryGetAccentColorFromRegistry(out color))
+            return true;
+
+        // Fall back to the DWM colorization color, which is 0xAARRGGBB. Unlike the registry
+        // value this tracks the current frame color, so it's a reasonable last resort.
+        if (DwmGetColorizationColor(out var colorization, out _).SUCCEEDED)
+        {
+            color = Color.FromRgb(
+                (byte)((colorization >> 16) & 0xFF),
+                (byte)((colorization >> 8) & 0xFF),
+                (byte)(colorization & 0xFF));
+            return true;
+        }
+
+        color = default;
+        return false;
+    }
+
+    [SupportedOSPlatform("windows")]
+    private static bool TryGetAccentColorFromRegistry(out Color color)
+    {
+        try
+        {
+            using var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\DWM");
+            if (key?.GetValue("AccentColor") is int accent && accent != 0)
+            {
+                // Stored as 0xAABBGGRR
+                color = Color.FromRgb(
+                    (byte)(accent & 0xFF),
+                    (byte)((accent >> 8) & 0xFF),
+                    (byte)((accent >> 16) & 0xFF));
+                return true;
+            }
+        }
+        catch
+        {
+            // Registry access can fail in restricted environments; let the caller fall back
+        }
+
+        color = default;
+        return false;
+    }
+
+    [SupportedOSPlatform("windows")]
+    public static bool TryGetAccentPalette(out Color accent,
+        out Color light1, out Color light2, out Color light3,
+        out Color dark1, out Color dark2, out Color dark3)
+    {
+        accent = light1 = light2 = light3 = dark1 = dark2 = dark3 = default;
+
+        try
+        {
+            using var key = Registry.CurrentUser.OpenSubKey(
+                @"Software\Microsoft\Windows\CurrentVersion\Explorer\Accent");
+
+            if (key?.GetValue("AccentPalette") is not byte[] { Length: >= 32 } palette)
+                return false;
+
+            // Stored B,G,R,A; the alpha byte is unused by the shell
+            static Color Read(byte[] p, int i) =>
+                Color.FromRgb(p[i * 4 + 2], p[i * 4 + 1], p[i * 4]);
+
+            light3 = Read(palette, 0);
+            light2 = Read(palette, 1);
+            light1 = Read(palette, 2);
+            accent = Read(palette, 3);
+            dark1 = Read(palette, 4);
+            dark2 = Read(palette, 5);
+            dark3 = Read(palette, 6);
+            return true;
+        }
+        catch
+        {
+            // Value missing / restricted profile; let the caller fall back
+            return false;
+        }
+    }
+
+
     private const string s_dwmapi = "dwmapi";
     private const string s_user32 = "user32.dll";
     private const string s_ntdll = "ntdll.dll";
