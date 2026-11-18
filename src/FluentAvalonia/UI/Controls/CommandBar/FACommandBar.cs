@@ -167,7 +167,7 @@ public partial class FACommandBar : ContentControl
                             _overflowItems.Insert(_numInOverflow, items[i]);
                             _numInOverflow++;
 
-                            // WinUI hides toplevel separartors when the go into overflow
+                            // WinUI hides toplevel separators when the go into overflow
                             if (items[i] is FACommandBarSeparator sep)
                                 sep.IsVisible = false;
                         }
@@ -408,7 +408,7 @@ public partial class FACommandBar : ContentControl
         if (_primaryCommands.Count > 0)
         {
             _primaryItems = new AvaloniaList<IFACommandBarElement>();
-            // v2: We take this sub here to add/remove psuedoclasses as necessary based on the 
+            // v2: We take this sub here to add/remove pseudoclasses as necessary based on the 
             // different states. In v1, we let the Styling system do this for us but with 
             // ControlThemes this isn't possible anymore so we have to do it ourselves
             _primaryItems.CollectionChanged += PrimaryItemsCollectionChanged;

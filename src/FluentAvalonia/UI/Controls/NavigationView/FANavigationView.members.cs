@@ -695,7 +695,7 @@ public partial class FANavigationView : HeaderedContentControl
 
 
     // flag is used to stop recursive call. eg:
-    // Customer select an item from SelectedItem property->ChangeSelection update ListView->LIstView raise OnSelectChange(we want stop here)->change property do do animation again.
+    // Customer select an item from SelectedItem property->ChangeSelection update ListView->ListView raise OnSelectChange(we want stop here)->change property do do animation again.
     // Customer clicked listview->listview raised OnSelectChange->SelectedItem property changed->ChangeSelection->Undo the selection by SelectedItem(prevItem) (we want it stop here)->ChangeSelection again ->...
     private bool _shouldIgnoreNextSelectionChange;
 

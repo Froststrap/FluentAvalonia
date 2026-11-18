@@ -408,7 +408,7 @@ internal class LiveReorderHelper
         // the Bounds on the container may not actually reflect where
         // the item actually is. In WinUI, ModernCollectionBasePanel's 
         // ContainerManager caches arrange rects and are used for estimation
-        // APIs. Here we are mimicing that
+        // APIs. Here we are mimicking that
         // This must be called at the start of drag/drop, when the auto scroll
         // of the scrollviewer stops, or when we first drag onto the TabView
         // if that TabView didn't start the dragdrop operation

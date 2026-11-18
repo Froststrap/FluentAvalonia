@@ -73,7 +73,7 @@
     <Thickness x:Key="ComboBoxTopHeaderMargin">0,0,0,8</Thickness>
     <Thickness x:Key="ComboBoxPadding">12,5,0,7</Thickness>
     <Thickness x:Key="ComboBoxEditableTextPadding">11,5,32,6</Thickness>
-    <CornerRadius x:Key="ComboBoxHiglightBorderCornerRadius">7</CornerRadius>
+    <CornerRadius x:Key="ComboBoxHighlightBorderCornerRadius">7</CornerRadius>
     <CornerRadius x:Key="ComboBoxDropDownButtonBackgroundCornerRadius">4</CornerRadius>
     <CornerRadius x:Key="ComboBoxItemCornerRadius">3</CornerRadius>
     <!-- Changed to double to avoid converters -->

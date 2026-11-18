@@ -3,7 +3,7 @@
 namespace FluentAvalonia.UI.Controls;
 
 /// <summary>
-/// Represents data for use in a SettingsExpander temlate
+/// Represents data for use in a SettingsExpander template
 /// </summary>
 public sealed class FASettingsExpanderTemplateSettings : AvaloniaObject
 {

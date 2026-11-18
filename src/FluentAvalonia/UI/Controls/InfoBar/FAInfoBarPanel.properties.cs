@@ -68,7 +68,7 @@ public sealed partial class FAInfoBarPanel : Panel
     /// <summary>
     /// Gets the HorizontalOrientationMargin from an object.
     /// </summary>
-    /// <param name="c">The IControl to retreive the value from</param>
+    /// <param name="c">The IControl to retrieve the value from</param>
     /// <returns>The HorizontalOrientationMargin thickness</returns>
     public static Thickness GetHorizontalOrientationMargin(Control c)
     {
@@ -88,7 +88,7 @@ public sealed partial class FAInfoBarPanel : Panel
     /// <summary>
     /// Gets the VerticalOrientationMargin from an object.
     /// </summary>
-    /// <param name="c">The IControl to retreive the value from</param>
+    /// <param name="c">The IControl to retrieve the value from</param>
     /// <returns>The VerticalOrientationMargin thickness</returns>
     public static Thickness GetVerticalOrientationMargin(Control c)
     {

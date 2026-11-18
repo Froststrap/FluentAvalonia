@@ -182,7 +182,7 @@ public partial class FATeachingTip : ContentControl
         if (button == null)
             return;
 
-        // SharedHelpers::TryGetStringRepresentationFromObjet(content)
+        // SharedHelpers::TryGetStringRepresentationFromObject(content)
         var nameHString = obj is string s ? s : string.Empty;
         AutomationProperties.SetName(button, nameHString);
     }
@@ -241,10 +241,10 @@ public partial class FATeachingTip : ContentControl
         // An effective placement of auto indicates that no tail should be shown.
         var (placement, tipDoesNotFit) = DetermineEffectivePlacement();
         _currentEffectiveTailPlacementMode = placement;
-        var tailVisiblity = TailVisibility;
+        var tailVisibility = TailVisibility;
 
-        if (tailVisiblity == FATeachingTipTailVisibility.Collapsed ||
-            (_target == null && tailVisiblity != FATeachingTipTailVisibility.Visible))
+        if (tailVisibility == FATeachingTipTailVisibility.Collapsed ||
+            (_target == null && tailVisibility != FATeachingTipTailVisibility.Visible))
         {
             _currentEffectiveTailPlacementMode = FATeachingTipPlacementMode.Auto;
         }
@@ -1935,7 +1935,7 @@ public partial class FATeachingTip : ContentControl
             true, /*BottomLeft*/
             true, /*BottomRight*/
             true, /*LeftTop*/
-            true, /*LeftButtom*/
+            true, /*LeftBottom*/
             true, /*RightTop*/
             true, /*RightBottom*/
             true, /*Center*/

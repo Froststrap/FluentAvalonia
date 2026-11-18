@@ -57,7 +57,7 @@ internal static class IEnumerableExtensions
     }
 
     /// <summary>
-    /// Retreives the element at the specified index from the IEnumerable
+    /// Retrieves the element at the specified index from the IEnumerable
     /// </summary>
     /// <param name="items"></param>
     /// <param name="reqIndex"></param>

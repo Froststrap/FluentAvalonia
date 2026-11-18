@@ -29,7 +29,7 @@ internal class SelectionModelChildrenRequestedEventArgs : EventArgs
         {
             if (_throwOnAccess)
             {
-                throw new InvalidOperationException("Source can only be accesed in the ChildrenRequested event handler.");
+                throw new InvalidOperationException("Source can only be accessed in the ChildrenRequested event handler.");
             }
 
             return _source!;
@@ -45,7 +45,7 @@ internal class SelectionModelChildrenRequestedEventArgs : EventArgs
         {
             if (_throwOnAccess)
             {
-                throw new InvalidOperationException("Source can only be accesed in the ChildrenRequested event handler.");
+                throw new InvalidOperationException("Source can only be accessed in the ChildrenRequested event handler.");
             }
 
             return _sourceIndexPath;

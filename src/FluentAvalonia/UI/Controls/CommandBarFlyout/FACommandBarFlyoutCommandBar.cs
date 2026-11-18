@@ -262,9 +262,9 @@ public class FACommandBarFlyoutCommandBar : FACommandBar
                 bool isUp = args.Key == Key.Up;
                 bool isDown = args.Key == Key.Down;
 
-                var accessibleCotnrols = (isUp || isDown) ? _verticallyAccessibleControls : _horizontallyAccessibleControls;
-                int startIndex = (isLeft || isUp) ? accessibleCotnrols.Count - 1 : 0;
-                int endIndex = (isLeft || isUp) ? -1 : accessibleCotnrols.Count;
+                var accessibleControls = (isUp || isDown) ? _verticallyAccessibleControls : _horizontallyAccessibleControls;
+                int startIndex = (isLeft || isUp) ? accessibleControls.Count - 1 : 0;
+                int endIndex = (isLeft || isUp) ? -1 : accessibleControls.Count;
                 int deltaIndex = (isLeft || isUp) ? -1 : 1;
                 bool shouldLoop = (isUp || isDown);
                 Control focused = null;
@@ -286,7 +286,7 @@ public class FACommandBarFlyoutCommandBar : FACommandBar
                         }
                     }
 
-                    var control = accessibleCotnrols[i];
+                    var control = accessibleControls[i];
 
                     if (focused == null)
                     {

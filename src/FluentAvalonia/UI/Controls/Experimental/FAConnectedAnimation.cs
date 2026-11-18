@@ -118,7 +118,7 @@ public class FAConnectedAnimation
 
         if (Configuration is FAGravityConnectedAnimationConfiguration)
         {
-            // Scale Gravity paramter here by distance so that gravity isn't overly exaggerated 
+            // Scale Gravity parameter here by distance so that gravity isn't overly exaggerated 
             // if the targets are close together
             // TODO: If start is above end, have the gravity fall below at the end of the animation
             offsetAnim.SetScalarParameter("Gravity", MathF.Abs(finalOffset.Y - _initialOffset.Y) * 0.1f);

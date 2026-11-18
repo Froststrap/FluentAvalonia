@@ -377,7 +377,7 @@ public partial class FANavigationView : HeaderedContentControl
             UpdatePaneVisibility();
             UpdateVisualStateForDisplayModeGroup(DisplayMode);
 
-            // When NavView is in expaneded mode with fixed window size, setting IsPaneVisible to false doesn't closes the pane
+            // When NavView is in expanded mode with fixed window size, setting IsPaneVisible to false doesn't closes the pane
             // We manually close/open it for this case
             if (!IsPaneVisible && IsPaneOpen)
             {
@@ -900,7 +900,7 @@ public partial class FANavigationView : HeaderedContentControl
                     // If focus is coming from outside the root repeater,
                     // and selected item is within current repeater
                     // we should put focus on selected item
-                    //if (newRootItemsRepeater == rootRepeaterForSelectedItem && isFocuseOutsideCurrentRootRepeater)
+                    //if (newRootItemsRepeater == rootRepeaterForSelectedItem && isFocusOutsideCurrentRootRepeater)
                     //{
                     //    var selectedContainer = GetContainerForIndexPath(_selectionModel.SelectedIndex, true);
                     //    if (e.TrySetNewFocusedElement(selectedContainer))
@@ -1386,7 +1386,7 @@ public partial class FANavigationView : HeaderedContentControl
     {
         // Update the isChildSelected property for every container on the IndexPath (with the exception of the actual container pointed to by the indexpath)
         var cont = GetContainerForIndex(ip.GetAt(1), ip.GetAt(0) == _footerMenuBlockIndex);
-        // first index is fo mainmenu or footer
+        // first index is of mainmenu or footer
         // second is index of item in mainmenu or footer
         // next in menuitem children 
         var index = 2;
@@ -1860,7 +1860,7 @@ public partial class FANavigationView : HeaderedContentControl
         // from how Avalonia handles it. Which means here, this is called first, and the NVI
         // hasn't yet been selected, which means OnNVIInvoked gets called twice and will open
         // and close an item if it has child items. So disable here if focus was given via
-        // the pointer to prevent that from occuring
+        // the pointer to prevent that from occurring
         if (SelectionFollowsFocus && e.NavigationMethod != NavigationMethod.Pointer)
         {
             // if nvi is already selected we don't need to invoke it again
@@ -4047,7 +4047,7 @@ public partial class FANavigationView : HeaderedContentControl
             var childrenData = GetChildren(nviParent);
             if (childrenData != null)
             {
-                // Get children data in an enumarable form
+                // Get children data in an enumerable form
                 //WinUI goes to ItemsSourceView for this, but we're already in an IEnumerable form (IList), so skip
 
                 for (int i = 0; i < childrenData.Count(); i++)

@@ -311,7 +311,7 @@ public partial class FANumberBox : TemplatedControl
 
         var text = _textBox.Text?.Trim();
 
-        // Handles empty TextBox case, set text ot current value
+        // Handles empty TextBox case, set text to current value
         if (string.IsNullOrEmpty(text))
         {
             Value = double.NaN;

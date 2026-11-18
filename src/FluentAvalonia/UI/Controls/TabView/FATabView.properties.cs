@@ -17,7 +17,7 @@ namespace FluentAvalonia.UI.Controls;
 
 // Note a Border (s_tpPaneResizeHandle) and a SplitView are not listed here because
 // they're only required in Left/Right display modes. If anyone wrote an analyzer 
-// that generates errors for missing templat parts, I don't want to cause them
+// that generates errors for missing template parts, I don't want to cause them
 // issues. However, if you retemplate anything, left/right require these controls
 
 // Also note the custom ScrollViewer has required template parts, see below
@@ -202,7 +202,7 @@ public partial class FATabView
     }
 
     /// <summary>
-    /// Gets or sets the IDataTemplate used to dispaly the content of the TabStripHeader
+    /// Gets or sets the IDataTemplate used to display the content of the TabStripHeader
     /// </summary>
     public IDataTemplate TabStripHeaderTemplate
     {

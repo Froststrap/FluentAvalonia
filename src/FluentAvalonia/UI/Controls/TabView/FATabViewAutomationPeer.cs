@@ -5,7 +5,7 @@ using Avalonia.Controls;
 namespace FluentAvalonia.UI.Controls;
 
 /// <summary>
-/// Represets the <see cref="AutomationPeer"/> for a <see cref="FATabView"/>
+/// Represents the <see cref="AutomationPeer"/> for a <see cref="FATabView"/>
 /// </summary>
 public sealed class FATabViewAutomationPeer : ControlAutomationPeer, ISelectionProvider
 {

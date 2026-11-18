@@ -82,7 +82,7 @@ public partial class FAContentDialog : ContentControl, ICustomKeyboardNavigation
         // the KeyUp event is raised on the focused item within the dialog, instead of the original button
         // (Avalonia related issue #9626) and will immediately close the dialog
         // We store the source of the key down and if it doesn't match, or hasn't been set yet, we ignore
-        // this key up event so we don't inadvertantly close the dialog
+        // this key up event so we don't inadvertently close the dialog
         if ((e.Key == Key.Enter || e.Key == Key.Escape) && (_hotkeyDownVisual == null || _hotkeyDownVisual != (Visual)e.Source))
         {
             base.OnKeyUp(e);
@@ -238,7 +238,7 @@ public partial class FAContentDialog : ContentControl, ICustomKeyboardNavigation
         PseudoClasses.Set(FASharedPseudoclasses.s_pcHidden, false);
         PseudoClasses.Set(FASharedPseudoclasses.s_pcOpen, true);
 
-        // Delay futher initializing until after the dialog has loaded. We sub here and unsbu in DialogLoaded
+        // Delay further initializing until after the dialog has loaded. We sub here and unsbu in DialogLoaded
         // because ContentDialog can be declared in Xaml prior to showing, and we don't want Loaded to trigger
         // initialization if we're not actually showing the dialog
         Loaded += DialogLoaded;

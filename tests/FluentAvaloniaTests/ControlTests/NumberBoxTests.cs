@@ -19,7 +19,7 @@ public class NumberBoxTests
         var tb = c.nb.GetTemplateDescendants().FirstOrDefault(x => x is TextBox tb && tb.Name == "InputBox") as TextBox;
 
         // Apparently Start is the default value, not left b/c we needed this...
-        // TextAlignment shouuld be Left, Center, Right, or Justify, more unneeded crap
+        // TextAlignment should be Left, Center, Right, or Justify, more unneeded crap
         Assert.Equal(TextAlignment.Start, tb.TextAlignment);
 
         c.nb.TextAlignment = TextAlignment.Right;

@@ -93,7 +93,7 @@ public partial class FAAppWindow : Window
             PseudoClasses.Set(":splashOpen", true);
             var time = DateTime.Now;
 
-            // n00b async/await mistake - need to await here, thansk to GH taj-ny for finding and fixing this
+            // n00b async/await mistake - need to await here, thanks to GH taj-ny for finding and fixing this
             await _splashContext.RunJobs();
 
             var delta = DateTime.Now - time;

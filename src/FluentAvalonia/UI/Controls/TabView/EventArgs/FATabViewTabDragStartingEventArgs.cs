@@ -29,7 +29,7 @@ public class FATabViewTabDragStartingEventArgs : EventArgs
     public DataPackage Data => _innerArgs.Data;
 
     /// <summary>
-    /// Gets the item taht was selected for the drag action
+    /// Gets the item that was selected for the drag action
     /// </summary>
     public object Item { get; }
 

@@ -60,7 +60,7 @@ public sealed class DataPackage : IDataTransfer, IAsyncDataTransfer
     }
 
     /// <summary>
-    /// If present, synchronously retreives the <see cref="IStorageItem"/>s in
+    /// If present, synchronously retrieves the <see cref="IStorageItem"/>s in
     /// the current Data Transfer package
     /// </summary>
     public IReadOnlyList<IStorageItem> GetStorageItems()
@@ -69,7 +69,7 @@ public sealed class DataPackage : IDataTransfer, IAsyncDataTransfer
     }
 
     /// <summary>
-    /// If present, asynchronously retreives the <see cref="IStorageItem"/>s in
+    /// If present, asynchronously retrieves the <see cref="IStorageItem"/>s in
     /// the current Data Transfer package
     /// </summary>
     public async Task<IReadOnlyList<IStorageItem>> GetStorageItemsAsync()
@@ -87,7 +87,7 @@ public sealed class DataPackage : IDataTransfer, IAsyncDataTransfer
     }
 
     /// <summary>
-    /// If present, synchronously retreives the <see cref="Bitmap"/>s in
+    /// If present, synchronously retrieves the <see cref="Bitmap"/>s in
     /// the current Data Transfer package
     /// </summary>
     public Bitmap GetBitmap()
@@ -96,7 +96,7 @@ public sealed class DataPackage : IDataTransfer, IAsyncDataTransfer
     }
 
     /// <summary>
-    /// If present, asynchronously retreives the <see cref="Bitmap"/>s in
+    /// If present, asynchronously retrieves the <see cref="Bitmap"/>s in
     /// the current Data Transfer package
     /// </summary>
     public Task<Bitmap> GetBitmapAsync()
@@ -114,7 +114,7 @@ public sealed class DataPackage : IDataTransfer, IAsyncDataTransfer
     }
 
     /// <summary>
-    /// If present, synchronously retreives the item in the Data Transfer package
+    /// If present, synchronously retrieves the item in the Data Transfer package
     /// using the specified <see cref="DataFormat{T}"/>
     /// </summary>
     public T Get<T>(DataFormat<T> format) where T : class
@@ -123,7 +123,7 @@ public sealed class DataPackage : IDataTransfer, IAsyncDataTransfer
     }
 
     /// <summary>
-    /// If present, asynchronously retreives the item in the Data Transfer package
+    /// If present, asynchronously retrieves the item in the Data Transfer package
     /// using the specified <see cref="DataFormat{T}"/>
     /// </summary>
     public Task<T> GetAsync<T>(DataFormat<T> format) where T : class

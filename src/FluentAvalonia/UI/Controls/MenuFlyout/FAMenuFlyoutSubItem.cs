@@ -95,10 +95,7 @@ public partial class FAMenuFlyoutSubItem : FAMenuFlyoutItemBase
         }
 
         if (isFullClose)
-        {
-            var anc = this.FindAncestorOfType<FAMenuFlyoutPresenter>();
-            anc.CloseMenu();
-        }
+            this.FindAncestorOfType<FAMenuFlyoutPresenter>().CloseMenu();
     }
 
     private void InitPopup()

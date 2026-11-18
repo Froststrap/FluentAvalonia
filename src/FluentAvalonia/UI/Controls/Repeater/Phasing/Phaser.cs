@@ -110,7 +110,7 @@ internal class Phaser
                 }
                 else if (currentIndex > -1 && currentIndex < pendingCount - 1)
                 {
-                    // If the next element is oustide the visible window and there are elements in the visible window
+                    // If the next element is outside the visible window and there are elements in the visible window
                     // go back to the visible window.
                     bool nextItemIsVisible = visibleWindow.Intersects(
                         _pendingElements[currentIndex].LastArrangeBounds);

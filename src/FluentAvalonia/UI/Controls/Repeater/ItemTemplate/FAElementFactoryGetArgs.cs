@@ -9,7 +9,7 @@ namespace FluentAvalonia.UI.Controls;
 public class FAElementFactoryGetArgs
 {
     /// <summary>
-    /// Gets or sets teh data item for which an appropriate element tree should be realized when calling 
+    /// Gets or sets the data item for which an appropriate element tree should be realized when calling 
     /// <see cref="IFAElementFactory.GetElement(FAElementFactoryGetArgs)"/>
     /// </summary>
     public object Data { get; set; }

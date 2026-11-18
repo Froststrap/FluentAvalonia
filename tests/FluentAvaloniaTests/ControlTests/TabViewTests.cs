@@ -148,7 +148,7 @@ public class TabViewTests
                 .FirstOrDefault(x => x is ContentPresenter);
 
             if (pres == null)
-                Assert.False(true, "Unable to find ContentPresenter");
+                Assert.Fail("Unable to find ContentPresenter");
 
             return pres.IsVisible;
         }
@@ -205,7 +205,7 @@ public class TabViewTests
     }
 
     [AvaloniaFact]
-    public void LeftClickingOnTabItemChangesSelctedItem()
+    public void LeftClickingOnTabItemChangesSelectedItem()
     {
         var (w, TabView) = GetTabView();
         var item = TabView.TabItems[1] as FATabViewItem;

@@ -191,7 +191,7 @@ public partial class FAPathIcon : FAIconElement
 
     /// <summary>
     /// Quick and dirty check if we have a valid PathGeometry. This probably needs to be
-    /// more robust, but this is better than a bunch of InvalidDataExceptions becase we 
+    /// more robust, but this is better than a bunch of InvalidDataExceptions because we 
     /// don't have a Path.TryParse() method. This does still fail sometimes, but its better
     /// than nothing. Its really only meant to be called from the StringToIconElementConverter
     /// </summary>

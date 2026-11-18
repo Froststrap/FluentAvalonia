@@ -5,7 +5,7 @@ using Avalonia.Data.Converters;
 namespace FluentAvalonia.Converters;
 
 /// <summary>
-/// Special converter to convert ScrollBarVisbility enum values to bool
+/// Special converter to convert ScrollBarVisibility enum values to bool
 /// </summary>
 public sealed class FAScrollViewerVisibilityToBoolConverter : IValueConverter
 {

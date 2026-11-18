@@ -88,7 +88,7 @@ internal class BreadcrumbLayout : FANonVirtualizingLayout
 
         // If the ellipsis must be drawn, then we find the index (x) of the first element to be rendered, any element with
         // a lower index than x will be hidden (except for the ellipsis button) and every element after x (including x) will
-        // be drawn. At the very least, the ellipis and the last item will be rendered
+        // be drawn. At the very least, the ellipsis and the last item will be rendered
         if (_ellipsisIsRendered)
         {
             firstElementToRender = GetFirstBreadcrumbBarItemToArrange(context);

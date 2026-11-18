@@ -370,7 +370,7 @@ internal class ViewportManager
         // null if parent is null, so that's what I'll do
         //if (parent == null)
         //{
-        //    throw new InvalidOperationException("OnBringIntoViewRequested called with args.target element not under the ItemsRepeater that recieved the call");
+        //    throw new InvalidOperationException("OnBringIntoViewRequested called with args.target element not under the ItemsRepeater that received the call");
         //}
         if (parent == null)
             return null;
@@ -525,7 +525,7 @@ internal class ViewportManager
     {
         if (_owner.Layout != null && _cacheBuildAction == null)
         {
-            // We capture 'owner' (a strong refernce on ItemsRepeater) to make sure ItemsRepeater is still around
+            // We capture 'owner' (a strong reference on ItemsRepeater) to make sure ItemsRepeater is still around
             // when the async action completes. By protecting ItemsRepeater, we also ensure that this instance
             // of ViewportManager (referenced by 'this' pointer) is valid because the lifetime of ItemsRepeater
             // and ViewportManager is the same (see ItemsRepeater::m_viewportManager).

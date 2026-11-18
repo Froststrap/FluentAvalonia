@@ -8,7 +8,7 @@ namespace FluentAvalonia.Core;
 public static class FAThicknessExtensions
 {
     /// <summary>
-    /// Retreives the total vertical thickness (top + bottom)
+    /// Retrieves the total vertical thickness (top + bottom)
     /// </summary>
     public static double Vertical(this Thickness t)
     {
@@ -16,7 +16,7 @@ public static class FAThicknessExtensions
     }
 
     /// <summary>
-    /// Retreives the total horizontal thickness (left + right)
+    /// Retrieves the total horizontal thickness (left + right)
     /// </summary>
     /// <param name="t"></param>
     /// <returns></returns>

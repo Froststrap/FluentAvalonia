@@ -263,7 +263,7 @@ public partial class FAFrame : ContentControl
     public string GetNavigationState()
     {
         if (!IsNavigationStackEnabled)
-            throw new InvalidOperationException("Cannot retreive navigation stack when IsNavigationStackEnabled is false");
+            throw new InvalidOperationException("Cannot retrieve navigation stack when IsNavigationStackEnabled is false");
 
         // Format of the Navigation state string - this is not the same as WinUI
         // Full.Type.Name.Here|Serialized Parameter // First line is the current page
@@ -317,7 +317,7 @@ public partial class FAFrame : ContentControl
 
     /// <summary>
     /// Reads and restores the navigation history of a Frame from a provided serialization string,
-    /// and optionally supresses navigation to the last page type
+    /// and optionally suppresses navigation to the last page type
     /// </summary>
     /// <param name="navState">The serialization string that supplies the restore point for navigation history.</param>
     /// <param name="suppressNavigate">true to restore navigation history without navigating to the current page; otherwise, false.</param>

@@ -136,7 +136,7 @@ public class FATextCommandBarFlyout : FACommandBarFlyout
             }
 
             // We don't have CanUndo or CanRedo
-            // In next verion of Avalonia, we'll get TextBox.IsUndoEnabled, but it's not the same
+            // In next version of Avalonia, we'll get TextBox.IsUndoEnabled, but it's not the same
             // For now, we'll default to adding these, and probably just send the Undo/Redo keys
 
             if (textBox.CanUndo)

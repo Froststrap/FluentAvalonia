@@ -71,7 +71,7 @@ internal class ElementManager
                 // Sentinel. Create the element now since we need it.
                 var dataIndex = GetDataIndexFromRealizedRangeIndex(realizedIndex);
 #if DEBUG && REPEATER_TRACE
-                Log.Debug("Creating element for sentinal with data index {Index}", dataIndex);
+                Log.Debug("Creating element for sentinel with data index {Index}", dataIndex);
 #endif
                 element = _context.GetOrCreateElementAt(dataIndex,
                     FAElementRealizationOptions.ForceCreate | FAElementRealizationOptions.SuppressAutoRecycle);

@@ -11,7 +11,7 @@ public sealed class FATeachingTipTemplateSettings : AvaloniaObject
     /// <summary>
     /// Defines the <see cref="TopRightHighlightMargin"/> property
     /// </summary>
-    public static readonly StyledProperty<Thickness> TopRightHighlighMarginProperty =
+    public static readonly StyledProperty<Thickness> TopRightHighlightMarginProperty =
         AvaloniaProperty.Register<FATeachingTipTemplateSettings, Thickness>(nameof(TopRightHighlightMargin));
 
     /// <summary>
@@ -31,8 +31,8 @@ public sealed class FATeachingTipTemplateSettings : AvaloniaObject
     /// </summary>
     public Thickness TopRightHighlightMargin
     {
-        get => GetValue(TopRightHighlighMarginProperty);
-        internal set => SetValue(TopRightHighlighMarginProperty, value);
+        get => GetValue(TopRightHighlightMarginProperty);
+        internal set => SetValue(TopRightHighlightMarginProperty, value);
     }
 
     /// <summary>

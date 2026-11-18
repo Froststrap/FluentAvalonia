@@ -131,7 +131,7 @@ public partial class FANavigationViewItem : FANavigationViewItemBase
         UpdateItemIndentation();
         UpdateVisualState();
         ReparentRepeater();
-        // We dont want to update the repeater visibilty during OnApplyTemplate if NavigationView is in a mode when items are shown in a flyout
+        // We dont want to update the repeater visibility during OnApplyTemplate if NavigationView is in a mode when items are shown in a flyout
         if (!ShouldRepeaterShowInFlyout)
         {
             ShowHideChildren();

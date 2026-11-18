@@ -22,7 +22,7 @@ public enum FAInfoBarSeverity
     /// <summary>
     /// Communicates that the InfoBar is displaying information regarding a condition that 
     /// might cause a problem in the future. For assistive technologies, they will follow 
-    /// the behavior set in the NotificationProcessing_ImportantAll constan
+    /// the behavior set in the NotificationProcessing_ImportantAll constant
     /// </summary>
     Warning = 2,
 

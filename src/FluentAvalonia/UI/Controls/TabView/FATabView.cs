@@ -56,7 +56,7 @@ public partial class FATabView : TemplatedControl
         {
             Gesture = new KeyGesture(Key.Tab, ctrl | KeyModifiers.Shift),
             Command = _keyboardAcceleratorHandler,
-            CommandParameter = TabViewCommandType.CtrlShftTab
+            CommandParameter = TabViewCommandType.CtrlShiftTab
         });
 
         _tabCloseButtonTooltipText = FALocalizationHelper.Instance.GetLocalizedStringResource(SR_TabViewCloseButtonTooltipWithKA);
@@ -1182,7 +1182,7 @@ public partial class FATabView : TemplatedControl
             if (_tabContainerGrid != null)
             {
                 var rows = _tabContainerGrid.RowDefinitions;
-                // Calcuate the height of the rows without the TabView
+                // Calculate the height of the rows without the TabView
                 double height = 0;
                 foreach (var item in _tabContainerGrid.Children)
                 {
@@ -1481,7 +1481,7 @@ public partial class FATabView : TemplatedControl
                 MoveSelection(true);
                 break;
 
-            case TabViewCommandType.CtrlShftTab:
+            case TabViewCommandType.CtrlShiftTab:
                 MoveSelection(false);
                 break;
         }
@@ -1719,6 +1719,6 @@ public partial class FATabView : TemplatedControl
     {
         CtrlF4,
         CtrlTab,
-        CtrlShftTab
+        CtrlShiftTab
     }
 }

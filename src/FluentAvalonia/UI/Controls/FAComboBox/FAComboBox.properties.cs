@@ -148,7 +148,7 @@ public partial class FAComboBox : HeaderedSelectingItemsControl
     }
 
     /// <summary>
-    /// Gets whether the SelectionBox is hightlighted
+    /// Gets whether the SelectionBox is highlighted
     /// </summary>
     public bool IsSelectionBoxHighlighted
     {
@@ -157,7 +157,7 @@ public partial class FAComboBox : HeaderedSelectingItemsControl
     }
 
     /// <summary>
-    /// Gets the item shown whne the ComboBox is closed
+    /// Gets the item shown when the ComboBox is closed
     /// </summary>
     public object SelectionBoxItem
     {

@@ -170,7 +170,7 @@ public partial class FAComboBox : HeaderedSelectingItemsControl
             }
 
             // Two cases for this:
-            // 1- If isOpen, since we change the selection box based on keyboard navigaton without changing
+            // 1- If isOpen, since we change the selection box based on keyboard navigation without changing
             //    the SelectedItem, we need to revert to the actual selection if its cancelled
             // 2- If !isOpen, and editable, user can revert their text change by pressing escape
             UpdateSelectionBoxItem(SelectedItem);

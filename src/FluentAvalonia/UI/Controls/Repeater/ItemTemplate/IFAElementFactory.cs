@@ -14,7 +14,7 @@ public interface IFAElementFactory : IDataTemplate
     Control GetElement(FAElementFactoryGetArgs args);
 
     /// <summary>
-    /// Recycles a <see cref="Control"/> that was previously retreived using <see cref="GetElement(FAElementFactoryGetArgs)"/>
+    /// Recycles a <see cref="Control"/> that was previously retrieved using <see cref="GetElement(FAElementFactoryGetArgs)"/>
     /// </summary>
     void RecycleElement(FAElementFactoryRecycleArgs args);
 }

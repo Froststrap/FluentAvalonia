@@ -303,7 +303,7 @@ public partial class FluentAvaloniaTheme : Styles, IResourceProvider
             return;
 
         // The following resources are added to remove the larger bottom margin/padding value
-        // on some controls added to accomodate Segoe UI - this will allow vertical centering
+        // on some controls added to accommodate Segoe UI - this will allow vertical centering
         // These are added to the internal _themeResources dictionary, so user can still
         // override these elsewhere if desired
 

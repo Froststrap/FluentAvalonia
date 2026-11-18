@@ -15,7 +15,7 @@
     </Design.PreviewWith>
 
     <!--
-    This file contines some resources used by TimePicker 
+    This file continents some resources used by TimePicker 
     
     Did NOT port the MonochromaticOverlayPresenter, b/c not sure how that
     works and how to implement it outside WinUI comp

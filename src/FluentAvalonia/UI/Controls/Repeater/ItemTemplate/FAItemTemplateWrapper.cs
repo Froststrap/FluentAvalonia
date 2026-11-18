@@ -43,7 +43,7 @@ public class FAItemTemplateWrapper : IFAElementFactory
             catch
             {
                 // The default implementation of SelectTemplate(IInspectable item, ILayout container) throws invalid arg for null container
-                // To not force everbody to provide an implementation of that, catch that here
+                // To not force everybody to provide an implementation of that, catch that here
                 // Me: IGNORE
             }
 

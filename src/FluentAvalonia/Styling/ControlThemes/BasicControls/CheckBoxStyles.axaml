@@ -61,7 +61,7 @@
                             <ui:FAFontIcon Name="CheckGlyph"
                                          FontFamily="{StaticResource SymbolThemeFontFamily}"
                                          FontSize="{StaticResource CheckBoxGlyphSize}"
-                                         Foreground="{DynamicResource CheckBoxCheckGlpyhForegroundUnchecked}"
+                                         Foreground="{DynamicResource CheckBoxCheckGlyphForegroundUnchecked}"
                                          Opacity="0"
                                          FlowDirection="LeftToRight"
                                          Glyph="{DynamicResource CheckBoxCheckGlyph}" />
