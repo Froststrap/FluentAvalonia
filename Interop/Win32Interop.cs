@@ -342,9 +342,9 @@ internal static unsafe partial class Win32Interop
             if (key?.GetValue("AccentPalette") is not byte[] { Length: >= 32 } palette)
                 return false;
 
-            // Stored B,G,R,A; the alpha byte is unused by the shell
+            // Stored R,G,B,A; the alpha byte is unused by the shell
             static Color Read(byte[] p, int i) =>
-                Color.FromRgb(p[i * 4 + 2], p[i * 4 + 1], p[i * 4]);
+                Color.FromRgb(p[i * 4], p[i * 4 + 1], p[i * 4 + 2]);
 
             light3 = Read(palette, 0);
             light2 = Read(palette, 1);
