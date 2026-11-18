@@ -28,9 +28,17 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <AvaloniaResource Include="Assets\*.*" />
-    <AvaloniaResource Include="Fonts\*.*" />
+    <!-- FAIcon.png is the NuGet package icon, not a runtime asset -->
+    <AvaloniaResource Include="Assets/*.*" Exclude="Assets/FAIcon.png" />
+    <AvaloniaResource Include="Fonts/*.*" />
     <AvaloniaResource Include="**/*.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="tests/**" />
+    <EmbeddedResource Remove="tests/**" />
+    <AvaloniaResource Remove="tests/**" />
+    <None Remove="tests/**" />
   </ItemGroup>
 
   <ItemGroup>

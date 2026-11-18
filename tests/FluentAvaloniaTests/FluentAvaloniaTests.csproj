@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\FluentAvalonia\FluentAvalonia.csproj" />
+    <ProjectReference Include="..\..\FluentAvalonia.csproj" />
   </ItemGroup>
 
   <ItemGroup>

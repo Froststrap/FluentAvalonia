@@ -1,0 +1,26 @@
+<Project>
+  <!--
+    These settings belong to the FluentAvalonia library only. The test project also
+    lives under this directory, so it is excluded here to avoid inheriting the
+    packaging and SourceLink configuration.
+  -->
+  <PropertyGroup Label="Package Info" Condition="'$(MSBuildProjectName)' == 'FluentAvalonia'">
+    <RepositoryUrl>https://github.com/Froststrap/FluentAvalonia</RepositoryUrl>
+    <Description>Control library focused on fluent design and bringing more WinUI controls into Avalonia </Description>
+    <PackageTags>c-sharp;xaml;cross-platform;dotnet;dotnetcore;avalonia;avaloniaui;fluent;fluent-design</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Version>3.1.0</Version>
+    <AssemblyVersion>3.1.0.0</AssemblyVersion>
+  </PropertyGroup>
+
+  <!-- Add Package Icon -->
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'FluentAvalonia'">
+    <PackageIcon>FAIcon.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup Label="PackageIcon" Condition="'$(MSBuildProjectName)' == 'FluentAvalonia'">
+    <None Include="$(MSBuildThisFileDirectory)Assets/FAIcon.png" Pack="true" Visible="false" PackagePath=""/>
+  </ItemGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)SourceLink.props" Condition="'$(MSBuildProjectName)' == 'FluentAvalonia'"/>
+</Project>
