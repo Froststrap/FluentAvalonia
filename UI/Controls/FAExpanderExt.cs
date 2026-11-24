@@ -162,18 +162,8 @@ public sealed class FAExpanderExt : AvaloniaObject
         {
             _expanderContent.SetCurrentValue(Visual.IsVisibleProperty, true);
 
-            if (_expander.Parent is FASettingsExpander se && se.Presenter != null)
-            {
-                // SettingsExpander does not use Virtualization, so it's safe here to use
-                // Infinity to measure
-                se.Presenter.Measure(Size.Infinity);
-                _contentSize = se.Presenter.DesiredSize;
-            }
-            else
-            {
-                _expanderContent.Measure(Size.Infinity);
-                _contentSize = _expanderContent.DesiredSize;
-            }
+            _expanderContent.Measure(Size.Infinity);
+            _contentSize = _expanderContent.DesiredSize;
 
             var startY = down ? -_contentSize.Height : _contentSize.Height;
             var ani = new Animation

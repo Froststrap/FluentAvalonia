@@ -49,7 +49,7 @@ public partial class FAInfoBar : ContentControl
     /// Defines the <see cref="IconSource"/> property
     /// </summary>
     public static readonly StyledProperty<FAIconSource> IconSourceProperty =
-        FASettingsExpander.IconSourceProperty.AddOwner<FAIconSource>();
+        AvaloniaProperty.Register<FAInfoBar, FAIconSource>(nameof(IconSource));
 
     /// <summary>
     /// Defines the <see cref="IsIconVisible"/> property

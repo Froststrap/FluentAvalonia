@@ -56,7 +56,6 @@ Note the following changes from upstream Avalonia:
     <ResourceInclude Source="/Styling/ControlThemes/BasicControls/ColorPicker/ColorSpectrum.axaml" />
 
     <!-- Controls -->
-    <ResourceInclude Source="/Styling/ControlThemes/BasicControls/ColorPicker/ColorPicker.axaml" />
     <ResourceInclude Source="/Styling/ControlThemes/BasicControls/ColorPicker/ColorView.axaml" />
 
   </ResourceDictionary.MergedDictionaries>

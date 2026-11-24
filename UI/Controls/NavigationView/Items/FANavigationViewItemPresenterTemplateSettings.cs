@@ -25,7 +25,7 @@ public class FANavigationViewItemPresenterTemplateSettings : AvaloniaObject
     /// Defines the <see cref="Icon"/> property
     /// </summary>
     public static readonly StyledProperty<FAIconElement> IconProperty =
-        FAMenuFlyoutItemTemplateSettings.IconProperty.AddOwner<FANavigationViewItemPresenterTemplateSettings>();
+        AvaloniaProperty.Register<FANavigationViewItemPresenterTemplateSettings, FAIconElement>(nameof(Icon));
 
     /// <summary>
     /// TODO: Get docs from MS - relatively new setting

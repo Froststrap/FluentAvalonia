@@ -18,7 +18,7 @@
     <Thickness x:Key="TextBoxTopHeaderMargin">0,0,0,8</Thickness>
     <Thickness x:Key="TextBoxInnerButtonMargin">0,4,4,4</Thickness>
     <x:Double x:Key="TextBoxIconFontSize">12</x:Double>
-    <ui:FATextCommandBarFlyout x:Key="DefaultTextBoxContextFlyout" />
+    <ui:FATextContextFlyout x:Key="DefaultTextBoxContextFlyout" />
 
     <ControlTheme TargetType="Button" x:Key="TextBoxDeleteButtonStyle">
         <Setter Property="Foreground" Value="{DynamicResource TextControlButtonForeground}" />

@@ -18,7 +18,7 @@ public partial class FANavigationViewItemPresenter
     /// Defines the <see cref="IconSource"/> property
     /// </summary>
     public static readonly StyledProperty<FAIconSource> IconSourceProperty =
-        FASettingsExpander.IconSourceProperty.AddOwner<FANavigationViewItemPresenter>();
+        AvaloniaProperty.Register<FANavigationViewItemPresenter, FAIconSource>(nameof(IconSource));
 
     public static readonly DirectProperty<FANavigationViewItemPresenter, object> IconProperty =
         AvaloniaProperty.RegisterDirect<FANavigationViewItemPresenter, object>(nameof(Icon),

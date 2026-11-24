@@ -22,7 +22,7 @@ public partial class FAInfoBadge : TemplatedControl
     /// Defines the <see cref="IconSource"/> property
     /// </summary>
     public static readonly StyledProperty<FAIconSource> IconSourceProperty =
-        FASettingsExpander.IconSourceProperty.AddOwner<FAInfoBadge>();
+        AvaloniaProperty.Register<FAInfoBadge, FAIconSource>(nameof(IconSource));
 
     /// <summary>
     /// Defines the <see cref="TemplateSettings"/> property

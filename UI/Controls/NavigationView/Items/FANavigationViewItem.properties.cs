@@ -36,7 +36,7 @@ public partial class FANavigationViewItem
     /// Defines the <see cref="IconSource"/> property
     /// </summary>
     public static readonly StyledProperty<FAIconSource> IconSourceProperty =
-        FASettingsExpander.IconSourceProperty.AddOwner<FANavigationViewItem>();
+        AvaloniaProperty.Register<FANavigationViewItem, FAIconSource>(nameof(IconSource));
 
     public static readonly DirectProperty<FANavigationViewItem, object> IconProperty =
     AvaloniaProperty.RegisterDirect<FANavigationViewItem, object>(nameof(Icon),
