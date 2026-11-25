@@ -2662,11 +2662,6 @@
             <StaticResource x:Key="CaptionButtonForegroundPressed" ResourceKey="TextFillColorSecondaryBrush" />
             <StaticResource x:Key="CaptionButtonForegroundInactive" ResourceKey="TextFillColorDisabledBrush" />
 
-            <!--FAAppWindow Only-->
-            <StaticResource x:Key="TitleBarBackground" ResourceKey="SubtleFillColorTransparentBrush" />
-            <StaticResource x:Key="TitleBarForeground" ResourceKey="TextFillColorPrimaryBrush" />
-            <StaticResource x:Key="TitleBarBackgroundInactive" ResourceKey="SubtleFillColorTransparentBrush" />
-            <StaticResource x:Key="TitleBarForegroundInactive" ResourceKey="TextFillColorDisabledBrush" />
 
         </ResourceDictionary>
 
